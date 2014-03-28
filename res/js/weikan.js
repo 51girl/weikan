@@ -37,7 +37,11 @@
 
         return res;
     }
-
+    
+    /**
+     * 从制定name的meta中获取值
+     * 一般用在详情弹窗中，用于接收从其他页面传递过来的值
+     */
     $.getMetaValueForName = function(name) {
         var meta = $("meta[name='wk-"+name+"']");
         var content = $(meta).attr("content");
