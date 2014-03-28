@@ -1,11 +1,27 @@
 (function($) {
+
+    /*
+     * 将URL装换成QUERY对象
+     * 例如 var querystr = $.query("http://www.demo.com/a/b/c?arg0=value0&arg1=value1");
+     *
+     * querystr["protocol"] = "http"
+     * querystr["host"] = "www.demo.com"
+     * querystr["path"] = "a/b/c"
+     * querystr["arg0"] = "value0"
+     * querystr["arg1"] = "value1"
+     */
     $.query = function(url) {
 
         var u = url.split("?");
 
         var res = {};
-        res["path"] = u[0];
-        res["host"] = u[0].substring(0, u[0].lastIndexOf("/"));
+        var _proStartPos = u[0].indexOf("//:");
+        res["_protocol"] = u[0].substring(0, _proStartPos);
+
+        var _urlWithoutProtocol = u[0].substring(_proStartPos+3);
+        var _firstPathPos = _urlWithoutProtocol.indexOf("/")
+        res["_path"] = _urlWithoutProtocol.substring(_firstPathPos+1);
+        res["_host"] = _urlWithoutProtocol.substring(0, _firstPathPos);
 
         if (u.length > 1) {
             var q = u[1];
@@ -22,10 +38,247 @@
         return res;
     }
 
+    $.getMetaValueForName = function(name) {
+        var meta = $("meta[name='wk-"+name+"']");
+        var content = $(meta).attr("content");
+        if ($(meta).attr("isJson")) {
+            return $.parseJSON(content);
+        } else {
+            return content;
+        }
+    }
+
+    /*
+     * 判断对象是否是数组
+     */
     $.isArray = function(object) {
         return Object.prototype.toString.call(object) === '[object Array]';
     }
 
+
+    /**
+     * 详情窗口
+     * @param data 在窗口中显示的数据对象
+     */
+    $.detialwindow = function(data) {
+        var _data = data;
+        var _templateName;
+        var _placeholder = $('<div />').addClass("wk-window-placeholder");
+        var _wkBody = $("#wk-main").find("#wk-body");
+        $(_placeholder).insertBefore(_wkBody);
+
+        var WINDOW_WIDTH = 640;
+        var WINDOW_HEIGHT = 580;
+
+        var _ww = $(window).width();
+        var _wh = $(window).height();
+
+        var getCenterPoint = function(size) {
+            var _cx = size.width / 2;
+            var _cy = size.height / 2;
+
+            return {
+                x:_cx
+                , y:_cy
+            };
+        };
+
+        var getTopAndLeft = function(point) {
+            var _left = point.x - WINDOW_WIDTH / 2;
+            if (_left < 0) {
+                _left = 0;
+            }
+            var _top = point.y - WINDOW_HEIGHT / 2;
+            if (_top < 0) {
+                _top = 0;
+            }
+
+            return {
+                top : _top
+                , left: _left
+            };
+        };
+
+        var _centerPointer = getCenterPoint({width: _ww, height: _wh});
+        var _topAndLeft = getTopAndLeft(_centerPointer);
+
+
+        var _window = $('<div />').addClass("wk-window");
+        $(_window).css({
+            width: WINDOW_WIDTH + "px"
+            , height: WINDOW_HEIGHT + "px"
+            , position: "absolute"
+            , top: _wh + "px"
+            , left: _topAndLeft.left + "px"
+            , background: "white"
+            , display: "none"
+        });
+
+        var _windowContent = $('<div />').addClass("wk-window-content");
+        $(_windowContent).css({
+            width: WINDOW_WIDTH + "px"
+            , height: WINDOW_HEIGHT + "px"
+            , position: "relative"
+            , top: "0px"
+            , left: "0px"
+        });
+
+        var _btnClose = $('<img />')
+            .attr({
+                src: "./res/drawables/wk_window_btn_close.jpg"});
+        $(_btnClose).css({
+            width : "48px"
+            , height : "48px"
+            , position: "absolute"
+            , top: "10px"
+            , left: (WINDOW_WIDTH - 2) + "px"
+        });
+
+        var _wrapper = $('<div />').addClass("wk-window-wrapper");
+        $(_wrapper).css({
+            width: WINDOW_WIDTH + "px"
+            , height: WINDOW_HEIGHT + "px"
+            , position: "absolute"
+            , top: "0px"
+            , left: "0px"
+        });
+
+        $(_window).append(_windowContent);
+        $(_windowContent).append(_btnClose);
+        $(_windowContent).append(_wrapper);
+
+        var _mask = $('<div />').addClass("wk-window-mask");
+        $(_mask).css({
+            width: _ww + "px"
+            , height: _wh + "px"
+            , position: "absolute"
+            , top: "0px"
+            , left: "0px"
+            , display: "none"
+        });
+        $(_placeholder).append(_mask);
+        $(_placeholder).append(_window);
+
+        var _windowObject = {
+            /**
+             * 更新窗口的位置
+             * 一般用在调整浏览看大小的时候
+             */
+            update : function() {
+
+                var _newWw = $(window).width();
+                var _newWh = $(window).height();
+
+                var _newCenterPointer = getCenterPoint({width: _newWw, height: _newWh});
+                var _newTopAndLeft = getTopAndLeft(_newCenterPointer);
+
+                $(_placeholder).find(".wk-window").css({
+                    width: WINDOW_WIDTH + "px"
+                    , height: WINDOW_HEIGHT + "px"
+                    , position: "absolute"
+                    , top: _newTopAndLeft.top + "px"
+                    , left: _newTopAndLeft.left + "px"
+                    , background: "white"
+                });
+
+                $(_placeholder).find(".wk-window-mask").css({
+                    width: _newWw + "px"
+                    , height: _newWh + "px"
+                    , position: "absolute"
+                    , top: "0px"
+                    , left: "0px"
+                });
+            }
+
+            /**
+             * 设置窗口内容的模板文件
+             * @param tn 模板文件名
+             * @returns {_windowObject}
+             */
+            , templateName : function(tn) {
+                _templateName = tn;
+                return this;
+            }
+
+            /**
+             * 关闭窗口
+             */
+            , dismiss : function() {
+                $(_mask).fadeOut(300);
+                $(_window).animate({
+                    opacity: "hide"
+                }, 500, function() {
+                    $(_placeholder).remove();
+                });
+            }
+
+            /**
+             * 显示窗口
+             */
+            , show : function() {
+                $(_mask).fadeIn(500);
+                $(_window).animate({
+                    opacity: "show"
+                    , top: _topAndLeft.top + "px"
+                }, 500, function() {
+                    $(_window).css({
+                        width: WINDOW_WIDTH + "px"
+                        , height: WINDOW_HEIGHT + "px"
+                        , position: "absolute"
+                        , top: _topAndLeft.top + "px"
+                        , left: _topAndLeft.left + "px"
+                        , background: "white"
+                    });
+
+                    if (_templateName) {
+                        $.ajax({
+                            url: _templateName
+                            , success:function(d) {
+                                var template = $(d);
+
+                                for (var k in _data) {
+                                    var content = _data[k];
+                                    var attr = {
+                                        content: content
+                                        , name: "wk-" + k
+                                    };
+                                    if (typeof(content) === "object") {
+                                        content = JSON.stringify(_data[k]);
+                                        attr.content = content;
+                                        attr.isJson = true;
+                                    }
+                                    var metaTitle = $("<meta />").attr(attr);
+                                    $(template).append(metaTitle);
+                                }
+
+                                $(_windowContent).find(".wk-window-wrapper").html(template);
+
+                            }
+                        })
+                    }
+                });
+            }
+        }
+
+        $(_mask).on("click", function(e) {
+            _windowObject.dismiss();
+        });
+
+        $(_btnClose).on("click", function(e) {
+            _windowObject.dismiss();
+        })
+
+        $(window).resize(function(e) {
+            _windowObject.update();
+        });
+
+        return _windowObject;
+
+    }
+
+    /*
+     * 将标签包装成footer样式
+     */
     $.fn.footer = function(items) {
         var _ul = $('<ul />');
         if (items && items.length) {
@@ -48,6 +301,13 @@
         $(this).append(_ul);
     }
 
+    /*
+     * 将标签包装成导航栏
+     * param items      按钮项集合   必须
+     * param current    高亮的位置   可选
+     * param callback   事件回调    可选
+     *
+     */
     $.fn.navigationbar = function() {
         var args = arguments;
         var _items = null;
@@ -92,21 +352,64 @@
                     , "href" : href
                 }).text(_items[i].title);
 
-                $(_li).on("click", function(e) {
-                    var _this = this;
-                    $(".wk-navitem").each(function(i, item) {
-                        if (_this === item) {
-                            if (!$(item).hasClass("current")) {
-                                $(item).addClass("current");
-                            }
-                            if (_callback) {
-                                _callback(i, item);
-                            }
-                        } else if ($(item).hasClass("current")) {
-                            $(item).removeClass("current");
+                if (_items[i].subitems && _items[i].subitems.length) {
+                    var _subul = $('<ul />').addClass("wk-navbar-subitems");
+                    $(_subul).css({
+                        "position": "absolute"
+                        , "top": "8px"
+                        , "left": _items[i].width + "px"
+                        , "display": "none"});
+
+                    var _subitems = _items[i].subitems;
+                    var _subLength = _subitems.length;
+
+                    for (var j = 0; j < _subLength; j++) {
+                        var _subli = $('<li />');
+                        var _suba = $('<a />');
+                        var _subhref = _subitems[j].href;
+                        if (_subhref.lastIndexOf(".") < 0) {
+                            _subhref += "." + Weikan.config.defpostfix
                         }
-                    });
-                    e.preventDefault();
+                        $(_suba).text(_subitems[j].title).attr({"href": _subhref});
+
+                        $(_subli).on("mouseenter mouseleave", function(e) {
+                            var _eventType = e.type;
+                            if (_eventType === "mouseenter") {
+                                $(this).addClass("current");
+                            } else if (_eventType === "mouseleave") {
+                                $(this).removeClass("current");
+                            }
+                        });
+
+                        $(_subli).append(_suba);
+                        $(_subul).append(_subli);
+                    }
+
+                    $(_li).append(_subul);
+                }
+
+                $(_li).on("mouseenter mouseleave", function(e) {
+                    var _eventType = e.type;
+                    if (_eventType === "mouseenter") {
+                        if (!$(this).hasClass("current")) {
+                            $(this).addClass("current");
+                            var _subitems = $(this).find(".wk-navbar-subitems");
+                            $(_subitems).css({
+                                "position": "absolute"
+                                , "top": "8px"
+                                , "left": this.width + "px"
+                                , "display": "block"});
+
+                        }
+                    } else if (_eventType === "mouseleave") {
+                        $(this).removeClass("current");
+                        var _subitems = $(this).find(".wk-navbar-subitems");
+                        $(_subitems).css({
+                            "position": "absolute"
+                            , "top": "8px"
+                            , "left": this.width + "px"
+                            , "display": "none"});
+                    }
                 });
 
                 $(_li).append(_a);
@@ -116,6 +419,90 @@
         $(this).append(_ul);
 
     }
+
+    /*
+     * 将标签包装成标题栏样式
+     */
+    $.fn.titlebar = function() {
+        var LEFT_WIDTH = 18;
+        var RIGHT_WIDTH = 15;
+
+        var _title;
+        if (arguments && arguments.length && typeof(arguments[0]) === "string") {
+            _title = arguments[0];
+        }
+
+        var _self = $(this);
+        var _render = $(_self).hasClass("wk-titlebar");
+
+        if (!_render) {
+            var _self = $(_self).addClass("wk-titlebar");
+            if (!_title) {
+                if ($(_self).attr("title")) {
+                    _title = $(_self).attr("title");
+                }
+            }
+            var _attrWidth = $(_self).attr("wk-width");
+            var _width;
+            if (_attrWidth) {
+                if (_attrWidth === "match_parent") {
+                    _width = $(_self).width();
+                } else {
+                    var w = parseInt(_attrWidth);
+                    if (!isNaN(w) && w > 0) {
+                        _width = w;
+                    }
+                }
+            }
+
+            var _mw = _width - LEFT_WIDTH - RIGHT_WIDTH;
+
+            var _left = $('<div />').addClass("wk-titlebar-left");
+            var _middle = $('<div />').addClass("wk-titlebar-middle");
+            var _right = $('<div />').addClass("wk-titlebar-right");
+            var _text = $('<span />');
+            $(_text).text(_title);
+            $(_middle).append(_text);
+            if (_mw > 0) {
+                $(_middle).width(_mw);
+            }
+            $(_self).append(_left).append(_middle).append(_right).append($('<div />').attr("class", "wk-clear"));
+        } else {
+            var _middle = $(".wk-titlebar-middle");
+            var _attrWidth = $(_self).attr("wk-width");
+            var _width;
+            if (_attrWidth) {
+                if (_attrWidth === "match_parent") {
+                    _width = $(_self).width();
+                } else {
+                    var w = parseInt(_attrWidth);
+                    if (!isNaN(w) && w > 0) {
+                        _width = w;
+                    }
+                }
+            }
+            $(_middle).width(_width - LEFT_WIDTH - RIGHT_WIDTH);
+        }
+
+        return {
+            title : function() {
+                if (arguments && arguments.length && typeof(arguments[0]) === "string") {
+                    $(_self).find(".wk-titlebar-middle span").text(arguments[0]);
+                } else {
+                    return $(_self).find(".wk-titlebar-middle span").text()
+                }
+            },
+            width : function() {
+                if (arguments && arguments.length && arguments[0]) {
+                    $(_self).find(".wk-titlebar-middle").width(arguments[0] - LEFT_WIDTH - RIGHT_WIDTH);
+                } else {
+                    return $(_self).find(".wk-titlebar-middle").width()
+                }
+            }
+        };
+    }
+
+
 })(jQuery);
 
 Weikan = function() {
@@ -125,6 +512,31 @@ Weikan = function() {
     }
 }
 
+/**
+ * 默认配置项
+ * @type {
+ *      {
+ *          title: string,          网站标题
+ *          height: string,         页面高度
+ *          root: string,           默认的根路径
+ *          defpostfix: string,     默认的后缀
+ *          body: {
+ *              minHeight: number,  内容区域的最小高度
+ *              minWidth: number    内容区域的最小宽度
+ *          },
+ *          navbar: {
+ *              weight: number,     导航栏占页面的比例
+ *              minWidth: number,   导航栏的最小宽度
+ *              items: Array        导航栏
+ *          },
+ *          footerbar: {
+ *              height: number,     footer的高度
+ *              items: Array        footer链接项
+ *          },
+ *          organization: string    单位名称
+ *      }
+ * }
+ */
 Weikan.config = {
     title : "威侃"
     , height : "match-parent"
@@ -138,10 +550,45 @@ Weikan.config = {
         weight : 0.3
         , minWidth: 300
         , items:[
-            {title: "首页", href: "index", width: 54}
-            , {title: "防水雾气产品", href: "#", width: 108}
-            , {title: "电子制造", href: "#", width: 88}
-            , {title: "MRO", href: "#", width: 60}
+            {
+                title: "首页"
+                , href: "index"
+                , width: 54
+            }
+            , {
+                title: "防水雾气产品"
+                , href: "index"
+                , width: 108
+
+            }
+            , {
+                title: "电子制造"
+                , href: "index"
+                , width: 88
+                , subitems: [
+                    {title:"高品质标签", href: "#"}
+                    , {title:"丝网印刷标签", href: "#"}
+                    , {title:"精密膜切加工", href: "#"}
+                    , {title:"打印系统及软件", href: "#"}
+                    , {title:"包装设计", href: "#"}
+                    , {title:"VMI包装解决方案", href: "#"}
+                    , {title:"包装产品", href: "#"}
+                    , {title:"内包装辅料", href: "#"}
+                    , {title:"包装附件", href: "#"}
+                ]
+            }
+            , {
+                title: "MRO"
+                , href: "index"
+                , width: 60
+                , subitems: [
+                    {title:"GT 1000", href: "#"}
+                    , {title:"GT 2000", href: "#"}
+                    , {title:"GT 2010", href: "#"}
+                    , {title:"XT2000", href: "#"}
+                    , {title:"DT4200", href: "#"}
+                ]
+            }
         ]
     }
     , footerbar : {
@@ -160,6 +607,10 @@ Weikan.config = {
 
 };
 
+/**
+ * 加载CSS样式
+ * @returns {Weikan}
+ */
 Weikan.prototype.css = function() {
     var args = arguments;
     if (args && args.length) {
@@ -181,6 +632,10 @@ Weikan.prototype.css = function() {
     return this;
 }
 
+/**
+ * 加载JS
+ * @returns {Weikan}
+ */
 Weikan.prototype.js = function() {
     var args = arguments;
     if (args && args.length) {
@@ -284,6 +739,7 @@ Weikan.prototype.run = function() {
     }
 
     var _navItemCallback = function(i, item) {
+        window.location.href = item.navitem.href + "." + Weikan.config.defpostfix;
     }
     if (_currentIndex >= 0) {
         $(_navbarItems).navigationbar(Weikan.config.navbar.items, _navItemCallback);
@@ -300,8 +756,20 @@ Weikan.prototype.run = function() {
 
     $(_footerItems).footer(Weikan.config.footerbar.items);
 
+    $("div[wk-widget='titlebar']").each(function(i, item) {
+        $(item).titlebar();
+    });
+
+    $("div[wk-widget='window']").click(function(e) {
+
+    });
+
     $(window).resize(function(e) {
         initRects();
+
+        $("div[wk-widget='titlebar']").each(function(i, item) {
+            $(item).titlebar();
+        });
     });
 
 }

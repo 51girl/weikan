@@ -46,6 +46,9 @@ a:hover, a:active {
     height: 28px;
     background: #3c3c3c;
     margin-bottom: 1px;
+    position: relative;
+    top: 0px;
+    left: 0px;
 }
 
 #wk-navbar-items li a {
@@ -54,6 +57,9 @@ a:hover, a:active {
     display: block;
     padding-top: 7px;
     height: 21px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
 }
 
 #wk-navbar-items li.current {
@@ -64,6 +70,28 @@ a:hover, a:active {
 #wk-navbar-items li.current a {
     padding-top: 12px;
     height: 26px;
+}
+
+#wk-navbar-items li .wk-navbar-subitems {
+    list-style: none;
+    width: 130px;
+}
+
+#wk-navbar-items li .wk-navbar-subitems li {
+    height: 28px;
+    background: transparent;
+}
+
+#wk-navbar-items li .wk-navbar-subitems li.current a {
+    color: #0095d7;
+}
+
+#wk-navbar-items li .wk-navbar-subitems li a {
+    color: black;
+    font-size: 1.2em;
+    padding-top: 8px;
+    padding-left: 20px;
+    height: 20px;
 }
 
 #wk-body {
@@ -97,4 +125,46 @@ a:hover, a:active {
     float: right;
     margin-top: 8px;
     margin-right: 20px;
+}
+
+.wk-titlebar {
+    height: 42px;
+}
+
+.wk-titlebar-middle {
+    height: 34px;
+    background: url("../drawables/wk_titlebar_bg.png") repeat-x;
+    float: left;
+    padding-top: 8px;
+}
+
+.wk-titlebar-middle span {
+    margin-left: 10px;
+    font-size: 2em;
+}
+
+.wk-titlebar-left {
+    background: url("../drawables/wk_titlebar_bg_left.png") no-repeat;
+    width: 18px;
+    height: 42px;
+    float: left;
+}
+
+.wk-titlebar-right {
+    background: url("../drawables/wk_titlebar_bg_right.png") no-repeat;
+    width: 15px;
+    height: 42px;
+    float: right;
+}
+
+.wk-window-placeholder {
+    width: 0px;
+    height: 0px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
+.wk-window-mask {
+    background: url("../drawables/wk_window_mask.png") repeat;
 }
