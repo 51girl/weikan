@@ -168,3 +168,7 @@ a:hover, a:active {
 .wk-window-mask {
     background: url("../drawables/wk_window_mask.png") repeat;
 }
+
+.wk-item-title {
+    background: url("../drawables/wk_title_bg.png") repeat;
+}

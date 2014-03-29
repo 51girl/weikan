@@ -82,8 +82,8 @@
             var _cy = size.height / 2;
 
             return {
-                x:_cx
-                , y:_cy
+                x   :_cx
+                , y :_cy
             };
         };
 
@@ -98,8 +98,8 @@
             }
 
             return {
-                top : _top
-                , left: _left
+                top     : _top
+                , left  : _left
             };
         };
 
@@ -110,41 +110,41 @@
         var _window = $('<div />').addClass("wk-window");
         $(_window).css({
             width: WINDOW_WIDTH + "px"
-            , height: WINDOW_HEIGHT + "px"
-            , position: "absolute"
-            , top: _wh + "px"
-            , left: _topAndLeft.left + "px"
+            , height    : WINDOW_HEIGHT + "px"
+            , position  : "absolute"
+            , top       : _wh + "px"
+            , left      : _topAndLeft.left + "px"
             , background: "white"
-            , display: "none"
+            , display   : "none"
         });
 
         var _windowContent = $('<div />').addClass("wk-window-content");
         $(_windowContent).css({
-            width: WINDOW_WIDTH + "px"
-            , height: WINDOW_HEIGHT + "px"
-            , position: "relative"
-            , top: "0px"
-            , left: "0px"
+            width       : WINDOW_WIDTH + "px"
+            , height    : WINDOW_HEIGHT + "px"
+            , position  : "relative"
+            , top       : "0px"
+            , left      : "0px"
         });
 
         var _btnClose = $('<img />')
             .attr({
                 src: "./res/drawables/wk_window_btn_close.jpg"});
         $(_btnClose).css({
-            width : "48px"
-            , height : "48px"
-            , position: "absolute"
-            , top: "10px"
-            , left: (WINDOW_WIDTH - 2) + "px"
+            width       : "48px"
+            , height    : "48px"
+            , position  : "absolute"
+            , top       : "10px"
+            , left      : (WINDOW_WIDTH - 2) + "px"
         });
 
         var _wrapper = $('<div />').addClass("wk-window-wrapper");
         $(_wrapper).css({
-            width: WINDOW_WIDTH + "px"
-            , height: WINDOW_HEIGHT + "px"
-            , position: "absolute"
-            , top: "0px"
-            , left: "0px"
+            width       : WINDOW_WIDTH + "px"
+            , height    : WINDOW_HEIGHT + "px"
+            , position  : "absolute"
+            , top       : "0px"
+            , left      : "0px"
         });
 
         $(_window).append(_windowContent);
@@ -153,12 +153,12 @@
 
         var _mask = $('<div />').addClass("wk-window-mask");
         $(_mask).css({
-            width: _ww + "px"
-            , height: _wh + "px"
-            , position: "absolute"
-            , top: "0px"
-            , left: "0px"
-            , display: "none"
+            width       : _ww + "px"
+            , height    : _wh + "px"
+            , position  : "absolute"
+            , top       : "0px"
+            , left      : "0px"
+            , display   : "none"
         });
         $(_placeholder).append(_mask);
         $(_placeholder).append(_window);
@@ -177,20 +177,20 @@
                 var _newTopAndLeft = getTopAndLeft(_newCenterPointer);
 
                 $(_placeholder).find(".wk-window").css({
-                    width: WINDOW_WIDTH + "px"
-                    , height: WINDOW_HEIGHT + "px"
-                    , position: "absolute"
-                    , top: _newTopAndLeft.top + "px"
-                    , left: _newTopAndLeft.left + "px"
+                    width       : WINDOW_WIDTH + "px"
+                    , height    : WINDOW_HEIGHT + "px"
+                    , position  : "absolute"
+                    , top       : _newTopAndLeft.top + "px"
+                    , left      : _newTopAndLeft.left + "px"
                     , background: "white"
                 });
 
                 $(_placeholder).find(".wk-window-mask").css({
-                    width: _newWw + "px"
-                    , height: _newWh + "px"
-                    , position: "absolute"
-                    , top: "0px"
-                    , left: "0px"
+                    width       : _newWw + "px"
+                    , height    : _newWh + "px"
+                    , position  : "absolute"
+                    , top       : "0px"
+                    , left      : "0px"
                 });
             }
 
@@ -226,11 +226,11 @@
                     , top: _topAndLeft.top + "px"
                 }, 500, function() {
                     $(_window).css({
-                        width: WINDOW_WIDTH + "px"
-                        , height: WINDOW_HEIGHT + "px"
-                        , position: "absolute"
-                        , top: _topAndLeft.top + "px"
-                        , left: _topAndLeft.left + "px"
+                        width       : WINDOW_WIDTH + "px"
+                        , height    : WINDOW_HEIGHT + "px"
+                        , position  : "absolute"
+                        , top       : _topAndLeft.top + "px"
+                        , left      : _topAndLeft.left + "px"
                         , background: "white"
                     });
 
@@ -294,8 +294,8 @@
                     href += "." + Weikan.config.defpostfix;
                 }
                 var _a = $('<a />').attr({
-                    "target" : "_self"
-                    , "href" : href
+                    target  : "_self"
+                    , href  : href
                 }).text(items[i].title);
 
                 $(_li).append(_a);
@@ -359,10 +359,10 @@
                 if (_items[i].subitems && _items[i].subitems.length) {
                     var _subul = $('<ul />').addClass("wk-navbar-subitems");
                     $(_subul).css({
-                        "position": "absolute"
-                        , "top": "8px"
-                        , "left": _items[i].width + "px"
-                        , "display": "none"});
+                        "position"  : "absolute"
+                        , "top"     : "8px"
+                        , "left"    : _items[i].width + "px"
+                        , "display" : "none"});
 
                     var _subitems = _items[i].subitems;
                     var _subLength = _subitems.length;
@@ -399,20 +399,20 @@
                             $(this).addClass("current");
                             var _subitems = $(this).find(".wk-navbar-subitems");
                             $(_subitems).css({
-                                "position": "absolute"
-                                , "top": "8px"
-                                , "left": this.width + "px"
-                                , "display": "block"});
+                                "position"  : "absolute"
+                                , "top"     : "8px"
+                                , "left"    : this.width + "px"
+                                , "display" : "block"});
 
                         }
                     } else if (_eventType === "mouseleave") {
                         $(this).removeClass("current");
                         var _subitems = $(this).find(".wk-navbar-subitems");
                         $(_subitems).css({
-                            "position": "absolute"
-                            , "top": "8px"
-                            , "left": this.width + "px"
-                            , "display": "none"});
+                            "position"  : "absolute"
+                            , "top"     : "8px"
+                            , "left"    : this.width + "px"
+                            , "display" : "none"});
                     }
                 });
 
@@ -504,6 +504,317 @@
                 }
             }
         };
+    }
+    
+    $.fn.coverflow = function() {
+    
+    	var _args = arguments;
+    	if (!_args || !_args.length) {
+	    	return;
+    	}
+    	
+    	var _items;
+    	if (_args.length > 0 && $.isArray(_args[0])) {
+	    	_items = _args[0];
+    	}
+    	
+    	var _showCount = 3
+    	
+    	if (_items) {
+	    	if (_args.length > 1 && (typeof(_args[1]) === "number")) {
+		    	_showCount = _args[1];
+	    	}
+    	}
+    	
+    	if (!_items.length || _showCount <= 0) {
+	    	return;
+    	}
+    	    
+		var _self = this;
+		var _width = $(_self).width();
+		var _height = $(_self).height();
+    	
+	    var _window = $("<div />")
+            .css({
+                width       : _width + "px"
+                , height    : _height + "px"
+                , position  : "relative"
+                , top       : "0px"
+                , left      : "0px"
+                , overflow  : "hidden"
+            });
+	    
+	    $(_self).append(_window);
+
+        var COVER_MARGIN = 30;
+        var _count = _items.length;
+	    var _itemWidth = parseInt(_width / _count);
+	    var _itemHeight = _height;
+
+        var createCoverWithItem = function(item, size, position) {
+
+            var ICON_NAME = [
+                "wk_item_title_icon_red.png"
+                , "wk_item_title_icon_green.png"
+                , "wk_item_title_icon_blue.png"
+            ];
+
+            var SHADOW_WIDTH = 278;
+            var SHADOW_HEIGHT = 27;
+            var SHADOW_MARGIN_TOP = 15;
+
+            var COVER_PADDING = 5;
+
+            var _s = size;
+
+            var _coverHeight = _s.height - SHADOW_MARGIN_TOP - SHADOW_HEIGHT - COVER_PADDING * 2;
+            var _coverWidth = _s.width - (COVER_MARGIN + COVER_PADDING) * 2;
+
+            var _coverItem = $("<div />")
+                .addClass("wk-cover-item")
+                .css({
+                    width       : _s.width + "px"
+                    , height    : _s.height + "px"
+                    , position  : "absolute"
+                    , top       : "0px"
+                    , left      : ((_s.width + COVER_MARGIN) * i + COVER_MARGIN) + "px"
+                });
+
+            var _cover = $("<div />")
+                .css({
+                    height                  : _coverHeight + "px"
+                    , width                 : _coverWidth + "px"
+                    , padding               : "5px"
+                    , mozBorderRadius       : "5px"
+                    , webkitBorderRadius    : "5px"
+                    , borderRadius          : "5px"
+                    , background            : "#e3e4e6"
+                });
+
+            var _coverBody = $("<div />")
+                .css({
+                    height                  : _coverHeight + "px"
+                    , width                 : _coverWidth + "px"
+                    , position              : "relative"
+                    , top                   : "0px"
+                    , left                  : "0px"
+                });
+
+            var _coverImage = $("<img />")
+                .attr({
+                    src     : "./data/" + item.coverImage
+                    , width : _coverWidth + "px"
+                    , height: _coverHeight
+                }).css({
+                    position: "absolute"
+                    , top   : "0px"
+                    , left  : "0px"
+                    , mozBorderRadius       : "3px"
+                    , webkitBorderRadius    : "3px"
+                    , borderRadius          : "3px"
+                });
+
+            var TITLE_HEIGHT = 34;
+
+            var _coverTitle = $("<div />")
+                .addClass("wk-item-title")
+                .css({
+                    width       : _coverWidth + "px"
+                    , height    : TITLE_HEIGHT + "px"
+                    , position  : "absolute"
+                    , top       : (_coverHeight - TITLE_HEIGHT) + "px"
+                    , left      : "0px"
+                    , mozBorderRadiusBottomleft     : "3px"
+                    , mozBorderRadiusBottomright    : "3px"
+                    , webkitBorderBottomLeftRadius  : "3px"
+                    , webkitBorderBottomRightRadius : "3px"
+                    , borderBottomLeftRadius        : "3px"
+                    , borderBottomRightRadius       : "3px"
+                });
+
+            var _coverTitleIcon = $("<img />")
+                .attr({
+                    src     : "./res/drawables/" + ICON_NAME[position % 3]
+                    , width : "3px"
+                    , height: "17px"
+                }).css({
+                    float       : "left"
+                    , marginLeft: "20px"
+                    , marginTop : "8px"
+
+                });
+
+            var _coverTitleText = $("<h1 />")
+                .css({
+                    float       : "left"
+                    , marginTop : "4px"
+                    , marginLeft: "10px"
+                    , fontSize  : "2.2em"
+                    , color     : "white"
+                })
+                .text(item.title);
+
+            var _shadow = $("<img />").attr({
+                src     : "./res/drawables/wk_cover_shadow.png"
+                , width : SHADOW_WIDTH + "px"
+                , height: SHADOW_HEIGHT + "px"
+            }).css({
+                marginTop : SHADOW_MARGIN_TOP + "px"
+            });
+
+            $(_coverTitle).append(_coverTitleIcon);
+            $(_coverTitle).append(_coverTitleText);
+            $(_coverTitle).append($('<div />').attr("class", "wk-clear"));
+            $(_coverBody).append(_coverImage);
+            $(_coverBody).append(_coverTitle);
+            $(_cover).append(_coverBody);
+            $(_coverItem).append(_cover);
+            $(_coverItem).append(_shadow);
+
+            return _coverItem;
+        }
+
+        var _itemSize = {
+            width   : _itemWidth
+            , height: _itemHeight
+        };
+
+        var _currentItem = 0;
+	    for (var i = 0; i < _count; i++) {
+		    var _coverItem = createCoverWithItem(_items[i], _itemSize, i);
+            if (i < _showCount) {
+                $(_window).append(_coverItem);
+                continue;
+            }
+
+            break;
+	    }
+
+        var _coverFlowObject = {
+
+            update : function() {
+
+            }
+
+            , prev : function() {
+                _currentItem--;
+                if (_currentItem < 0) {
+                    _currentItem = _count - 1;
+                }
+                var _prevPos = _currentItem;
+                var _prevCoverItem = createCoverWithItem(_items[_prevPos], _itemSize, _prevPos);
+                $(_prevCoverItem).css({
+                    width       : _itemSize.width + "px"
+                    , height    : _itemSize.height + "px"
+                    , position  : "absolute"
+                    , top       : "0px"
+                    , left      : COVER_MARGIN + "px"
+                    , display   : "none"
+                });
+                $(_window).prepend(_prevCoverItem);
+
+                $(_prevCoverItem).animate({
+                    opacity : "show"
+                }, 500, function() {
+                    $(_prevCoverItem).css({
+                        width       : _itemSize.width + "px"
+                        , height    : _itemSize.height + "px"
+                        , position  : "absolute"
+                        , top       : "0px"
+                        , left      : COVER_MARGIN + "px"
+                    });
+                });
+
+                $(_window).children().each(function(i, item) {
+                    if (i > 0) {
+                        var newLeft = (_itemSize.width + COVER_MARGIN) * i + COVER_MARGIN;
+                        var prop = {
+                            left : newLeft + "px"
+                        };
+                        if (i === _showCount) {
+                            prop.opacity = "hide";
+                        }
+                        $(item).animate(prop, 500, function() {
+                            if (i < _showCount) {
+                                $(item).css({
+                                    width       : _itemSize.width + "px"
+                                    , height    : _itemSize.height + "px"
+                                    , position  : "absolute"
+                                    , top       : "0px"
+                                    , left      : newLeft + "px"
+                                });
+                            } else {
+                                $(item).remove();
+                            }
+                        })
+                    }
+                });
+
+            }
+
+            , next : function() {
+                _currentItem++;
+                if (_currentItem >= _count) {
+                    _currentItem = 0;
+                }
+                var _nextPos = (_currentItem + 2) % _showCount;
+                var _nextCoverItem = createCoverWithItem(_items[_nextPos], _itemSize, _nextPos);
+                $(_nextCoverItem).css({
+                    width       : _itemSize.width + "px"
+                    , height    : _itemSize.height + "px"
+                    , position  : "absolute"
+                    , top       : "0px"
+                    , left      : ((_itemSize.width + COVER_MARGIN) * (_showCount - 1) + COVER_MARGIN) + "px"
+                    , display   : "none"
+                });
+
+                $(_window).append(_nextCoverItem);
+
+                $(_nextCoverItem).animate({
+                    opacity : "show"
+                }, 500, function() {
+                    $(_nextCoverItem).css({
+                        width       : _itemSize.width + "px"
+                        , height    : _itemSize.height + "px"
+                        , position  : "absolute"
+                        , top       : "0px"
+                        , left      : ((_itemSize.width + COVER_MARGIN) * (_showCount - 1) + COVER_MARGIN) + "px"
+                    });
+                });
+
+                $(_window).children().each(function(i, item) {
+                    if (i < _showCount) {
+                        var newLeft = (_itemSize.width + COVER_MARGIN) * (i - 1) + COVER_MARGIN;
+                        var prop = {
+                            left : newLeft + "px"
+                        };
+                        if (i === 0) {
+                            prop.opacity = "hide";
+                        }
+                        $(item).animate(prop, 500, function() {
+                            if (i > 0) {
+                                $(item).css({
+                                    width       : _itemSize.width + "px"
+                                    , height    : _itemSize.height + "px"
+                                    , position  : "absolute"
+                                    , top       : "0px"
+                                    , left      : newLeft + "px"
+                                });
+                            } else {
+                                $(item).remove();
+                            }
+                        })
+                    }
+                });
+            }
+
+            , current : function(c) {
+                _currentItem = c;
+            }
+
+        }
+
+        return _coverFlowObject;
     }
 
 
