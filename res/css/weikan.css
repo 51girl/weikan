@@ -7,7 +7,12 @@ body, div, p, a, li, ol, ul, h1, h2, h3, h4, h5, h6, span {
     padding: 0px;
 }
 
+img {
+    border: none;
+}
+
 body {
+    background: #d7d8da;
 }
 
 a {
@@ -31,11 +36,15 @@ a:hover, a:active {
 #wk-main {
 }
 
+#wk-header {
+}
+
 #wk-navbar {
     float: left;
 }
 
 #wk-navbar-items {
+    margin-top: 128px;
 }
 
 #wk-navbar-items ul {
@@ -96,12 +105,11 @@ a:hover, a:active {
 
 #wk-body {
     float: right;
+    padding-right: 50px;
 }
 
 #wk-footer {
     background: #8bc964;
-    width: 100%;
-    height: 27px;
     font-size: 1.2em;
 }
 

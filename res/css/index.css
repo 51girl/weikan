@@ -1,0 +1,21 @@
+#wk-body {
+    width: 1060px;
+}
+
+#produce-vista {
+    height: 388px;
+    float: left;
+    margin-top: 60px;
+}
+
+.controller-button {
+    margin-top: 172px;
+}
+
+#prev-button {
+    float: right;
+}
+
+#next-button {
+    float: left;
+}

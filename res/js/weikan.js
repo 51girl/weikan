@@ -37,11 +37,7 @@
 
         return res;
     }
-    
-    /**
-     * 从制定name的meta中获取值
-     * 一般用在详情弹窗中，用于接收从其他页面传递过来的值
-     */
+
     $.getMetaValueForName = function(name) {
         var meta = $("meta[name='wk-"+name+"']");
         var content = $(meta).attr("content");
@@ -505,327 +501,76 @@
             }
         };
     }
-    
-    $.fn.coverflow = function() {
-    
-    	var _args = arguments;
-    	if (!_args || !_args.length) {
-	    	return;
-    	}
-    	
-    	var _items;
-    	if (_args.length > 0 && $.isArray(_args[0])) {
-	    	_items = _args[0];
-    	}
-    	
-    	var _showCount = 3
-    	
-    	if (_items) {
-	    	if (_args.length > 1 && (typeof(_args[1]) === "number")) {
-		    	_showCount = _args[1];
-	    	}
-    	}
-    	
-    	if (!_items.length || _showCount <= 0) {
-	    	return;
-    	}
-    	    
-		var _self = this;
-		var _width = $(_self).width();
-		var _height = $(_self).height();
-    	
-	    var _window = $("<div />")
-            .css({
-                width       : _width + "px"
-                , height    : _height + "px"
-                , position  : "relative"
-                , top       : "0px"
-                , left      : "0px"
-                , overflow  : "hidden"
-            });
-	    
-	    $(_self).append(_window);
 
-        var COVER_MARGIN = 30;
-        var _count = _items.length;
-	    var _itemWidth = parseInt(_width / _count);
-	    var _itemHeight = _height;
-
-        var createCoverWithItem = function(item, size, position) {
-
-            var ICON_NAME = [
-                "wk_item_title_icon_red.png"
-                , "wk_item_title_icon_green.png"
-                , "wk_item_title_icon_blue.png"
-            ];
-
-            var SHADOW_WIDTH = 278;
-            var SHADOW_HEIGHT = 27;
-            var SHADOW_MARGIN_TOP = 15;
-
-            var COVER_PADDING = 5;
-
-            var _s = size;
-
-            var _coverHeight = _s.height - SHADOW_MARGIN_TOP - SHADOW_HEIGHT - COVER_PADDING * 2;
-            var _coverWidth = _s.width - (COVER_MARGIN + COVER_PADDING) * 2;
-
-            var _coverItem = $("<div />")
-                .addClass("wk-cover-item")
-                .css({
-                    width       : _s.width + "px"
-                    , height    : _s.height + "px"
-                    , position  : "absolute"
-                    , top       : "0px"
-                    , left      : ((_s.width + COVER_MARGIN) * i + COVER_MARGIN) + "px"
-                });
-
-            var _cover = $("<div />")
-                .css({
-                    height                  : _coverHeight + "px"
-                    , width                 : _coverWidth + "px"
-                    , padding               : "5px"
-                    , mozBorderRadius       : "5px"
-                    , webkitBorderRadius    : "5px"
-                    , borderRadius          : "5px"
-                    , background            : "#e3e4e6"
-                });
-
-            var _coverBody = $("<div />")
-                .css({
-                    height                  : _coverHeight + "px"
-                    , width                 : _coverWidth + "px"
-                    , position              : "relative"
-                    , top                   : "0px"
-                    , left                  : "0px"
-                });
-
-            var _coverImage = $("<img />")
-                .attr({
-                    src     : "./data/" + item.coverImage
-                    , width : _coverWidth + "px"
-                    , height: _coverHeight
-                }).css({
-                    position: "absolute"
-                    , top   : "0px"
-                    , left  : "0px"
-                    , mozBorderRadius       : "3px"
-                    , webkitBorderRadius    : "3px"
-                    , borderRadius          : "3px"
-                });
-
-            var TITLE_HEIGHT = 34;
-
-            var _coverTitle = $("<div />")
-                .addClass("wk-item-title")
-                .css({
-                    width       : _coverWidth + "px"
-                    , height    : TITLE_HEIGHT + "px"
-                    , position  : "absolute"
-                    , top       : (_coverHeight - TITLE_HEIGHT) + "px"
-                    , left      : "0px"
-                    , mozBorderRadiusBottomleft     : "3px"
-                    , mozBorderRadiusBottomright    : "3px"
-                    , webkitBorderBottomLeftRadius  : "3px"
-                    , webkitBorderBottomRightRadius : "3px"
-                    , borderBottomLeftRadius        : "3px"
-                    , borderBottomRightRadius       : "3px"
-                });
-
-            var _coverTitleIcon = $("<img />")
-                .attr({
-                    src     : "./res/drawables/" + ICON_NAME[position % 3]
-                    , width : "3px"
-                    , height: "17px"
-                }).css({
-                    float       : "left"
-                    , marginLeft: "20px"
-                    , marginTop : "8px"
-
-                });
-
-            var _coverTitleText = $("<h1 />")
-                .css({
-                    float       : "left"
-                    , marginTop : "4px"
-                    , marginLeft: "10px"
-                    , fontSize  : "2.2em"
-                    , color     : "white"
-                })
-                .text(item.title);
-
-            var _shadow = $("<img />").attr({
-                src     : "./res/drawables/wk_cover_shadow.png"
-                , width : SHADOW_WIDTH + "px"
-                , height: SHADOW_HEIGHT + "px"
-            }).css({
-                marginTop : SHADOW_MARGIN_TOP + "px"
-            });
-
-            $(_coverTitle).append(_coverTitleIcon);
-            $(_coverTitle).append(_coverTitleText);
-            $(_coverTitle).append($('<div />').attr("class", "wk-clear"));
-            $(_coverBody).append(_coverImage);
-            $(_coverBody).append(_coverTitle);
-            $(_cover).append(_coverBody);
-            $(_coverItem).append(_cover);
-            $(_coverItem).append(_shadow);
-
-            return _coverItem;
-        }
-
-        var _itemSize = {
-            width   : _itemWidth
-            , height: _itemHeight
+    $.fn.searchbar = function() {
+        var _self = this;
+        var BUTTON_SIZE = {
+            width   : 21
+            , height: 21
         };
+        var INPUT_SIZE = {
+            width   : 172
+            , height: 21
+        };
+        var _callback;
 
-        var _currentItem = 0;
-	    for (var i = 0; i < _count; i++) {
-		    var _coverItem = createCoverWithItem(_items[i], _itemSize, i);
-            if (i < _showCount) {
-                $(_window).append(_coverItem);
-                continue;
-            }
-
-            break;
-	    }
-
-        var _coverFlowObject = {
-
-            update : function() {
-
-            }
-
-            , prev : function() {
-                _currentItem--;
-                if (_currentItem < 0) {
-                    _currentItem = _count - 1;
-                }
-                var _prevPos = _currentItem;
-                var _prevCoverItem = createCoverWithItem(_items[_prevPos], _itemSize, _prevPos);
-                $(_prevCoverItem).css({
-                    width       : _itemSize.width + "px"
-                    , height    : _itemSize.height + "px"
-                    , position  : "absolute"
-                    , top       : "0px"
-                    , left      : COVER_MARGIN + "px"
-                    , display   : "none"
-                });
-                $(_window).prepend(_prevCoverItem);
-
-                $(_prevCoverItem).animate({
-                    opacity : "show"
-                }, 500, function() {
-                    $(_prevCoverItem).css({
-                        width       : _itemSize.width + "px"
-                        , height    : _itemSize.height + "px"
-                        , position  : "absolute"
-                        , top       : "0px"
-                        , left      : COVER_MARGIN + "px"
-                    });
-                });
-
-                $(_window).children().each(function(i, item) {
-                    if (i > 0) {
-                        var newLeft = (_itemSize.width + COVER_MARGIN) * i + COVER_MARGIN;
-                        var prop = {
-                            left : newLeft + "px"
-                        };
-                        if (i === _showCount) {
-                            prop.opacity = "hide";
-                        }
-                        $(item).animate(prop, 500, function() {
-                            if (i < _showCount) {
-                                $(item).css({
-                                    width       : _itemSize.width + "px"
-                                    , height    : _itemSize.height + "px"
-                                    , position  : "absolute"
-                                    , top       : "0px"
-                                    , left      : newLeft + "px"
-                                });
-                            } else {
-                                $(item).remove();
-                            }
-                        })
-                    }
-                });
-
-            }
-
-            , next : function() {
-                _currentItem++;
-                if (_currentItem >= _count) {
-                    _currentItem = 0;
-                }
-                var _nextPos = (_currentItem + 2) % _showCount;
-                var _nextCoverItem = createCoverWithItem(_items[_nextPos], _itemSize, _nextPos);
-                $(_nextCoverItem).css({
-                    width       : _itemSize.width + "px"
-                    , height    : _itemSize.height + "px"
-                    , position  : "absolute"
-                    , top       : "0px"
-                    , left      : ((_itemSize.width + COVER_MARGIN) * (_showCount - 1) + COVER_MARGIN) + "px"
-                    , display   : "none"
-                });
-
-                $(_window).append(_nextCoverItem);
-
-                $(_nextCoverItem).animate({
-                    opacity : "show"
-                }, 500, function() {
-                    $(_nextCoverItem).css({
-                        width       : _itemSize.width + "px"
-                        , height    : _itemSize.height + "px"
-                        , position  : "absolute"
-                        , top       : "0px"
-                        , left      : ((_itemSize.width + COVER_MARGIN) * (_showCount - 1) + COVER_MARGIN) + "px"
-                    });
-                });
-
-                $(_window).children().each(function(i, item) {
-                    if (i < _showCount) {
-                        var newLeft = (_itemSize.width + COVER_MARGIN) * (i - 1) + COVER_MARGIN;
-                        var prop = {
-                            left : newLeft + "px"
-                        };
-                        if (i === 0) {
-                            prop.opacity = "hide";
-                        }
-                        $(item).animate(prop, 500, function() {
-                            if (i > 0) {
-                                $(item).css({
-                                    width       : _itemSize.width + "px"
-                                    , height    : _itemSize.height + "px"
-                                    , position  : "absolute"
-                                    , top       : "0px"
-                                    , left      : newLeft + "px"
-                                });
-                            } else {
-                                $(item).remove();
-                            }
-                        })
-                    }
-                });
-            }
-
-            , current : function(c) {
-                _currentItem = c;
-            }
-
+        if (arguments && arguments.length && typeof(arguments[0]) === "function") {
+            _callback = arguments[0];
         }
 
-        return _coverFlowObject;
+        $(_self).width(INPUT_SIZE.width + BUTTON_SIZE.width + 2);
+
+        var _input = $("<input />")
+            .attr({
+                type : "text"
+            }).css({
+                border  : "none"
+                , float : "left"
+            }).width(INPUT_SIZE.width)
+            .height(INPUT_SIZE.height - 2);
+
+        var _button = $("<img />")
+            .attr({
+                src : "./res/drawables/wk_searchbar_btn.png"
+            }).css({
+                float   : "right"
+            }).width(BUTTON_SIZE.width)
+            .height(BUTTON_SIZE.height)
+            .addClass("wk-responer");
+
+        $(_self).append(_input).append(_button)
+            .append($("<div />").addClass("wk-clear"));
+
+        $(_button).on("click", function(e) {
+            if (_callback) {
+                _callback.apply(_self, [$(_input).val()])
+            }
+        });
+
+        $(_input).on("focus blur", function(e) {
+            if (e.type === "focus") {   //用户激活搜索栏时
+                $(_input).on("keydown", function(e) {
+                    if (e.keyCode === 13) { //回车键
+                        if (_callback) {
+                            _callback.apply(_self, [$(_input).val()])
+                        }
+                    }
+                });
+            } else if (e.type === "blur") { //搜索栏焦点消失
+                $(_input).off("keydown");
+            }
+        });
     }
 
 
 })(jQuery);
 
 Weikan = function() {
-
-    this.clearDiv = function() {
-        return $('<div />').attr("class", "wk-clear");
-    }
 }
+
+Weikan.MATCH_PARENT = -1;
+
+Weikan.WRAP_CONTENT = -2;
 
 /**
  * 默认配置项
@@ -852,14 +597,22 @@ Weikan = function() {
  *      }
  * }
  */
+
 Weikan.config = {
-    title : "威侃"
-    , height : "match-parent"
+    logo : {
+        image : "logo.png"
+        , href : "index"
+    }
+    , title : "威侃"
+    , height : Weikan.MATCH_PARENT
     , root : "."
     , defpostfix : "html"
     , body : {
-        minHeight : 600
+        minHeight : 550
         , minWidth : 900
+    }
+    , headerbar : {
+        height : 100
     }
     , navbar : {
         weight : 0.3
@@ -921,6 +674,10 @@ Weikan.config = {
     , organization : "上海威侃电子材料有限公司"
 
 };
+
+Weikan.prototype.clearDiv = function() {
+    return $('<div />').attr("class", "wk-clear");
+}
 
 /**
  * 加载CSS样式
@@ -1001,14 +758,42 @@ Weikan.prototype.run = function() {
 
     var wkMain = $("#wk-main");
     var wkBody = $(wkMain).find("#wk-body");
+    var wkHeader = $("<div />").addClass("wk-header")
+        .height(Weikan.config.headerbar.height);
+    var imgLogo = $("<img />")
+        .attr({
+            src : Weikan.config.root + "/res/drawables/" + Weikan.config.logo.image
+        }).css({
+            position: "relative"
+            , top   : "40px"
+            , left  : "40px"
+        })
+        .addClass("wk-responer");
+
+    $(imgLogo).on("click", function(e) {
+        window.location.href = Weikan.config.root + "/" + Weikan.config.logo.href + "." + Weikan.config.defpostfix
+    });
+
+    var searchbar = $("<div />")
+        .attr({"wk-widget" : "searchbar"})
+        .css({
+            float           :"right"
+            , marginTop     :"60px"
+            , marginRight   :"50px"
+        });
+
+    $(wkHeader).append(imgLogo).append(searchbar);
+    $(wkMain).prepend(wkHeader);
     var wkNavbar = $('<div />').attr({id:"wk-navbar"});
     $(wkNavbar).insertBefore(wkBody);
-    var wkFooter = $('<div />').attr({id:"wk-footer"});
+    var wkFooter = $('<div />').attr({id:"wk-footer"})
+        .height(Weikan.config.footerbar.height);
     $(wkMain).append(wkFooter);
     $(this.clearDiv()).insertAfter(wkBody);
 
     var initRects = function() {
-        var footerHeight = parseInt(Weikan.config.footerbar.height);
+        var headerHeight = Weikan.config.headerbar.height;
+        var footerHeight = Weikan.config.footerbar.height;
         var bodyConfig = Weikan.config.body;
         var navbarConfig = Weikan.config.navbar;
         var windowWidth = $(window).width();
@@ -1034,12 +819,13 @@ Weikan.prototype.run = function() {
             bodyWidth = minBodyWidth;
         }
 
-        var bodyHeight = windowHeight - footerHeight;
+        var bodyHeight = windowHeight - footerHeight - headerHeight;
         if (bodyHeight < minBodyHeight) {
             bodyHeight = minBodyHeight;
         }
         var body = $("#wk-body");
-        $(body).width(bodyWidth).height(bodyHeight);
+        var bodyPaddingTop = 0;
+        $(body).width(bodyWidth - 50).height(bodyHeight);
         var navbar = $("#wk-navbar");
         navbar.width(navbarWidth).height(bodyHeight);
         $("#wk-main").width(navbarWidth + bodyWidth);
@@ -1071,12 +857,26 @@ Weikan.prototype.run = function() {
 
     $(_footerItems).footer(Weikan.config.footerbar.items);
 
-    $("div[wk-widget='titlebar']").each(function(i, item) {
-        $(item).titlebar();
+    $("div[wk-widget='titlebar']").titlebar();
+
+    $("div[wk-widget='searchbar']").searchbar(function(key) {
+
     });
 
     $("div[wk-widget='window']").click(function(e) {
 
+    });
+
+    $(".wk-responer").on("mouseenter mouseleave", function(e) {
+        if (e.type === "mouseenter") {
+            $(this).css({
+                cursor : "pointer"
+            });
+        } else {
+            $(this).css({
+                cursor : "auto"
+            });
+        }
     });
 
     $(window).resize(function(e) {
@@ -1086,5 +886,7 @@ Weikan.prototype.run = function() {
             $(item).titlebar();
         });
     });
+
+
 
 }
