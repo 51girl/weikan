@@ -502,6 +502,10 @@
         };
     }
 
+    /**
+     * 将标签包装成搜索栏的样式，并提供搜索响应事件
+     * param _callback 搜索事件 回调的参数是当初搜索栏输入的内容
+     */
     $.fn.searchbar = function() {
         var _self = this;
         var BUTTON_SIZE = {
