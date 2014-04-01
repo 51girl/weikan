@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title></title>
+    <script type="text/javascript" src="res/js/jquery.js"></script>
+    <script type="text/javascript" src="res/js/weikan.js"></script>
+    <script type="text/javascript">
+        var app = new Weikan();
+        $(window).load(function(e) {
+            app.css("weikan", "product_detail").run();
+        });
+    </script>
+    <style type="text/css">
+        #main {
+            position: relative;
+            top: 0px;
+            left: 0px;
+        }
+        #main_img,#main_bg {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+        #main_content_bg,#main_content {
+            position: absolute;
+            top: 162px;
+            left: 0px;
+        }
+        #main_content {
+            padding: 10px;
+            width: 826px;
+        }
+        #main_content_title {
+            color: green;
+        }
+        #main_content_dec {
+            color: #ffffff;
+
+        }
+    </style>
+</head>
+<body>
+<div id="wk-main">
+    <div id="wk-body">
+        <div id="main">
+            <img id="main_bg" src="res/drawables/product_detail_main_bg.png"/>
+            <img id="main_img" src="res/drawables/product_detail_main_image.png"/>
+            <img id="main_content_bg" src="res/drawables/product_detail_main_content_bg.png"/>
+            <div id="main_content">
+                <h1 id="main_content_title">高品质标签</h1><br/>
+                <p id="main_content_dec">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                    内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+            </div>
+        </div>
+        <div id="titlebar" wk-widget="titlebar" title="高品质标签" wk-width="match_parent"></div>
+        <div>
+            <div></div>
+            <div></div>
+        </div>
+        <div id="produce-detail"/>
+        <div class="wk-clear" />
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="res/js/index.js"></script>
+</html>
