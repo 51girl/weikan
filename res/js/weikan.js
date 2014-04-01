@@ -1,7 +1,8 @@
 (function($) {
 
-    /*
+    /**
      * 将URL装换成QUERY对象
+     * @param url 地址
      * 例如 var querystr = $.query("http://www.demo.com/a/b/c?arg0=value0&arg1=value1");
      *
      * querystr["protocol"] = "http"
@@ -48,7 +49,7 @@
         }
     }
 
-    /*
+    /**
      * 判断对象是否是数组
      */
     $.isArray = function(object) {
@@ -276,7 +277,7 @@
 
     }
 
-    /*
+    /**
      * 将标签包装成footer样式
      */
     $.fn.footer = function(items) {
@@ -301,11 +302,11 @@
         $(this).append(_ul);
     }
 
-    /*
+    /**
      * 将标签包装成导航栏
-     * param items      按钮项集合   必须
-     * param current    高亮的位置   可选
-     * param callback   事件回调    可选
+     * @param items      按钮项集合   必须
+     * @param current    高亮的位置   可选
+     * @param callback   事件回调    可选
      *
      */
     $.fn.navigationbar = function() {
@@ -420,7 +421,7 @@
 
     }
 
-    /*
+    /**
      * 将标签包装成标题栏样式
      */
     $.fn.titlebar = function() {
@@ -503,8 +504,8 @@
     }
 
     /**
-     * 将标签包装成搜索栏的样式，并提供搜索响应事件
-     * param _callback 搜索事件 回调的参数是当初搜索栏输入的内容
+     * 将指定标签渲染成搜索栏
+     * @param callback 搜索事件回调，回调参数返回当前输入的关键字
      */
     $.fn.searchbar = function() {
         var _self = this;
@@ -564,6 +565,316 @@
                 $(_input).off("keydown");
             }
         });
+    }
+
+    /**
+     * 将指定控件渲染成标签栏
+     * @param items 标签项
+     * @param currentPosition 默认当前高亮的位置
+     * @param callback 点击事件回调
+     */
+    $.fn.tabbar = function() {
+
+        var DEFAULT_HEIGHT = 30;
+
+
+        var _self = this;
+
+        var _items;
+        var _currentPosition;
+        var _currentItem;
+        var _callback;
+        var _args = arguments;
+        var _style;
+        if (_args && _args.length) {
+            if ($.isArray(_args[0])) {
+                _items = _args[0];
+            }
+
+            if (_args.length > 1) {
+                if (typeof _args[1] === "number") {
+                    _currentPosition = _args[1];
+                } else if (typeof _args[1] === "function") {
+                    _callback = _args[1];
+                } else if (typeof _args[1] === "object") {
+                    _style = _args[1];
+                }
+            }
+
+            if (!_callback && _args.length > 2) {
+                if (typeof _args[2] === "function") {
+                    _callback = _args[2];
+                } else if (typeof _args[2] === "object") {
+                    _style = _args[2];
+                }
+            }
+
+            if (_args.length > 3) {
+                if (typeof _args[3] === "object") {
+                    _style = _args[3];
+                }
+            }
+        }
+
+        if (!_items || !_items.length) {
+            return;
+        }
+
+        var _count = _items.length;
+
+        var _width = 0;
+        if ($(_self).attr("wk-width")) {
+            _width = parseInt($(_self).attr("wk-width"));
+        } else {
+            _width = $(_self).width();
+        }
+
+        if (isNaN(_width) || _width <= 0) {
+            return;
+        }
+
+        var _height = DEFAULT_HEIGHT;
+        if ($(_self).attr("wk-height")) {
+            _height = parseInt($(_self).attr("wk-height"));
+        }
+
+        if (isNaN(_height) || _height <= 0) {
+            _height = DEFAULT_HEIGHT;
+        }
+
+        var _itemWidth = parseInt(_width / _count);
+
+        var _ul = $('<ul />').css({
+            listStyle : "none"
+        }).width(_width).height(_height);
+
+        for (var i = 0; i < _count; i++) {
+            var _li = $('<li />')
+                .addClass("wk-responer")
+                .addClass("wk-tabbar-item")
+                .addClass("wk-tabbar-item-normal")
+                .text(_items[i].title)
+                .width(_itemWidth)
+                .height(_height)
+                .css({
+                    lineHeight:_height + "px"
+                });
+            if (i == 0) {
+                $(_li).addClass("wk-tabbar-item-left");
+            } else if (i == _count - 1) {
+                $(_li).addClass("wk-tabbar-item-right");
+            }
+
+            if (isNaN(_currentPosition) && _currentPosition >= 0 && i === _currentPosition) {
+                _currentItem = _li;
+
+                $(_li).removeClass("wk-tabbar-item-normal");
+                $(_li).addClass("wk-tabbar-item-current");
+            }
+
+            $(_li).on("mouseenter mouseleave click", function(e) {
+                if (e.type === "mouseenter") {
+                    if ($(this).hasClass("wk-tabbar-item-normal")) {
+                        $(this).removeClass("wk-tabbar-item-normal");
+                    }
+                    if (!$(this).hasClass("wk-tabbar-item-current")) {
+                        $(this).addClass("wk-tabbar-item-current");
+                    }
+
+                } else if (e.type === "mouseleave") {
+                    if (_currentItem !== this) {
+                        if ($(this).hasClass("wk-tabbar-item-current")) {
+                            $(this).removeClass("wk-tabbar-item-current");
+                        }
+                        if (!$(this).hasClass("wk-tabbar-item-normal")) {
+                            $(this).addClass("wk-tabbar-item-normal");
+                        }
+                    }
+
+                } else if (e.type === "click") {
+                    if (_currentItem) {
+                        if ($(_currentItem).hasClass("wk-tabbar-item-current")) {
+                            $(_currentItem).removeClass("wk-tabbar-item-current");
+                        }
+                        if (!$(_currentItem).hasClass("wk-tabbar-item-normal")) {
+                            $(_currentItem).addClass("wk-tabbar-item-normal");
+                        }
+                    }
+
+                    if ($(this).hasClass("wk-tabbar-item-normal")) {
+                        $(this).removeClass("wk-tabbar-item-normal");
+                    }
+                    if (!$(this).hasClass("wk-tabbar-item-current")) {
+                        $(this).addClass("wk-tabbar-item-current");
+                    }
+
+                    _currentItem = this;
+
+                    if (_callback) {
+                        _callback.apply(_self, [i, _currentItem]);
+                    }
+                }
+            });
+
+            $(_ul).append(_li);
+        }
+
+        $(_self).append(_ul);
+
+    }
+
+    /**
+     * 将指定控件渲染成子标题栏
+     * @param items 标题项
+     * @param currentPosition 默认当前高亮的位置
+     * @param callback 点击事件回调
+     */
+    $.fn.subtitlebar = function() {
+
+        var DEFAULT_HEIGHT = 28;
+        var DEFAULT_ITEM_WIDTH = 80;
+
+        var _self = this;
+
+        var _items;
+        var _currentPosition;
+        var _currentItem;
+        var _callback;
+        var _args = arguments;
+        var _style;
+        if (_args && _args.length) {
+            if ($.isArray(_args[0])) {
+                _items = _args[0];
+            }
+
+            if (_args.length > 1) {
+                if (typeof _args[1] === "number") {
+                    _currentPosition = _args[1];
+                } else if (typeof _args[1] === "function") {
+                    _callback = _args[1];
+                } else if (typeof _args[1] === "object") {
+                    _style = _args[1];
+                }
+            }
+
+            if (!_callback && _args.length > 2) {
+                if (typeof _args[2] === "function") {
+                    _callback = _args[2];
+                } else if (typeof _args[2] === "object") {
+                    _style = _args[2];
+                }
+            }
+
+            if (_args.length > 3) {
+                if (typeof _args[3] === "object") {
+                    _style = _args[3];
+                }
+            }
+        }
+
+        if (!_items || !_items.length) {
+            return;
+        }
+
+        var _count = _items.length;
+
+        var _itemWidth = DEFAULT_ITEM_WIDTH;
+        if ($(_self).attr("wk-itemWidth")) {
+            _itemWidth = parseInt($(_self).attr("wk-itemWidth"));
+        }
+
+        if (isNaN(_itemWidth) || _itemWidth <= 0) {
+            _itemWidth = DEFAULT_HEIGHT;
+        }
+        var _width = (_itemWidth + 2) * _count + 2;
+
+        var _height = DEFAULT_HEIGHT;
+        if ($(_self).attr("wk-height")) {
+            _height = parseInt($(_self).attr("wk-height"));
+        }
+
+        if (isNaN(_height) || _height <= 0) {
+            _height = DEFAULT_HEIGHT;
+        }
+
+        var _ul = $('<ul />').css({
+            listStyle : "none"
+        }).width(_width).height(_height);
+
+        var _itemHeight = _height - 4;
+
+        for (var i = 0; i < _count; i++) {
+            var _css = {
+                lineHeight:_itemHeight + "px"
+            };
+            if (i < _count - 1) {
+                _css.borderRight = "none";
+            }
+            var _li = $('<li />')
+                .addClass("wk-responer")
+                .addClass("wk-subtitlebar-item")
+                .addClass("wk-subtitlebar-item-normal")
+                .text(_items[i].title)
+                .width(_itemWidth)
+                .height(_itemHeight)
+                .css(_css);
+
+            if (!isNaN(_currentPosition) && _currentPosition >= 0 && i === _currentPosition) {
+                _currentItem = _li;
+
+                $(_li).removeClass("wk-subtitlebar-item-normal");
+                $(_li).addClass("wk-subtitlebar-item-current");
+            }
+
+            $(_li).on("mouseenter mouseleave click", function(e) {
+                if (e.type === "mouseenter") {
+                    if ($(this).hasClass("wk-subtitlebar-item-normal")) {
+                        $(this).removeClass("wk-subtitlebar-item-normal");
+                    }
+                    if (!$(this).hasClass("wk-subtitlebar-item-current")) {
+                        $(this).addClass("wk-subtitlebar-item-current");
+                    }
+
+                } else if (e.type === "mouseleave") {
+                    if (_currentItem !== this) {
+                        if ($(this).hasClass("wk-subtitlebar-item-current")) {
+                            $(this).removeClass("wk-subtitlebar-item-current");
+                        }
+                        if (!$(this).hasClass("wk-subtitlebar-item-normal")) {
+                            $(this).addClass("wk-subtitlebar-item-normal");
+                        }
+                    }
+
+                } else if (e.type === "click") {
+                    if (_currentItem) {
+                        if ($(_currentItem).hasClass("wk-subtitlebar-item-current")) {
+                            $(_currentItem).removeClass("wk-subtitlebar-item-current");
+                        }
+                        if (!$(_currentItem).hasClass("wk-subtitlebar-item-normal")) {
+                            $(_currentItem).addClass("wk-subtitlebar-item-normal");
+                        }
+                    }
+
+                    if ($(this).hasClass("wk-subtitlebar-item-normal")) {
+                        $(this).removeClass("wk-subtitlebar-item-normal");
+                    }
+                    if (!$(this).hasClass("wk-subtitlebar-item-current")) {
+                        $(this).addClass("wk-subtitlebar-item-current");
+                    }
+
+                    _currentItem = this;
+
+                    if (_callback) {
+                        _callback.apply(_self, [i, _currentItem]);
+                    }
+                }
+            });
+
+            $(_ul).append(_li);
+        }
+
+        $(_self).append(_ul);
+
     }
 
 
@@ -662,6 +973,9 @@ Weikan.config = {
                 ]
             }
         ]
+    }
+    , bottomExpand : {
+        height : 0
     }
     , footerbar : {
         height : 27
@@ -795,6 +1109,11 @@ Weikan.prototype.run = function() {
     $(wkMain).append(wkFooter);
     $(this.clearDiv()).insertAfter(wkBody);
 
+    var wkBottomExpand = $('<div />')
+        .attr({id:"wk-bottom-expand"})
+        .height(Weikan.config.bottomExpand.height);
+    $(wkBottomExpand).insertBefore(wkFooter);
+
     var initRects = function() {
         var headerHeight = Weikan.config.headerbar.height;
         var footerHeight = Weikan.config.footerbar.height;
@@ -829,9 +1148,9 @@ Weikan.prototype.run = function() {
         }
         var body = $("#wk-body");
         var bodyPaddingTop = 0;
-        $(body).width(bodyWidth - 50).height(bodyHeight);
+        $(body).width(bodyWidth - 50).height(bodyHeight - Weikan.config.bottomExpand.height);
         var navbar = $("#wk-navbar");
-        navbar.width(navbarWidth).height(bodyHeight);
+        navbar.width(navbarWidth).height(bodyHeight - Weikan.config.bottomExpand.height);
         $("#wk-main").width(navbarWidth + bodyWidth);
     }
 

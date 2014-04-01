@@ -35,3 +35,10 @@ Weikan 静态页面
 2. 添加Header（包括logo和搜索栏）
 3. 添加搜索栏控件接口
 4. 将幻灯片控件接口转移到index.js中
+
+4.1 更新
+======
+
+1. 更新首页，加入底部介绍内容
+2. Weikan.js 添加tabbar和subtitlebar控件接口
+3. 整理Weikan.js注释

@@ -10,6 +10,7 @@
     <script type="text/javascript" src="res/js/weikan.js"></script>
     <script type="text/javascript">
         var app = new Weikan();
+        Weikan.config.bottomExpand.height = 125;
         $(window).load(function(e) {
             app.css("weikan", "index").run();
         });
