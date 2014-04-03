@@ -9,20 +9,22 @@
     <script type="text/javascript" src="res/js/jquery.js"></script>
     <script type="text/javascript" src="res/js/weikan.js"></script>
     <script type="text/javascript">
-        var app = new Weikan();
         Weikan.config.bottomExpand.height = 125;
+        Weikan.config.body.minHeight = 600;
         $(window).load(function(e) {
-            app.css("weikan", "index").run();
+            weikan.css("weikan", "index").run();
         });
     </script>
 </head>
 <body>
 <div id="wk-main">
     <div id="wk-body">
-        <img id="next-button" class="controller-button wk-responer" src="res/drawables/wk_arrow_left.png" alt="">
-        <img id="prev-button" class="controller-button wk-responer" src="res/drawables/wk_arrow_right.png" alt="">
-        <div id="produce-vista"/>
-        <div class="wk-clear" />
+        <div id="produce-vista-wrapper">
+            <img id="next-button" class="controller-button wk-responer" src="res/drawables/wk_arrow_left.png" alt="">
+            <img id="prev-button" class="controller-button wk-responer" src="res/drawables/wk_arrow_right.png" alt="">
+            <div id="produce-vista"/>
+            <div class="wk-clear" />
+        </div>
     </div>
 </div>
 </body>
