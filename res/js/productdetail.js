@@ -1,32 +1,60 @@
 /**
  * Created by Johnson on 14-4-3.
  */
-$(window).load(function(e) {
+$(window).ready(function(e) {
 
     var _data = {
-        main_img : "product_detail_main_image.png",
-        main_content_title : "高品质标签",
-        main_content_dec : "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
-        items : [
+        data_main_img : "product_detail_main_image.png",
+        data_main_content_title : "高品质标签",
+        data_main_content_dec : "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
+        data_items : [
             {
-                item_content_img : "product_detail_item_image.png",
-                item_content_title : "空白标签",
-                item_content_dec : "威侃可根据客户要求提供各种规格及不同材质的高品质空白标签，威侃空白的可承印标签是可以在任何特殊环境中提供出色性能的高性能标签"
+                data_item_content_img : "product_detail_item_image.png",
+                data_item_content_img_big : "",
+                data_item_content_title : "空白标签",
+                data_item_content_dec : "威侃可根据客户要求提供各种规格及不同材质的高品质空白标签，威侃空白的可承印标签是可以在任何特殊环境中提供出色性能的高性能标签"
             },
             {
-                item_content_img : "product_detail_item_image.png",
-                item_content_title : "空白标签2",
-                item_content_dec : "威侃可根据客户要求提供各种规格及不同材质的高品质空白标签，威侃空白的可承印标签是可以在任何特殊环境中提供出色性能的高性能标签"
+                data_item_content_img : "product_detail_item_image.png",
+                data_item_content_img_big : "",
+                data_item_content_title : "空白标签2",
+                data_item_content_dec : "威侃可根据客户要求提供各种规格及不同材质的高品质空白标签，威侃空白的可承印标签是可以在任何特殊环境中提供出色性能的高性能标签"
             },
             {
-                item_content_img : "product_detail_item_image.png",
-                item_content_title : "空白标签3",
-                item_content_dec : "威侃可根据客户要求提供各种规格及不同材质的高品质空白标签，威侃空白的可承印标签是可以在任何特殊环境中提供出色性能的高性能标签"
+                data_item_content_img : "product_detail_item_image.png",
+                data_item_content_img_big : "",
+                data_item_content_title : "空白标签3",
+                data_item_content_dec : "威侃可根据客户要求提供各种规格及不同材质的高品质空白标签，威侃空白的可承印标签是可以在任何特殊环境中提供出色性能的高性能标签"
             },
             {
-                item_content_img : "product_detail_item_image.png",
-                item_content_title : "空白标签4",
-                item_content_dec : "威侃可根据客户要求提供各种规格及不同材质的高品质空白标签，威侃空白的可承印标签是可以在任何特殊环境中提供出色性能的高性能标签"
+                data_item_content_img : "product_detail_item_image.png",
+                data_item_content_img_big : "",
+                data_item_content_title : "空白标签4",
+                data_item_content_dec : "威侃可根据客户要求提供各种规格及不同材质的高品质空白标签，威侃空白的可承印标签是可以在任何特殊环境中提供出色性能的高性能标签"
+            },
+            {
+                data_item_content_img : "product_detail_item_image.png",
+                data_item_content_img_big : "",
+                data_item_content_title : "空白标签4",
+                data_item_content_dec : "威侃可根据客户要求提供各种规格及不同材质的高品质空白标签，威侃空白的可承印标签是可以在任何特殊环境中提供出色性能的高性能标签"
+            },
+            {
+                data_item_content_img : "product_detail_item_image.png",
+                data_item_content_img_big : "",
+                data_item_content_title : "空白标签4",
+                data_item_content_dec : "威侃可根据客户要求提供各种规格及不同材质的高品质空白标签，威侃空白的可承印标签是可以在任何特殊环境中提供出色性能的高性能标签"
+            },
+            {
+                data_item_content_img : "product_detail_item_image.png",
+                data_item_content_img_big : "",
+                data_item_content_title : "空白标签4",
+                data_item_content_dec : "威侃可根据客户要求提供各种规格及不同材质的高品质空白标签，威侃空白的可承印标签是可以在任何特殊环境中提供出色性能的高性能标签"
+            },
+            {
+                data_item_content_img : "product_detail_item_image.png",
+                data_item_content_img_big : "",
+                data_item_content_title : "空白标签4",
+                data_item_content_dec : "威侃可根据客户要求提供各种规格及不同材质的高品质空白标签，威侃空白的可承印标签是可以在任何特殊环境中提供出色性能的高性能标签"
             }
         ]
     }
@@ -35,34 +63,34 @@ $(window).load(function(e) {
     var main_content_dec = $("#main_content_dec");
     var titlebar = $("#titlebar");
 
-    main_img.attr({src : "./data/" + _data.main_img});
-    main_content_title.text(_data.main_content_title);
-    main_content_dec.text(_data.main_content_dec);
-    titlebar.title.text(_data.main_content_title);
+    main_img.attr({src : "./data/" + _data.data_main_img});
+    main_content_title.text(_data.data_main_content_title);
+    main_content_dec.text(_data.data_main_content_dec);
+    titlebar.attr("title", _data.data_main_content_title);
 
 
 
 
     var Item = function(){
-        var item_content_title = $("<h2/>");
-        var item_content_divide = $("<img />")
+        this.item_content_title = $("<h2/>");
+        this.item_content_divide = $("<img />")
             .attr("src", "res/drawables/product_detail_item_divider.jpg")
             .css({
                 "margin-top": 7+"px",
                 "margin-bottom": 7+"px",
                 "margin-left": 2+"px"
             });
-        var item_content_dec = $("<p/>")
+        this.item_content_dec = $("<p/>")
             .css({
                 "width" : 130+"px",
                 "height" : 90+"px"
             });
-        var item_content_more = $("<img/>")
+        this.item_content_more = $("<img/>")
             .attr("src", "res/drawables/product_detail_item_more.png")
             .css({
                 "float" : "right"
             });
-        var item_content_right = $("<div/>")
+        this.item_content_right = $("<div/>")
             .css({
                 "float" : "left",
                 "width" : 150+"px",
@@ -70,12 +98,16 @@ $(window).load(function(e) {
                 "margin-left" : 20+"px",
                 "padding-top" : 10+"px"
             });
-        $(item_content_right).append(item_content_title,item_content_divide,item_content_dec,item_content_more);
-        var item_content_img = $("<img/>")
+        $(this.item_content_right)
+            .append(this.item_content_title)
+            .append(this.item_content_divide)
+            .append(this.item_content_dec)
+            .append(this.item_content_more);
+        this.item_content_img = $("<img/>")
             .css({
-                "float" : "right"
+                "float" : "left"
             });
-        var item_content = $("<div/>")
+        this.item_content = $("<div/>")
             .css({
                 "position" : "absolute",
                 "top" : 0+"px",
@@ -83,15 +115,17 @@ $(window).load(function(e) {
                 "width" : 402+"px",
                 "padding" : 10+"px"
             });
-        $(item_content).append(item_content_img,item_content_right);
-        var item_bg = $("<img/>")
+        $(this.item_content)
+            .append(this.item_content_img)
+            .append(this.item_content_right);
+        this.item_bg = $("<img/>")
             .attr("src", "res/drawables/product_detail_item_bg.png")
             .css({
                 "position" : "absolute",
                 "top" : 0+"px",
                 "left" : 0+"px"
             });
-        var item = $("<div/>")
+        this.item = $("<div/>")
             .css({
                 "position" : "relative",
                 "top" : 0+"px",
@@ -100,16 +134,27 @@ $(window).load(function(e) {
                 "height" : 171+"px",
                 "float" : "left",
                 "margin-right" : 40+"px"
-            });
-        $(item).append(item_bg).append(item_content);
+            })
+            .attr("wk-widget","window").addClass("wk-responer");
+        $(this.item).append(this.item_bg).append(this.item_content);
     }
-
-    var item = new Item();
-    item.item_content_title.text("这是标题");
-    item.item_content_img.attr({src : "res/drawables/product_detail_item_image.png"});
-    item.item_content_dec.text("这是内容aaaaaaaaaaaaaaaaa");
-
     var produce_detail = $("#produce_detail");
-    $("#row").append(item.item);
+    var row;
+    for(var i = 0; i < _data.data_items.length; i++) {
+        var data_item = _data.data_items[i];
+        if(i % 2 == 0) {
+            row = $("<div/>")
+                .css({
+                    "height" : 171+"px",
+                    "margin-bottom" : 10+"px"
+                });
+            $(produce_detail).append(row);
+        }
+        var item = new Item();
+        item.item_content_title.text(data_item.data_item_content_title);
+        item.item_content_img.attr({src : "./data/"+data_item.data_item_content_img});
+        item.item_content_dec.text(data_item.data_item_content_dec);
+        $(row).append(item.item);
+    }
 });
 
