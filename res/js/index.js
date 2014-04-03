@@ -3,7 +3,9 @@
  */
 $(window).load(function(e) {
     var _wkBody = $("#wk-body");
-    var _cf = $("#produce-vista").width($(_wkBody).width() - 29 * 2).height(388).coverflow([
+    var _wrapper = $(_wkBody).find("#produce-vista-wrapper");
+    $(_wrapper).width(1074).height(388);
+    var _cf = $("#produce-vista").width($(_wrapper).width() - 29 * 2).height($(_wrapper).height()).coverflow([
         {
             title           : "高品质标签"
             , coverImage    : "produce_1.png"

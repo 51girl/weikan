@@ -917,10 +917,10 @@
 
         $(_self).append(_window);
 
-        var COVER_MARGIN = 30;
         var _count = _items.length;
-        var _itemWidth = parseInt(_width / _count);
+        var _itemWidth = 278;
         var _itemHeight = _height;
+        var _marginHorizonal = parseInt((_width - _itemWidth * 3) / 6);
 
         var createCoverWithItem = function(item, size, position) {
 
@@ -939,7 +939,7 @@
             var _s = size;
 
             var _coverHeight = _s.height - SHADOW_MARGIN_TOP - SHADOW_HEIGHT - COVER_PADDING * 2;
-            var _coverWidth = _s.width - (COVER_MARGIN + COVER_PADDING) * 2;
+            var _coverWidth = _s.width - COVER_PADDING * 2;
 
             var _coverItem = $("<div />")
                 .addClass("wk-cover-item")
@@ -948,7 +948,7 @@
                     , height    : _s.height + "px"
                     , position  : "absolute"
                     , top       : "0px"
-                    , left      : (_s.width * i + COVER_MARGIN) + "px"
+                    , left      : ((_s.width + _marginHorizonal * 2) * position + _marginHorizonal) + "px"
                 });
 
             var _cover = $("<div />")
@@ -1078,26 +1078,27 @@
                     , height    : _itemSize.height + "px"
                     , position  : "absolute"
                     , top       : "0px"
-                    , left      : COVER_MARGIN + "px"
+                    , left      : (-(_itemSize.width + _marginHorizonal)) + "px"
                     , display   : "none"
                 });
                 $(_window).prepend(_prevCoverItem);
 
                 $(_prevCoverItem).animate({
                     opacity : "show"
+                    , left  : _marginHorizonal + "px"
                 }, 500, function() {
                     $(_prevCoverItem).css({
                         width       : _itemSize.width + "px"
                         , height    : _itemSize.height + "px"
                         , position  : "absolute"
                         , top       : "0px"
-                        , left      : COVER_MARGIN + "px"
+                        , left      : _marginHorizonal + "px"
                     });
                 });
 
                 $(_window).children().each(function(i, item) {
                     if (i > 0) {
-                        var newLeft = _itemSize.width* i + COVER_MARGIN;
+                        var newLeft = (_itemSize.width + _marginHorizonal * 2) * i + _marginHorizonal;
                         var prop = {
                             left : newLeft + "px"
                         };
@@ -1128,13 +1129,13 @@
                     _currentItem = 0;
                 }
                 var _nextPos = (_currentItem + 2) % _showCount;
-                var _nextCoverItem = createCoverWithItem(_items[_nextPos], _itemSize, _nextPos);
+                var _nextCoverItem = createCoverWithItem(_items[_nextPos], _itemSize, _nextPos - 1);
                 $(_nextCoverItem).css({
                     width       : _itemSize.width + "px"
                     , height    : _itemSize.height + "px"
                     , position  : "absolute"
                     , top       : "0px"
-                    , left      : (_itemSize.width * (_showCount - 1) + COVER_MARGIN) + "px"
+                    , left      : ((_itemSize.width + _marginHorizonal * 2) * _showCount + _marginHorizonal) + "px"
                     , display   : "none"
                 });
 
@@ -1142,19 +1143,20 @@
 
                 $(_nextCoverItem).animate({
                     opacity : "show"
+                    , left  : ((_itemSize.width + _marginHorizonal * 2) * (_showCount - 1) + _marginHorizonal) + "px"
                 }, 500, function() {
                     $(_nextCoverItem).css({
                         width       : _itemSize.width + "px"
                         , height    : _itemSize.height + "px"
                         , position  : "absolute"
                         , top       : "0px"
-                        , left      : (_itemSize.width * (_showCount - 1) + COVER_MARGIN) + "px"
+                        , left      : ((_itemSize.width + _marginHorizonal * 2) * (_showCount - 1) + _marginHorizonal) + "px"
                     });
                 });
 
                 $(_window).children().each(function(i, item) {
                     if (i < _showCount) {
-                        var newLeft = _itemSize.width * (i - 1) + COVER_MARGIN;
+                        var newLeft = (_itemSize.width + _marginHorizonal * 2) * (i - 1) + _marginHorizonal;
                         var prop = {
                             left : newLeft + "px"
                         };
@@ -1476,12 +1478,12 @@ Weikan.prototype.run = function() {
                 bodyHeight = minBodyHeight;
             }
 
-            if ((bodyHeight + footerHeight + headerHeight) < windowHeight) {
-                bodyHeight = windowHeight - footerHeight - headerHeight;
+            if ((bodyHeight + footerHeight + headerHeight + Weikan.config.bottomExpand.height) < windowHeight) {
+                bodyHeight = windowHeight - footerHeight - headerHeight - Weikan.config.bottomExpand.height;
+                $(body).height(bodyHeight);
             }
 
-            $(body).height(bodyHeight - Weikan.config.bottomExpand.height);
-            $(navbar).height(bodyHeight - Weikan.config.bottomExpand.height);
+            $(navbar).height($(body).height());
 
         } else {
             var bodyHeight = Weikan.config.height;
@@ -1557,6 +1559,6 @@ Weikan.prototype.run = function() {
         });
     });
 
-
-
 }
+
+weikan = new Weikan();
