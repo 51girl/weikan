@@ -42,3 +42,8 @@ Weikan 静态页面
 1. 更新首页，加入底部介绍内容
 2. Weikan.js 添加tabbar和subtitlebar控件接口
 3. 整理Weikan.js注释
+
+4.3 更新
+======
+
+1. 更新MRO页面模板

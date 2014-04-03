@@ -454,6 +454,7 @@
                         _width = w;
                     }
                 }
+            } else {
             }
 
             var _mw = _width - LEFT_WIDTH - RIGHT_WIDTH;

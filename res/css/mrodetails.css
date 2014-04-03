@@ -1,0 +1,72 @@
+#produce-header {
+    margin-top: 10px;
+    width: 837px;
+    height: 232px;
+    border: 4px #ffffff solid;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
+#produce-cover {
+    width: 838px;
+    height: 233px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: #ffffff;
+}
+
+#produce-description {
+    width: 838px;
+    height: 78px;
+    position: absolute;
+    top: 154px;
+    left: 0px;
+    background: url("../drawables/wk_title_bg.png") repeat;
+}
+
+.produce-desc-title {
+    font-size: 2.0em;
+    color: #9ed309;
+    margin-top: 6px;
+    margin-left: 10px;
+}
+
+.produce-desc-content {
+    color: #ffffff;
+    margin-top: 10px;
+    line-height: 140%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#produce-more {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    color: #0197d2;
+}
+
+#produce-title {
+    margin-top: 25px;
+}
+
+#produce-details {
+    width: 828px;
+    height: 190px;
+    padding: 6px 3px 6px 6px;
+    background: #ffffff;
+    border: 4px #ffffff solid;
+    -moz-border-radius-bottomleft: 3px;
+    -moz-border-radius-bottomright: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+
+    overflow-y: scroll;
+}

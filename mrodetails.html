@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title></title>
+    <script type="text/javascript" src="res/js/jquery.js"></script>
+    <script type="text/javascript" src="res/js/weikan.js"></script>
+    <script type="text/javascript">
+        $(window).load(function(e) {
+            weikan.css("weikan", "mrodetails").height(Weikan.MATCH_PARENT).run();
+
+            var _items = [
+                {title : "功能"}
+                , {title : "设计"}
+                , {title : "应用领域"}
+                , {title : "耗材"}
+            ];
+
+            var _titleTab = $('<div />').attr({
+                "wk-widget": "tabbar"
+                , "wk-width": "400px"
+            })
+                    .css({
+                        float:"right"
+                        , position:"relative"
+                        , top:"-4px"
+                    });
+            $(_titleTab).tabbar(_items);
+
+            var _titleBar = $("#produce-title");
+            var _titleBarMid = $(_titleBar).find(".wk-titlebar-middle");
+            $(_titleBarMid).append(_titleTab);
+        });
+    </script>
+</head>
+<body>
+<div id="wk-main">
+    <div id="wk-body">
+        <div id="content-wrapper">
+            <div id="produce-header">
+                <img id="produce-cover" />
+                <div id="produce-description">
+                    <h3 class="produce-desc-title">标签打印机</h3>
+                    <p class="produce-desc-content">威侃拥有完整的威码（VanMark）品牌手持式标签打印机和台式专业标识打印机系统产线。将帮助您更高效、快捷、专业地设计和制作应用于安全设施、数据通信、实验室、PCB印刷电路板、元器件、通用标识、电力、电信、物流、军队、医疗和教育等行业...</p>
+                </div>
+                <span id="produce-more">more &gt;</span>
+            </div>
+            <div id="produce-title" wk-widget="titlebar" wk-width="match_parent" title="GT1000"></div>
+            <div id="produce-details">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    $(window).ready(function(e) {
+        $("#content-wrapper").width(845);
+    });
+</script>
+</html>
