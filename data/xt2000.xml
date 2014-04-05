@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <title>GT 1000</title>
+    <cover>mro_header.png</cover>
+    <content>
+        <type id="function" name="功能">
+        </type>
+        <type id="design" name="设计">
+            <section>
+                <part>
+                    宽幅打印，满足所需
+                    支持50mm宽幅打印，使您的视觉管理应用更加多样化
+                </part>
+                <part>
+                    采用标签带与碳带的分离设计，使耗材的选择、搭配更加灵活、多样化                
+                </part>
+                <part>
+                    提供更加多样化的耗材种类，成本更低
+                </part>
+                <part>
+                    将XT2000连接电脑，使打印更加轻松、便捷
+                    使用可以连接电脑编辑的XT2000所附带的VariMark Label Editer软件，设计排版变得更加容易，可以随心所欲的设计您的标签，还可使用电脑自带的字体，插入电脑中的符号、图片，设计表格，还可导入数据库文件（如 Office Excel）打印，提高工作效率
+                </part>
+                <part>
+                    配有便携式手提箱，既便捷又给机器防震保护。
+                </part>
+                <part>
+                    大尺寸的液晶屏，使文字输入及编辑更方便
+                </part>
+                <part>
+                    条形码编辑更加便捷
+                    内设4种条形码，只需选择您需要的条形码格式，输入字符，就可制作出符合要求的条形码，您可以如此灵活的运用条形码编辑功能，无论何时何地，都可根据需求制作出适合大多数读码器的条形码。
+                </part>
+            </section>
+        </type>
+        <type id="domain" name="应用领域">
+            <domain name="办公">
+                <item>固定资产管理</item>
+                <item>文件夹管理</item>
+                <item>个人物品标识</item>
+                <item>开关面板管理</item>
+                <item>线缆管理</item>
+            </domain>
+            <domain name="电力行业">
+                <item>配电箱标识</item>
+                <item>线缆标识</item>
+                <item>开关面板标识</item>
+                <item>接口标识</item>
+            </domain>
+            <domain name="电信行业">
+                <item>线缆标识</item>
+                <item>机房设备标识</item>
+                <item>端口标识</item>
+            </domain>
+            <domain name="实验室/医疗">
+                <item>实验室试剂标识</item>
+                <item>实验室药品分类</item>
+                <item>医疗、实验仪器标识</item>
+            </domain>
+            <domain name="宾馆/饭店">
+                <item>宾馆物品标识</item>
+                <item>厨房管理</item>
+                <item>员工胸牌</item>
+                <item>客房开关插头</item>
+            </domain>
+            <domain name="仓储物流">
+                <item>货架标识</item>
+                <item>物流周转箱标识</item>
+                <item>货品分类</item>
+            </domain>
+            <domain name="工厂">
+                <item>操作指示标识</item>
+                <item>指示标识</item>
+                <item>零部件管理</item>
+                <item>安全警示</item>
+                <item>设备铭牌</item>
+            </domain>
+            <domain name="教育">
+                <item>固定资产管理</item>
+                <item>个人物品标识</item>
+                <item>图书档案分类</item>
+                <item>开关指示</item>
+            </domain>
+        </type>
+        <type id="size" name="技术规格">
+            <size id="hardware" name="硬件">
+                <item name="尺寸标注(W×D×H)">114×295×97</item>
+                <item name="机器类型">手持式热转移标签打印机</item>
+                <item name="重量">950g</item>
+                <item name="键盘">按字母顺序排列</item>
+                <item name="液晶屏">2.6英寸 4行*16字符</item>
+                <item name="剪切">手动剪切</item>
+                <item name="电源">DC IN 20V，锂电池</item>
+                <item name="接口">USB</item>
+                <item name="打印高度">48mm</item>
+                <item name="耗材宽度(mm)">6-50mm</item>
+                <item name="耗材种类">模切标签，连续标签，线缆标签，旗帜标签，连续标签</item>
+                <item name="打印方式">热转印</item>
+                <item name="打印精度">203dpi</item>
+                <item name="打印速度">10mm/s</item>
+                <item name="随机附件">用户手册、合格证、保修卡、V-TYPE标签带1卷、V-TYPE碳带1卷、USB数据线、CD-ROM 光盘(VariMark Label Editer 标签编辑软件)、锂电池1枚、电源适配器、手提箱</item>
+            </size>
+            <size id="features" name="特性">
+                <item name="字体尺寸">4-72磅，18种</item>
+                <item name="序号打印">0-9，A-Z 或 八进制0-7</item>
+                <item name="多份打印">1-250</item>
+                <item name="旋转打印">0度，90度，180度，270度</item>
+                <item name="打印行数">最多23行</item>
+                <item name="符号">常用符号</item>
+                <item name="文件存储">有</item>
+                <item name="打印预览">有</item>
+                <item name="条形码">内置4种条形码</item>
+                <item name="热缩套管耗材">支持</item>
+                <item name="模板">有</item>
+                <item name="余白调整">有</item>
+            </size>
+            <size id="software" name="随机软件">
+                <item name="随机软件">VariMark Label Editer 标签编辑软件</item>
+                <item name="操作系统">Microsoft ® Windows® XP / Windows Vista® / Windows® 7 / Windows® 8</item>
+            </size>
+        </type>
+    </content>
+</data>

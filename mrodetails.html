@@ -10,29 +10,344 @@
     <script type="text/javascript" src="res/js/weikan.js"></script>
     <script type="text/javascript">
         $(window).load(function(e) {
-            weikan.css("weikan", "mrodetails").height(Weikan.MATCH_PARENT).run();
+            weikan.css("weikan", "mrodetails")
+                    .height(Weikan.MATCH_PARENT)
+                    .run(function(data) {
+                        if (typeof data === "object" && data.error && data.error === -1) {
 
-            var _items = [
-                {title : "功能"}
-                , {title : "设计"}
-                , {title : "应用领域"}
-                , {title : "耗材"}
-            ];
+                        } else {
+                            var _root = $(data).find("data");
+                            if (_root) {
+                                $(_root).children().each(function(i, item) {
+                                    if (item.tagName === "cover") {
+                                        var _coverName = $(item).text();
+                                        $("#produce-cover").attr({
+                                            src : Weikan.config.root + "/" + Weikan.config.dataRootName + "/" + _coverName
+                                        });
+                                    } else if (item.tagName === "content") {
 
-            var _titleTab = $('<div />').attr({
-                "wk-widget": "tabbar"
-                , "wk-width": "400px"
-            })
-                    .css({
-                        float:"right"
-                        , position:"relative"
-                        , top:"-4px"
+                                        var _currentItem;
+                                        var _content = $(item);
+                                        var _items = [];
+
+                                        var _produceDetails = $("#produce-details");
+                                        $(_content).children().each(function(contentItemIndex, contentItem) {
+                                            if (contentItem.tagName === "type") {
+                                                var _typeId = $(contentItem).attr("id");
+
+                                                _items.push({
+                                                    title : $(contentItem).attr("name")
+                                                    , typeid : _typeId
+                                                });
+
+                                                var _itemCss = {
+                                                    position : "absolute"
+                                                    , top : "0px"
+                                                    , left : "0px"
+                                                }
+                                                if (contentItemIndex > 0) {
+                                                    _itemCss.display = "none";
+                                                }
+                                                var _detailsItem = $('<div />')
+                                                        .css(_itemCss)
+                                                        .attr({
+                                                            "typeid" : _typeId
+                                                        });
+                                                if (contentItemIndex === 0) {
+                                                    _currentItem = _detailsItem;
+                                                }
+                                                switch (_typeId) {
+                                                    case 'function':
+                                                    {
+
+                                                    }
+                                                        break;
+                                                    case 'design':
+                                                    {
+                                                        $(contentItem).children().each(function(sectionIndex, section) {
+                                                            var _paragraph = $('<p />');
+
+                                                            $(section).children().each(function(partIndex, part) {
+                                                                var _partText = $(part).text();
+                                                                $(_paragraph).append(_partText.replace(/\n/g, "<br />"))
+                                                                        .append($('<br />'));
+                                                            })
+                                                            $(_detailsItem).append(_paragraph);
+                                                        });
+                                                    }
+                                                        break;
+                                                    case 'domain':
+                                                    {
+                                                        var _width = $(_produceDetails).width();
+                                                        var _childWidth = parseInt((_width - 20) / $(contentItem).children().size());
+                                                        $(contentItem).children().each(function(domainIndex, domain) {
+                                                            var _domain = $('<div />').css({
+                                                                float           : "left"
+                                                                , width         : (_childWidth - 9) + "px"
+                                                                , paddingLeft   : "6px"
+                                                                , paddingRight  : "3px"
+                                                            });
+
+                                                            var _domainName = $('<h3 />')
+                                                                    .text($(domain).attr("name"))
+                                                                    .css({
+                                                                        fontSize    : "1.4em"
+                                                                        , marginTop : "14px"
+                                                                    });
+
+                                                            $(_domain).append(_domainName);
+
+                                                            if ($(domain).children().size()) {
+                                                                var _ul = $('<ul />')
+                                                                        .css({
+                                                                            listStyle:"none"
+                                                                        });
+                                                                $(domain).children().each(function(domainItemIndex, domainItem) {
+                                                                    if (domainItem.tagName === "item") {
+                                                                        var _li = $('<li />')
+                                                                                .text($(domainItem).text())
+                                                                                .css({
+                                                                                    marginTop : "8px"
+                                                                                });
+                                                                        $(_ul).append(_li);
+                                                                    }
+                                                                });
+                                                                $(_domain).append(_ul);
+                                                            }
+
+                                                            $(_detailsItem).append(_domain)
+                                                        });
+                                                    }
+                                                        break;
+                                                    case 'size':
+                                                    {
+                                                        if ($(contentItem).children().size() > 0) {
+                                                            var _size = $('<div />').css({
+                                                                paddingLeft : "10px"
+                                                                , paddingTop: "2px"
+                                                            });
+                                                            var _currentSizeItem = null;
+                                                            var _sizeItems = [];
+                                                            var _subTitleBar = $('<div />').attr({
+                                                                "wk-widget" : "subtitlebar"
+                                                            })
+                                                            var _wrapperWidth = $("#produce-details").width() - 20;
+                                                            var _sizeContentWrapper = $('<div />')
+                                                                    .css({
+                                                                        position    : "relative"
+                                                                        , top       : "0px"
+                                                                        , left      : "0px"
+                                                                        , width     : _wrapperWidth + "px"
+                                                                        , height    : "158px"
+                                                                        , marginTop : "2px"
+                                                                    });
+                                                            var _sizeItemCss = {
+                                                                position:"absolute"
+                                                                , top:"0px"
+                                                                , left:"0px"
+                                                                , height: "158px"
+                                                            }
+                                                            $(contentItem).children().each(function(sizeIndex, sizeItem) {
+
+                                                                _sizeItems.push({
+                                                                    typeid : $(sizeItem).attr("id")
+                                                                    , title : $(sizeItem).attr("name")
+                                                                });
+
+                                                                if (sizeIndex > 0) {
+                                                                    _sizeItemCss.display = "none";
+                                                                }
+
+                                                                var _sizeItem = $('<div />').attr({
+                                                                    typeid : $(sizeItem).attr("id")
+                                                                }).css(_sizeItemCss);
+
+                                                                if (sizeIndex === 0) {
+                                                                    _currentSizeItem = _sizeItem;
+                                                                }
+
+                                                                var _cellWidth = parseInt(_wrapperWidth / 3);
+                                                                var _cellHeight = 25;
+
+                                                                $(sizeItem).children().each(function(sizeItemIndex, sizeSubItem) {
+                                                                    var _row = parseInt(sizeItemIndex / 6);
+                                                                    var _col = parseInt(sizeItemIndex % 6);
+
+                                                                    var _cell = $('<p />').css({
+                                                                        position:"absolute"
+                                                                        , top:(_col * _cellHeight) + "px"
+                                                                        , left:(_row * _cellWidth) + "px"
+                                                                        , lineHeight:"25px"
+                                                                        , width : _cellWidth + "px"
+                                                                        , height: _cellHeight + "px"
+                                                                    });
+
+                                                                    if ($(sizeSubItem).attr("name")) {
+                                                                        $(_cell).append($('<span />')
+                                                                                .css({
+                                                                                    fontWeight : "bold"
+                                                                                    , marginRight: "8px"
+                                                                                    , fontSize : "1.3em"
+                                                                                })
+                                                                                .text($(sizeSubItem).attr("name") + ":"));
+                                                                    }
+
+                                                                    $(_cell).append($(sizeSubItem).text());
+
+                                                                    $(_sizeItem).append(_cell);
+                                                                });
+
+                                                                $(_sizeContentWrapper).append(_sizeItem);
+
+
+                                                            });
+
+                                                            $(_subTitleBar).subtitlebar(_sizeItems, 0, function(index, tagItem, dataItem) {
+
+                                                                if ($(_currentSizeItem).attr("typeid") !== dataItem.typeId) {
+                                                                    $(_currentSizeItem).css({
+                                                                        position : "absolute"
+                                                                        , top : "0px"
+                                                                        , left : "0px"
+                                                                        , display : "none"
+                                                                    });
+
+                                                                    _currentSizeItem = $("div[typeid='" + dataItem.typeid + "']");
+                                                                    $(_currentSizeItem).css({
+                                                                        position : "absolute"
+                                                                        , top : "0px"
+                                                                        , left : "0px"
+                                                                        , display: ""
+                                                                    });
+
+                                                                }
+                                                            });
+                                                            $(_size).append(_subTitleBar).append(_sizeContentWrapper);
+                                                            $(_detailsItem).append(_size);
+                                                        }
+                                                    }
+                                                        break;
+                                                    case 'stuff' :
+                                                    {
+                                                        if ($(contentItem).children().size() > 0) {
+                                                            var _table = $('<table />').attr({
+                                                                border          : "0px"
+                                                                , cellSpacing   : "0px"
+                                                            });
+                                                            $(contentItem).children().each(function(rowIndex, rowItem) {
+                                                                var _css = {}
+                                                                if ($(rowItem).attr("type") === "header") {
+                                                                    _css.fontWeight = "bold";
+                                                                    _css.background = "#dcdcdd";
+                                                                    _css.fontSize = "1.3em";
+                                                                } else {
+                                                                    _css.fontWeight = "normal";
+                                                                    _css.fontSize = "1.2em";
+                                                                }
+
+                                                                if ($(rowItem).attr("backgroundcolor")) {
+                                                                    _css.backgroundColor = $(rowItem).attr("backgroundcolor");
+                                                                }
+
+                                                                if ($(rowItem).attr("textcolor")) {
+                                                                    _css.color = $(rowItem).attr("textcolor");
+                                                                }
+
+                                                                var _tr = $('<tr />').height(24);
+
+                                                                $(rowItem).children().each(function(colIndex, colItem) {
+                                                                    var _td = $('<td />');
+                                                                    if ($(colItem).attr("type") === "first") {
+                                                                        _css.width = "120px";
+                                                                        if ($(rowItem).attr("type") !== "header") {
+                                                                            _css.background = "white";
+                                                                        }
+
+                                                                    } else {
+                                                                        _css.width = "94px";
+                                                                        if ($(rowItem).attr("type") !== "header") {
+                                                                            _css.background = $(rowItem).attr("backgroundcolor");
+                                                                        }
+
+                                                                    }
+                                                                    _css.paddingLeft = "10px";
+                                                                    var _colText = $(colItem).text();
+                                                                    if (!_colText || _colText === "") {
+                                                                        _colText = ""
+                                                                    }
+                                                                    $(_td).css(_css).text(_colText);
+                                                                    $(_tr).append(_td);
+
+                                                                });
+
+                                                                $(_table).append(_tr);
+
+                                                            });
+
+                                                            $(_detailsItem).append(_table);
+                                                        }
+                                                    }
+                                                        break;
+                                                }
+
+                                                $(_produceDetails).append(_detailsItem);
+                                            }
+                                        });
+
+                                        var _titleTab = $('<div />').attr({
+                                            "wk-widget": "tabbar"
+                                            , "wk-width": "400px"
+                                        })
+                                                .css({
+                                                    float:"right"
+                                                    , position:"relative"
+                                                    , top:"-4px"
+                                                });
+                                        $(_titleTab).tabbar(_items, 0,
+                                                function(index, tagItem, dataItem) {
+                                                    if ($(_currentItem).attr("typeid") !== dataItem.typeId) {
+                                                        $(_currentItem).css({
+                                                            position : "absolute"
+                                                            , top : "0px"
+                                                            , left : "0px"
+                                                            , display : "none"
+                                                        });
+
+                                                        _currentItem = $("div[typeid='"+dataItem.typeid+"']");
+                                                        $(_currentItem).css({
+                                                            position : "absolute"
+                                                            , top : "0px"
+                                                            , left : "0px"
+                                                            , display: ""
+                                                        });
+
+                                                        var _innerHeight = $(_currentItem).height();
+                                                        var _outerHeight = $("#produce-details").height();
+
+                                                        if (_innerHeight > _outerHeight) {
+                                                            $("#produce-details").css({
+                                                                overflowY : "scroll"
+                                                            });
+                                                        } else {
+                                                            $("#produce-details").css({
+                                                                overflowY : ""
+                                                            });
+                                                        }
+                                                    }
+                                                });
+
+                                        var _titleBar = $("#produce-title");
+                                        var _titleBarMid = $(_titleBar).find(".wk-titlebar-middle");
+                                        $(_titleBarMid).append(_titleTab);
+
+
+                                    }
+                                })
+                            }
+                        }
                     });
-            $(_titleTab).tabbar(_items);
 
-            var _titleBar = $("#produce-title");
-            var _titleBarMid = $(_titleBar).find(".wk-titlebar-middle");
-            $(_titleBarMid).append(_titleTab);
+
         });
     </script>
 </head>

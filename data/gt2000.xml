@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <title>GT 1000</title>
+    <cover>mro_header.png</cover>
+    <content>
+        <type id="function" name="功能">
+        </type>
+        <type id="design" name="设计">
+            <section>
+                <part>
+                    贴出绩效
+                    实用手持式，专业可靠，
+                </part>
+                <part>
+                    实用手持式，可单手操作，不受使用场所的限制。更有准门配备的实用腰包（需另购），既便捷又给机器防震保护。
+                </part>
+                <part>
+                    内置常用电力、电信符号更加适合专业领域应用。
+                </part>
+                <part>
+                    大尺寸的液晶屏，使文字输入及编辑更方便
+                    2行*6字符显示的大尺寸液晶屏使文字输入编辑简单方便，也能避免拼写错误。液晶屏不仅可以显示文档也能显示符号，可以制作带有符号的个性化标签。
+                </part>
+                <part>
+                    大尺寸的液晶屏，使效果御览更加直观。
+                </part>
+                <part>
+                    人性化的切刀设计，使标签剪切更加方便。
+                </part>
+                <part>
+                    条形码编辑更加便捷
+                    内设8种条形码，只需选择您需要的条形码格式，输入字符，就可制作出符合要求的条形码，您可以如此灵活的运用条形码编辑功能，无论何时何地，都可根据需求制作出适合大多数读码器的条形码。
+                </part>
+            </section>
+        </type>
+        <type id="domain" name="应用领域">
+            <domain name="办公">
+                <item>固定资产管理</item>
+                <item>文件夹管理</item>
+                <item>个人物品标识</item>
+                <item>开关面板管理</item>
+                <item>线缆管理</item>
+            </domain>
+            <domain name="电力行业">
+                <item>配电箱标识</item>
+                <item>线缆标识</item>
+                <item>开关面板标识</item>
+                <item>接口标识</item>
+            </domain>
+            <domain name="电信行业">
+                <item>线缆标识</item>
+                <item>机房设备标识</item>
+                <item>端口标识</item>
+            </domain>
+            <domain name="实验室/医疗">
+                <item>实验室试剂标识</item>
+                <item>实验室药品分类</item>
+                <item>医疗、实验仪器标识</item>
+            </domain>
+            <domain name="宾馆/饭店">
+                <item>宾馆物品标识</item>
+                <item>厨房管理</item>
+                <item>员工胸牌</item>
+                <item>客房开关插头</item>
+            </domain>
+            <domain name="仓储物流">
+                <item>货架标识</item>
+                <item>物流周转箱标识</item>
+                <item>货品分类</item>
+            </domain>
+            <domain name="工厂">
+                <item>操作指示标识</item>
+                <item>指示标识</item>
+                <item>零部件管理</item>
+                <item>安全警示</item>
+                <item>设备铭牌</item>
+            </domain>
+            <domain name="教育">
+                <item>固定资产管理</item>
+                <item>个人物品标识</item>
+                <item>图书档案分类</item>
+                <item>开关指示</item>
+            </domain>
+        </type>
+        <type id="size" name="技术规格">
+            <size id="hardware" name="硬件">
+                <item name="尺寸标注(W×D×H)">95×220×65</item>
+                <item name="机器类型">手持式热转移标签打印机</item>
+                <item name="重量">454g</item>
+                <item name="键盘">按字母顺序排列</item>
+                <item name="液晶屏">2.6英寸 2行*6字符</item>
+                <item name="剪切">手动剪切</item>
+                <item name="电源">DC IN 9.5V，6节5号干电池</item>
+                <item name="打印高度">24mm</item>
+                <item name="色带宽度(mm)">6、9、12、14、18、24</item>
+                <item name="打印方式">热转印</item>
+                <item name="打印精度">203dpi</item>
+                <item name="打印速度">10mm/s</item>
+                <item name="随机附件">用户手册、合格证、保修卡、V-TYPE标签色带（12mm 1盒）、电源适配器</item>
+            </size>
+            <size id="features" name="特性">
+                <item name="字体尺寸">6种</item>
+                <item name="序号打印">0-99</item>
+                <item name="多份打印">1-99</item>
+                <item name="竖版打印">有</item>
+                <item name="定长打印">30-400mm</item>
+                <item name="打印行数">最多6行（24mmV-TYPE标签色带）</item>
+                <item name="边框">10种</item>
+                <item name="表格">有</item>
+                <item name="符号">9大类</item>
+                <item name="文件存储">20个文件</item>
+                <item name="打印预览">有</item>
+                <item name="条形码">内置8种条形码</item>
+                <item name="热缩套管耗材">支持</item>
+                <item name="余白调整">有</item>
+            </size>
+        </type>
+        <type id="stuff" name="耗材">
+            <row type="header">
+                <col type="first">标签材质</col>
+                <col>底色</col>
+                <col>文字色</col>
+                <col>长度</col>
+                <col>6mm</col>
+                <col>10mm</col>
+                <col>12mm</col>
+                <col>14mm</col>
+                <col>18mm</col>
+                <col>24mm</col>
+            </row>
+            <row backgroundcolor="white" textcolor="black">
+                <col type="first">聚乙烯450</col>
+                <col>透明</col>
+                <col>黑</col>
+                <col>8M</col>
+                <col>6XTK</col>
+                <col>10XTK</col>
+                <col>12XTK</col>
+                <col>14XTK</col>
+                <col>18XTK</col>
+                <col>24XTK</col>
+            </row>
+            <row backgroundcolor="white" textcolor="red">
+                <col type="first"></col>
+                <col>透明</col>
+                <col>红</col>
+                <col>8M</col>
+                <col>6XTR</col>
+                <col>10XTR</col>
+                <col>12XTR</col>
+                <col>14XTR</col>
+                <col>18XTR</col>
+                <col>24XTR</col>
+            </row>
+            <row backgroundcolor="white" textcolor="blue">
+                <col type="first"></col>
+                <col>透明</col>
+                <col>蓝</col>
+                <col>8M</col>
+                <col>6XTB</col>
+                <col>10XTB</col>
+                <col>12XTB</col>
+                <col>14XTB</col>
+                <col>18XTB</col>
+                <col>24XTB</col>
+            </row>
+            <row backgroundcolor="white" textcolor="black">
+                <col type="first"></col>
+                <col>透明</col>
+                <col>白</col>
+                <col>8M</col>
+                <col>6XTW</col>
+                <col>10XTW</col>
+                <col>12XTW</col>
+                <col>14XTW</col>
+                <col>18XTW</col>
+                <col>24XTW</col>
+            </row>
+            <row backgroundcolor="white" textcolor="black">
+                <col type="first"></col>
+                <col>白色</col>
+                <col>黑</col>
+                <col>8M</col>
+                <col>6XWK</col>
+                <col>10XWK</col>
+                <col>12XWK</col>
+                <col>14XWK</col>
+                <col>18XWK</col>
+                <col>24XWK</col>
+            </row>
+            <row backgroundcolor="white" textcolor="red">
+                <col type="first"></col>
+                <col>白色</col>
+                <col>红</col>
+                <col>8M</col>
+                <col>6XWR</col>
+                <col>10XWR</col>
+                <col>12XWR</col>
+                <col>14XWR</col>
+                <col>18XWR</col>
+                <col>24XWR</col>
+            </row>
+            <row backgroundcolor="white" textcolor="blue">
+                <col type="first"></col>
+                <col>白色</col>
+                <col>蓝</col>
+                <col>8M</col>
+                <col>6XWB</col>
+                <col>10XWB</col>
+                <col>12XWB</col>
+                <col>14XWB</col>
+                <col>18XWB</col>
+                <col>24XWB</col>
+            </row>
+            <row backgroundcolor="black" textcolor="white">
+                <col type="first"></col>
+                <col>黑色</col>
+                <col>白</col>
+                <col>8M</col>
+                <col>6XKW</col>
+                <col>10XKW</col>
+                <col>12XKW</col>
+                <col>14XKW</col>
+                <col>18XKW</col>
+                <col>24XKW</col>
+            </row>
+            <row backgroundcolor="yellow" textcolor="black">
+                <col type="first"></col>
+                <col>黄色</col>
+                <col>黑</col>
+                <col>8M</col>
+                <col>6XYK</col>
+                <col>10XYK</col>
+                <col>12XYK</col>
+                <col>14XYK</col>
+                <col>18XYK</col>
+                <col>24XYK</col>
+            </row>
+            <row backgroundcolor="red" textcolor="black">
+                <col type="first"></col>
+                <col>红色</col>
+                <col>黑</col>
+                <col>8M</col>
+                <col>6XRK</col>
+                <col>10XRK</col>
+                <col>12XRK</col>
+                <col>14XRK</col>
+                <col>18XRK</col>
+                <col>24XRK</col>
+            </row>
+            <row backgroundcolor="red" textcolor="white">
+                <col type="first"></col>
+                <col>红色</col>
+                <col>白</col>
+                <col>8M</col>
+                <col>6XRW</col>
+                <col>10XRW</col>
+                <col>12XRW</col>
+                <col>14XRW</col>
+                <col>18XRW</col>
+                <col>24XRW</col>
+            </row>
+            <row backgroundcolor="blue" textcolor="black">
+                <col type="first"></col>
+                <col>蓝色</col>
+                <col>黑</col>
+                <col>8M</col>
+                <col>6XBK</col>
+                <col>10XBK</col>
+                <col>12XBK</col>
+                <col>14XBK</col>
+                <col>18XBK</col>
+                <col>24XBK</col>
+            </row>
+            <row backgroundcolor="blue" textcolor="white">
+                <col type="first"></col>
+                <col>蓝色</col>
+                <col>白</col>
+                <col>8M</col>
+                <col>6XBW</col>
+                <col>10XBW</col>
+                <col>12XBW</col>
+                <col>14XBW</col>
+                <col>18XBW</col>
+                <col>24XBW</col>
+            </row>
+            <row backgroundcolor="green" textcolor="black">
+                <col type="first"></col>
+                <col>绿色</col>
+                <col>黑</col>
+                <col>8M</col>
+                <col>6XGK</col>
+                <col>10XGK</col>
+                <col>12XGK</col>
+                <col>14XGK</col>
+                <col>18XGK</col>
+                <col>24XGK</col>
+            </row>
+            <row backgroundcolor="green" textcolor="white">
+                <col type="first"></col>
+                <col>绿色</col>
+                <col>白</col>
+                <col>8M</col>
+                <col>6XGW</col>
+                <col>10XGW</col>
+                <col>12XGW</col>
+                <col>14XGW</col>
+                <col>18XGW</col>
+                <col>24XGW</col>
+            </row>
+            <row backgroundcolor="orange" textcolor="black">
+                <col type="first"></col>
+                <col>橙色</col>
+                <col>黑</col>
+                <col>8M</col>
+                <col>6XOK</col>
+                <col>10XOK</col>
+                <col>12XOK</col>
+                <col>14XOK</col>
+                <col>18XOK</col>
+                <col>24XOK</col>
+            </row>
+            <row backgroundcolor="orange" textcolor="white">
+                <col type="first"></col>
+                <col>橙色</col>
+                <col>白</col>
+                <col>8M</col>
+                <col>6XOW</col>
+                <col>10XOW</col>
+                <col>12XOW</col>
+                <col>14XOW</col>
+                <col>18XOW</col>
+                <col>24XOW</col>
+            </row>
+            <row backgroundcolor="yellow" textcolor="black">
+                <col type="first">覆膜聚酯</col>
+                <col>黄色</col>
+                <col>黑</col>
+                <col>8M</col>
+                <col>6MYK</col>
+                <col>10MYK</col>
+                <col>12MYK</col>
+                <col>14MYK</col>
+                <col>18MYK</col>
+                <col>24MYK</col>
+            </row>
+            <row backgroundcolor="red" textcolor="black">
+                <col type="first"></col>
+                <col>红色</col>
+                <col>黑</col>
+                <col>8M</col>
+                <col>6MRK</col>
+                <col>10MRK</col>
+                <col>12MRK</col>
+                <col>14MRK</col>
+                <col>18MRK</col>
+                <col>24MRK</col>
+            </row>
+            <row backgroundcolor="red" textcolor="white">
+                <col type="first"></col>
+                <col>红色</col>
+                <col>白</col>
+                <col>8M</col>
+                <col>6MRW</col>
+                <col>10MRW</col>
+                <col>12MRW</col>
+                <col>14MRW</col>
+                <col>18MRW</col>
+                <col>24MRW</col>
+            </row>
+            <row backgroundcolor="blue" textcolor="black">
+                <col type="first"></col>
+                <col>蓝色</col>
+                <col>黑</col>
+                <col>8M</col>
+                <col>6MBK</col>
+                <col>10MBK</col>
+                <col>12MBK</col>
+                <col>14MBK</col>
+                <col>18MBK</col>
+                <col>24MBK</col>
+            </row>
+            <row backgroundcolor="blue" textcolor="white">
+                <col type="first"></col>
+                <col>蓝色</col>
+                <col>白</col>
+                <col>8M</col>
+                <col>6MBW</col>
+                <col>10MBW</col>
+                <col>12MBW</col>
+                <col>14MBW</col>
+                <col>18MBW</col>
+                <col>24MBW</col>
+            </row>
+            <row backgroundcolor="green" textcolor="black">
+                <col type="first"></col>
+                <col>绿色</col>
+                <col>黑</col>
+                <col>8M</col>
+                <col>6MGK</col>
+                <col>10MGK</col>
+                <col>12MGK</col>
+                <col>14MGK</col>
+                <col>18MGK</col>
+                <col>24MGK</col>
+            </row>
+            <row backgroundcolor="green" textcolor="white">
+                <col type="first"></col>
+                <col>绿色</col>
+                <col>白</col>
+                <col>8M</col>
+                <col>6MGW</col>
+                <col>10MGW</col>
+                <col>12MGW</col>
+                <col>14MGW</col>
+                <col>18MGW</col>
+                <col>24MGW</col>
+            </row>
+            <row backgroundcolor="orange" textcolor="black">
+                <col type="first"></col>
+                <col>橙色</col>
+                <col>黑</col>
+                <col>8M</col>
+                <col>6MOK</col>
+                <col>10MOK</col>
+                <col>12MOK</col>
+                <col>14MOK</col>
+                <col>18MOK</col>
+                <col>24MOK</col>
+            </row>
+            <row backgroundcolor="orange" textcolor="white">
+                <col type="first"></col>
+                <col>橙色</col>
+                <col>白</col>
+                <col>8M</col>
+                <col>6MOW</col>
+                <col>10MOW</col>
+                <col>12MOW</col>
+                <col>14MOW</col>
+                <col>18MOW</col>
+                <col>24MOW</col>
+            </row>
+            <row backgroundcolor="white" textcolor="black">
+                <col type="first">聚酯MZ0063</col>
+                <col>透明</col>
+                <col>黑</col>
+                <col>8M</col>
+                <col>6ZTK</col>
+                <col>10ZTK</col>
+                <col>12ZTK</col>
+                <col>14ZTK</col>
+                <col>18ZTK</col>
+                <col>24ZTK</col>
+            </row>
+            <row backgroundcolor="white" textcolor="black">
+                <col type="first">聚酯72825</col>
+                <col>白色</col>
+                <col>黑</col>
+                <col>8M</col>
+                <col>6ZWK</col>
+                <col>10ZWK</col>
+                <col>12ZWK</col>
+                <col>14ZWK</col>
+                <col>18ZWK</col>
+                <col>24ZWK</col>
+            </row>
+            <row backgroundcolor="white" textcolor="black">
+                <col type="first"></col>
+                <col>银色</col>
+                <col>黑</col>
+                <col>8M</col>
+                <col>6ZSK</col>
+                <col>10ZSK</col>
+                <col>12ZSK</col>
+                <col>14ZSK</col>
+                <col>18ZSK</col>
+                <col>24ZSK</col>
+            </row>
+            <row backgroundcolor="white" textcolor="black">
+                <col type="first">纸质AZ422</col>
+                <col>银色</col>
+                <col>黑</col>
+                <col>8M</col>
+                <col>6PWK</col>
+                <col>10PWK</col>
+                <col>12PWK</col>
+                <col>14PWK</col>
+                <col>18PWK</col>
+                <col>24PWK</col>
+            </row>
+            <row backgroundcolor="white" textcolor="black">
+                <col type="first">尼龙布NT156</col>
+                <col>白色</col>
+                <col>黑</col>
+                <col>8M</col>
+                <col>6NWK</col>
+                <col>10NWK</col>
+                <col>12NWK</col>
+                <col>14NWK</col>
+                <col>18NWK</col>
+                <col>24NWK</col>
+            </row>
+            <row backgroundcolor="white">
+                <col type="first"></col>
+                <col></col>
+                <col></col>
+                <col></col>
+                <col></col>
+                <col></col>
+                <col></col>
+                <col></col>
+                <col></col>
+                <col></col>
+            </row>
+            <row backgroundcolor="white" textcolor="black">
+                <col type="first"></col>
+                <col>底色</col>
+                <col>文字色</col>
+                <col>规格</col>
+                <col>收缩后内径</col>
+                <col></col>
+                <col></col>
+                <col></col>
+                <col></col>
+                <col></col>
+            </row>
+            <row backgroundcolor="white" textcolor="black">
+                <col type="first">热缩套管</col>
+                <col>白色</col>
+                <col>黑</col>
+                <col>Φ10</col>
+                <col>≤5.0</col>
+                <col>1OSWK</col>
+                <col></col>
+                <col></col>
+                <col></col>
+                <col></col>
+            </row>
+            <row backgroundcolor="yellow" textcolor="black">
+                <col type="first"></col>
+                <col>黄色</col>
+                <col>黑</col>
+                <col>Φ10</col>
+                <col>≤5.0</col>
+                <col>10SYK</col>
+                <col></col>
+                <col></col>
+                <col></col>
+                <col></col>
+            </row>
+            <row backgroundcolor="white" textcolor="black">
+                <col type="first"></col>
+                <col>白色</col>
+                <col>黑</col>
+                <col>Φ6</col>
+                <col>≤3.0</col>
+                <col>6SWK</col>
+                <col></col>
+                <col></col>
+                <col></col>
+                <col></col>
+            </row>
+            <row backgroundcolor="yellow" textcolor="black">
+                <col type="first"></col>
+                <col>黄色</col>
+                <col>黑</col>
+                <col>Φ6</col>
+                <col>≤3.0</col>
+                <col>6SYK</col>
+                <col></col>
+                <col></col>
+                <col></col>
+                <col></col>
+            </row>
+        </type>
+    </content>
+</data>

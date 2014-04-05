@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <title>GT 1000</title>
+    <cover>mro_header.png</cover>
+    <content>
+        <type id="function" name="功能">
+        </type>
+        <type id="design" name="设计">
+            <section>
+                <part>
+                    为配合客户使用 VariMark 条码打印系列产品，不断推陈出新，追求卓越，隆重推出适合工业使用的条码打印机升级版DT4200 系列，让客户能以最低的成本，轻松拥有高效的条码打印设备。
+                    新推出的DT4200 系列，将标准内存容量升级至2MB Flash ROM、8MB SDRAM，可内设一组字型和一组SD 卡插槽，内存条最高可扩充至4GB，方便储存大量的资料及各类打印需求。VariMark DT4200 配备更高阶的32 位元CPU，大幅提升资料处理及输出的速度，让客户以更高效率轻易完成条码标签打印工作。
+                    VariMark DT4200 系列机型采用贝壳式的上掀机构设计，提供使用者最友善的操作环境；工业级标准的耗材容量，内部可容纳300 米长碳带以及127mm 外径纸卷，搭配外部纸卷架可使用高达137mm 外径纸卷；独特的双马达驱动设计，让VariMark DT4200 装载外挂纸卷高速打印时，已然游刃有余；双层式外壳设计，结识稳固，有效提升了机器的耐用年限。除了操作简便、坚固耐用，VariMark DT4200 机型亦提供完整的传输界面，标准配备串口（RS-232C）、并口（Parallet Port）及USB3 种通讯界面；全新主机板设计，大幅降低客户选配内设式以太网打印服务器的成本，同时备有外接式以太网打印服务器，或外接式无线网路模组，让需求网路打印机功能的使用者有更多的选择。采用移动式标签感测器，方便侦测标签位置，满足多元化耗材打印需求；打印头及胶辊皆采用模组化设计，不仅方便使用者自行拆装维护及保养，同时也延长机器的使用寿命及维持良好的打印品质。
+                    VariMark DT4200 搭配人性化的高阶条码机预言PLS，除了能轻松撰写程序，更可模拟知名
+                    品牌条码机的程序预言，提高最佳的软件相容环境。随机附赠功能强大的VariMark Label Editer标签编辑软件，可支持数据库打印，数据直接存取，不需重复输入。
+                    除了强大的软硬件配备外，我们还为使用者规划了最齐全的选购配件：自动切刀（全切式、半切式）、标签剥离装置、外部纸卷架、3 寸纸卷轴心、扫描枪等。
+VariMark DT4200 以其价格、规格、性能、稳定性、耐用性，绝对是条码打印机的首选产品之一。
+                    适用范围：
+                    工业标识（管道标识、电力标识）、商用标签、产品标签、邮政标签、票务收据、文件管理、库存管理….各种中英文字体、数字、条码、图形、线框等打印要求。
+                </part>
+
+            </section>
+        </type>
+        <type id="domain" name="应用领域">
+            <domain name="办公">
+                <item>固定资产管理</item>
+                <item>文件夹管理</item>
+                <item>个人物品标识</item>
+                <item>开关面板管理</item>
+                <item>线缆管理</item>
+            </domain>
+            <domain name="电力行业">
+                <item>配电箱标识</item>
+                <item>线缆标识</item>
+                <item>开关面板标识</item>
+                <item>接口标识</item>
+            </domain>
+            <domain name="电信行业">
+                <item>线缆标识</item>
+                <item>机房设备标识</item>
+                <item>端口标识</item>
+            </domain>
+            <domain name="实验室/医疗">
+                <item>实验室试剂标识</item>
+                <item>实验室药品分类</item>
+                <item>医疗、实验仪器标识</item>
+            </domain>
+            <domain name="宾馆/饭店">
+                <item>宾馆物品标识</item>
+                <item>厨房管理</item>
+                <item>员工胸牌</item>
+                <item>客房开关插头</item>
+            </domain>
+            <domain name="仓储物流">
+                <item>货架标识</item>
+                <item>物流周转箱标识</item>
+                <item>货品分类</item>
+            </domain>
+            <domain name="工厂">
+                <item>操作指示标识</item>
+                <item>指示标识</item>
+                <item>零部件管理</item>
+                <item>安全警示</item>
+                <item>设备铭牌</item>
+            </domain>
+            <domain name="教育">
+                <item>固定资产管理</item>
+                <item>个人物品标识</item>
+                <item>图书档案分类</item>
+                <item>开关指示</item>
+            </domain>
+        </type>
+        <type id="size" name="技术规格">
+            <size id="hardware" name="硬件">
+                <item name="尺寸标注(W×D×H)">114×295×97</item>
+                <item name="机器类型">手持式热转移标签打印机</item>
+                <item name="重量">950g</item>
+                <item name="键盘">按字母顺序排列</item>
+                <item name="液晶屏">2.6英寸 4行*16字符</item>
+                <item name="剪切">手动剪切</item>
+                <item name="电源">DC IN 20V，锂电池</item>
+                <item name="接口">USB</item>
+                <item name="打印高度">48mm</item>
+                <item name="耗材宽度(mm)">6-50mm</item>
+                <item name="耗材种类">模切标签，连续标签，线缆标签，旗帜标签，连续标签</item>
+                <item name="打印方式">热转印</item>
+                <item name="打印精度">203dpi</item>
+                <item name="打印速度">10mm/s</item>
+                <item name="随机附件">用户手册、合格证、保修卡、V-TYPE标签带1卷、V-TYPE碳带1卷、USB数据线、CD-ROM 光盘(VariMark Label Editer 标签编辑软件)、锂电池1枚、电源适配器、手提箱</item>
+            </size>
+            <size id="features" name="特性">
+                <item name="字体尺寸">4-72磅，18种</item>
+                <item name="序号打印">0-9，A-Z 或 八进制0-7</item>
+                <item name="多份打印">1-250</item>
+                <item name="旋转打印">0度，90度，180度，270度</item>
+                <item name="打印行数">最多23行</item>
+                <item name="符号">常用符号</item>
+                <item name="文件存储">有</item>
+                <item name="打印预览">有</item>
+                <item name="条形码">内置4种条形码</item>
+                <item name="热缩套管耗材">支持</item>
+                <item name="模板">有</item>
+                <item name="余白调整">有</item>
+            </size>
+            <size id="software" name="随机软件">
+                <item name="随机软件">VariMark Label Editer 标签编辑软件</item>
+                <item name="操作系统">Microsoft ® Windows® XP / Windows Vista® / Windows® 7 / Windows® 8</item>
+            </size>
+        </type>
+    </content>
+</data>

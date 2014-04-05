@@ -68,5 +68,7 @@
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
 
-    overflow-y: scroll;
+    position: relative;
+    top: 0px;
+    left: 0px;
 }

@@ -338,7 +338,7 @@
         if (_items && _items.length) {
             var n = _items.length;
             for (var i = 0; i < n; i++) {
-                var _li = $('<li />').attr({"class": "wk-navitem"});
+                var _li = $('<li />').addClass("wk-navitem");
                 $(_li).width(_items[i].width + "px");
                 if (i === _current) {
                     $(_li).addClass("current");
@@ -368,10 +368,14 @@
                         var _subli = $('<li />');
                         var _suba = $('<a />');
                         var _subhref = _subitems[j].href;
-                        if (_subhref.lastIndexOf(".") < 0) {
-                            _subhref += "." + Weikan.config.defpostfix
-                        }
-                        $(_suba).text(_subitems[j].title).attr({"href": _subhref});
+//                        if (_subhref.lastIndexOf(".") < 0) {
+//                            _subhref += "." + Weikan.config.defpostfix
+//                        }
+                        $(_suba).text(_subitems[j].title)
+                            .addClass("wk-responer")
+                            .attr({
+                                "wk-uri" : _subhref
+                            });
 
                         $(_subli).on("mouseenter mouseleave", function(e) {
                             var _eventType = e.type;
@@ -394,16 +398,27 @@
                     if (_eventType === "mouseenter") {
                         if (!$(this).hasClass("current")) {
                             $(this).addClass("current");
-                            var _subitems = $(this).find(".wk-navbar-subitems");
-                            $(_subitems).css({
-                                "position"  : "absolute"
-                                , "top"     : "8px"
-                                , "left"    : this.width + "px"
-                                , "display" : "block"});
-
                         }
+                        var _subitems = $(this).find(".wk-navbar-subitems");
+                        $(_subitems).css({
+                            "position"  : "absolute"
+                            , "top"     : "8px"
+                            , "left"    : this.width + "px"
+                            , "display" : "block"});
+
                     } else if (_eventType === "mouseleave") {
-                        $(this).removeClass("current");
+                        var _this = this;
+                        var _index = -1;
+                        $(".wk-navitem").each(function(index, item) {
+                            if (_this == item) {
+                                _index = index;
+                                return false;
+                            }
+                        });
+                        if (_index != _current) {
+                            $(this).removeClass("current");
+                        }
+
                         var _subitems = $(this).find(".wk-navbar-subitems");
                         $(_subitems).css({
                             "position"  : "absolute"
@@ -666,7 +681,7 @@
                 $(_li).addClass("wk-tabbar-item-right");
             }
 
-            if (isNaN(_currentPosition) && _currentPosition >= 0 && i === _currentPosition) {
+            if (!isNaN(_currentPosition) && _currentPosition >= 0 && i === _currentPosition) {
                 _currentItem = _li;
 
                 $(_li).removeClass("wk-tabbar-item-normal");
@@ -712,7 +727,14 @@
                     _currentItem = this;
 
                     if (_callback) {
-                        _callback.apply(_self, [i, _currentItem]);
+                        var _index = 0;
+                        $(this).parent().children().each(function(index, item) {
+                            if (item === _currentItem) {
+                                _index = index;
+                                return false;
+                            }
+                        })
+                        _callback.apply(_self, [_index, _currentItem, _items[_index]]);
                     }
                 }
             });
@@ -866,7 +888,14 @@
                     _currentItem = this;
 
                     if (_callback) {
-                        _callback.apply(_self, [i, _currentItem]);
+                        var _index = 0;
+                        $(this).parent().children().each(function(index, item) {
+                            if (item === _currentItem) {
+                                _index = index;
+                                return false;
+                            }
+                        })
+                        _callback.apply(_self, [_index, _currentItem, _items[_index]]);
                     }
                 }
             });
@@ -1034,11 +1063,14 @@
                     marginTop : SHADOW_MARGIN_TOP + "px"
                 });
 
-            $(_coverTitle).append(_coverTitleIcon);
-            $(_coverTitle).append(_coverTitleText);
-            $(_coverTitle).append($('<div />').attr("class", "wk-clear"));
             $(_coverBody).append(_coverImage);
-            $(_coverBody).append(_coverTitle);
+            if (item.title) {
+                $(_coverTitle).append(_coverTitleIcon);
+                $(_coverTitle).append(_coverTitleText);
+                $(_coverTitle).append($('<div />').attr("class", "wk-clear"));
+                $(_coverBody).append(_coverTitle);
+            }
+
             $(_cover).append(_coverBody);
             $(_coverItem).append(_cover);
             $(_coverItem).append(_shadow);
@@ -1181,10 +1213,6 @@
                 });
             }
 
-            , current : function(c) {
-                _currentItem = c;
-            }
-
         }
 
         return _coverFlowObject;
@@ -1192,6 +1220,36 @@
 
 
 })(jQuery);
+
+Route = function() {
+    this.routeTable = {};
+}
+
+Route.prototype.match = function(path, handler) {
+    this.routeTable[path] = handler;
+}
+
+Route.prototype.route = function(path) {
+    var pos = -1;
+    var p = path;
+    var d = null;
+    if ((pos = path.indexOf("/")) > 0) {
+        p = path.substring(0, pos);
+        d = path.substring(pos + 1);
+    }
+    var handler = this.routeTable[p]
+    if (handler && typeof handler === 'function') {
+        handler.apply(this, [p, d]);
+    }
+}
+
+route = new Route();
+route.match("eleproduce", function(path, ds) {
+});
+
+route.match("mro", function(path, ds) {
+    window.location.href = "mrodetails.html?index=3&ds=" + ds + "&pagetitle=" + ds;
+});
 
 Weikan = function() {
 }
@@ -1234,6 +1292,8 @@ Weikan.config = {
     , title : "威侃"
     , height : Weikan.MATCH_PARENT
     , root : "."
+    , dataRootName : "data"
+    , resourceRootName : "res"
     , defpostfix : "html"
     , body : {
         minHeight : 550
@@ -1278,11 +1338,11 @@ Weikan.config = {
                 , href: "index"
                 , width: 60
                 , subitems: [
-                    {title:"GT 1000", href: "#"}
-                    , {title:"GT 2000", href: "#"}
-                    , {title:"GT 2010", href: "#"}
-                    , {title:"XT2000", href: "#"}
-                    , {title:"DT4200", href: "#"}
+                    {title:"GT 1000", href: "mro/gt1000"}
+                    , {title:"GT 2000", href: "mro/gt2000"}
+                    , {title:"GT 2010", href: "mro/gt2010"}
+                    , {title:"XT2000", href: "mro/xt2000"}
+                    , {title:"DT4200", href: "mro/dt4200"}
                 ]
             }
         ]
@@ -1372,18 +1432,47 @@ Weikan.prototype.height = function() {
 }
 
 Weikan.prototype.run = function() {
+    var _self = this;
     var title = Weikan.config.title;
     var url = window.location.href;
+    var dataCallback = null;
     var querystr = $.query(url);
+    var titled = false;
     if (arguments && arguments.length) {
         var arg = arguments[0];
-        if (arg.title) {
-            title = arg.title;
+        if (typeof arg === "object") {
+            if (arg.title) {
+                title = arg.title;
+                titled = true;
+            }
+            if (arg.dataHandler && typeof arg.dataHandler === "function") {
+                dataCallback = arg.dataHandler;
+            }
+        } else if (typeof arguments[0] === "function") {
+            dataCallback = arguments[0];
         }
-    } else {
+
+    }
+
+    if (!titled) {
         if (querystr["pagetitle"]) {
             title = decodeURI(querystr["pagetitle"]);
         }
+    }
+
+    if (querystr["ds"] && dataCallback) {
+        var _dataRoot = Weikan.config.dataRootName;
+        $.ajax({
+            url:_dataRoot + "/" + querystr["ds"] + ".xml"
+            , type:"GET"
+            , dataType:"xml"
+            , success:function(data) {
+                dataCallback.apply(_self, [data]);
+            }
+            , error:function() {
+                dataCallback.apply(_self, [{error:-1}])
+            }
+        })
     }
     document.title = title;
 
@@ -1516,9 +1605,9 @@ Weikan.prototype.run = function() {
         window.location.href = item.navitem.href + "." + Weikan.config.defpostfix;
     }
     if (_currentIndex >= 0) {
-        $(_navbarItems).navigationbar(Weikan.config.navbar.items, _navItemCallback);
-    } else {
         $(_navbarItems).navigationbar(Weikan.config.navbar.items, _currentIndex, _navItemCallback);
+    } else {
+        $(_navbarItems).navigationbar(Weikan.config.navbar.items, _navItemCallback);
     }
 
     $("#wk-navbar").append(_navbarItems);
@@ -1537,18 +1626,41 @@ Weikan.prototype.run = function() {
     });
 
     $("div[wk-widget='window']").click(function(e) {
+        if ($(this).attr("wk-uri")) {
+            var pos = -1;
+            var p = $(this).attr("wk-uri");
+            var d = null;
+            if ((pos = path.indexOf("/")) > 0) {
+                p = path.substring(0, pos);
+                d = path.substring(pos + 1);
+            }
+            var arg = {};
+            if (p) {
+                arg.path = p;
+            }
+            if (d) {
+                arg.datasource = d;
+            }
 
+            $.detialwindow(arg).show();
+
+        }
     });
 
-    $(".wk-responer").on("mouseenter mouseleave", function(e) {
+    $(".wk-responer").on("mouseenter mouseleave click", function(e) {
         if (e.type === "mouseenter") {
             $(this).css({
                 cursor : "pointer"
             });
-        } else {
+        } else if (e.type === "mouseleave") {
             $(this).css({
                 cursor : "auto"
             });
+        } else if (e.type === "click") {
+            if ($(this).attr("wk-uri")) {
+                route.route($(this).attr("wk-uri"));
+            }
+            e.cancelBubble();
         }
     });
 
