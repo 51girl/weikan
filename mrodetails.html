@@ -182,17 +182,23 @@
                                                                 var _cellWidth = parseInt(_wrapperWidth / 3);
                                                                 var _cellHeight = 25;
 
+                                                                var _outLine = 0;
                                                                 $(sizeItem).children().each(function(sizeItemIndex, sizeSubItem) {
-                                                                    var _row = parseInt(sizeItemIndex / 6);
-                                                                    var _col = parseInt(sizeItemIndex % 6);
+                                                                    var _row = parseInt((sizeItemIndex + _outLine) / 7);
+                                                                    var _col = parseInt((sizeItemIndex + _outLine) % 7);
+
+                                                                    if ($(sizeSubItem).attr("line")) {
+                                                                        _outLine += parseInt($(sizeSubItem).attr("line")) - 1;
+                                                                    }
 
                                                                     var _cell = $('<p />').css({
                                                                         position:"absolute"
                                                                         , top:(_col * _cellHeight) + "px"
                                                                         , left:(_row * _cellWidth) + "px"
                                                                         , lineHeight:"25px"
-                                                                        , width : _cellWidth + "px"
+                                                                        , width : (_cellWidth - 5) + "px"
                                                                         , height: _cellHeight + "px"
+                                                                        , marginRight:"5px"
                                                                     });
 
                                                                     if ($(sizeSubItem).attr("name")) {

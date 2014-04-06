@@ -9,6 +9,7 @@ $(window).load(function(e) {
         {
             title           : "高品质标签"
             , coverImage    : "produce_1.png"
+            , href          : "electron/electron_0"
         }, {
             title           :"防水透气膜"
             , coverImage    : "produce_2.png"
@@ -62,6 +63,7 @@ $(window).load(function(e) {
         , height    :"102px"
         , width     :((172 + 4 + 20) * 4)+ "px"
         , marginTop :"10px"
+        , marginLeft:"100px"
     });
 
     var _demoItems = [
@@ -118,9 +120,18 @@ $(window).load(function(e) {
             , paddingTop    : "6px"
             , paddingLeft   : "20px"
             , fontWeight    : "none"
+            , lineHeight    : "12px"
         }).text(_demoItems[i].title);
 
-        $(_item).append(_itemImage).append(_itemTitle);
+        var _itemIcon = $('<div />')
+            .addClass("bottom-title-icon")
+            .css({
+                position    : "absolute"
+                ,top        : (98 - 22 + 11) + "px"
+                , left      : "10px"
+            });
+
+        $(_item).append(_itemImage).append(_itemTitle).append(_itemIcon);
         $(_right).append(_item);
     };
 

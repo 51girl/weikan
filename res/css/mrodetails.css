@@ -38,7 +38,8 @@
 
 .produce-desc-content {
     color: #ffffff;
-    margin-top: 10px;
+    font-size: 1.4em;
+    margin-top: 2px;
     line-height: 140%;
     margin-left: 10px;
     margin-right: 10px;
@@ -46,8 +47,8 @@
 
 #produce-more {
     position: absolute;
-    bottom: 0px;
-    right: 10px;
+    bottom: 6px;
+    right: 4px;
     color: #0197d2;
 }
 
@@ -57,7 +58,7 @@
 
 #produce-details {
     width: 828px;
-    height: 190px;
+    height: 220px;
     padding: 6px 3px 6px 6px;
     background: #ffffff;
     border: 4px #ffffff solid;

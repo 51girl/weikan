@@ -94,11 +94,11 @@
                 <item name="接口">USB</item>
                 <item name="打印高度">48mm</item>
                 <item name="耗材宽度(mm)">6-50mm</item>
-                <item name="耗材种类">模切标签，连续标签，线缆标签，旗帜标签，连续标签</item>
+                <item name="耗材种类" line="2">模切标签，连续标签，线缆标签，旗帜标签，连续标签</item>
                 <item name="打印方式">热转印</item>
                 <item name="打印精度">203dpi</item>
                 <item name="打印速度">10mm/s</item>
-                <item name="随机附件">用户手册、合格证、保修卡、V-TYPE标签带1卷、V-TYPE碳带1卷、USB数据线、CD-ROM 光盘(VariMark Label Editer 标签编辑软件)、锂电池1枚、电源适配器、手提箱</item>
+                <item name="随机附件" line="4">用户手册、合格证、保修卡、V-TYPE标签带1卷、V-TYPE碳带1卷、USB数据线、CD-ROM 光盘(VariMark Label Editer 标签编辑软件)、锂电池1枚、电源适配器、手提箱</item>
             </size>
             <size id="features" name="特性">
                 <item name="字体尺寸">4-72磅，18种</item>

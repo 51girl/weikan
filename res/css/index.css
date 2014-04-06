@@ -26,5 +26,12 @@
 
 .bottom-text {
     color: white;
+    font-size: 1.3em;
+}
+
+.bottom-title-icon {
+    width: 5px;
+    height: 5px;
+    background: #0699dc;
 }
 

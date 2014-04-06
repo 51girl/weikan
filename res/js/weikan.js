@@ -110,13 +110,17 @@
         var _window = $('<div />').addClass("wk-window");
         $(_window).css({
             width: WINDOW_WIDTH + "px"
-            , height    : WINDOW_HEIGHT + "px"
-            , position  : "absolute"
-            , top       : _wh + "px"
-            , left      : _topAndLeft.left + "px"
-            , background: "white"
-            , display   : "none"
-            , zIndex    : "9999"
+            , height                : WINDOW_HEIGHT + "px"
+            , position              : "absolute"
+            , top                   : _wh + "px"
+            , left                  : _topAndLeft.left + "px"
+            , background            : "white"
+            , display               : "none"
+            , zIndex                : "9999"
+            , border                : "none"
+            , mozBorderRadius       : "3px"
+            , webkitBorderRadius    : "3px"
+            , borderRadius          : "3px"
         });
 
         var _windowContent = $('<div />').addClass("wk-window-content");
@@ -446,9 +450,6 @@
                         var _subli = $('<li />');
                         var _suba = $('<a />');
                         var _subhref = _subitems[j].href;
-//                        if (_subhref.lastIndexOf(".") < 0) {
-//                            _subhref += "." + Weikan.config.defpostfix
-//                        }
                         $(_suba).text(_subitems[j].title)
                             .addClass("wk-responer")
                             .attr({
@@ -603,6 +604,7 @@
      */
     $.fn.searchbar = function() {
         var _self = this;
+        var _currentValue = null;
         var BUTTON_SIZE = {
             width   : 21
             , height: 21
@@ -625,8 +627,11 @@
             }).css({
                 border  : "none"
                 , float : "left"
+                , fontStyle:"italic"
+                , color : "#b3b3b3"
             }).width(INPUT_SIZE.width)
-            .height(INPUT_SIZE.height - 2);
+            .height(INPUT_SIZE.height - 2)
+            .val("产品搜索");
 
         var _button = $("<img />")
             .attr({
@@ -646,7 +651,7 @@
             }
         });
 
-        $(_input).on("focus blur", function(e) {
+        $(_input).on("focus blur propertychange input", function(e) {
             if (e.type === "focus") {   //用户激活搜索栏时
                 $(_input).on("keydown", function(e) {
                     if (e.keyCode === 13) { //回车键
@@ -655,8 +660,34 @@
                         }
                     }
                 });
+
+                var _v = $(this).val();
+                if (_v === "产品搜索") {
+                    $(this).val("").css({
+                        fontStyle:"normal"
+                        , color : "#000000"
+                    });
+                }
+
             } else if (e.type === "blur") { //搜索栏焦点消失
                 $(_input).off("keydown");
+                if (!_currentValue || _currentValue === "") {
+                    $(this).val("产品搜索")
+                        .css({
+                            fontStyle:"italic"
+                        , color : "#b3b3b3"
+                    });
+                }
+            } else if (e.type === "propertychange" || e.type === "input") {
+                _currentValue = $(this).val();
+                if (!_currentValue || _currentValue === "") {
+                    $(this).val("产品搜索")
+                        .css({
+                            fontStyle:"italic"
+                        , color : "#b3b3b3"
+                    });
+                    _currentValue = null;
+                }
             }
         });
     }
@@ -1059,6 +1090,30 @@
                     , left      : ((_s.width + _marginHorizonal * 2) * position + _marginHorizonal) + "px"
                 });
 
+            if (item.href) {
+                $(_coverItem)
+                    .addClass("wk-responer")
+                    .attr({
+                        "wk-uri" : item.href
+                    })
+            }
+
+            $(_coverItem).on("mouseenter mouseleave click", function(e) {
+                if (e.type === "mouseenter") {
+                    $(this).css({
+                        cursor : "pointer"
+                    });
+                } else if (e.type === "mouseleave") {
+                    $(this).css({
+                        cursor : "auto"
+                    });
+                } else if (e.type === "click") {
+                    if ($(this).attr("wk-uri")) {
+                        route.route($(this).attr("wk-uri"));
+                    }
+                }
+            });
+
             var _cover = $("<div />")
                 .css({
                     height                  : _coverHeight + "px"
@@ -1130,6 +1185,8 @@
                     , marginLeft: "10px"
                     , fontSize  : "2.2em"
                     , color     : "white"
+                    , lineHeight: "22px"
+                    , fontWeight: "normal"
                 })
                 .text(item.title);
 
@@ -1553,6 +1610,11 @@ Weikan.prototype.run = function() {
     document.title = title;
 
     var wkMain = $("#wk-main");
+
+    var wkBackground = $('<div />').attr({
+        id : "wk-body-background"
+    });
+    $(wkBackground).insertBefore(wkMain);
     var wkBody = $(wkMain).find("#wk-body");
     var wkHeader = $("<div />").addClass("wk-header")
         .height(Weikan.config.headerbar.height);
@@ -1570,15 +1632,35 @@ Weikan.prototype.run = function() {
         window.location.href = Weikan.config.root + "/" + Weikan.config.logo.href + "." + Weikan.config.defpostfix
     });
 
+    var right = $('<div />')
+        .css({
+            float           :"right"
+            , marginRight   :"50px"
+            , marginTop     :"30px"
+        });
+
+    var cn = $('<span />')
+        .text("中文")
+        .css({
+            float:"right"
+            , marginRight:"50px"
+        }).addClass("wk-responer");
+
+    var en = $('<span />')
+        .text("ENGLISH")
+        .css({
+            float:"right"
+        }).addClass("wk-responer");
+
     var searchbar = $("<div />")
         .attr({"wk-widget" : "searchbar"})
         .css({
-            float           :"right"
-            , marginTop     :"60px"
-            , marginRight   :"50px"
+            marginTop:"10px"
         });
 
-    $(wkHeader).append(imgLogo).append(searchbar);
+    $(right).append(en).append(cn).append($('<div />').addClass("wk-clear")).append(searchbar);
+
+    $(wkHeader).append(imgLogo).append(right);
     $(wkMain).prepend(wkHeader);
     var wkNavbar = $('<div />').attr({id:"wk-navbar"});
     $(wkNavbar).insertBefore(wkBody);

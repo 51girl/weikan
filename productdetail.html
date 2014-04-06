@@ -91,8 +91,8 @@
                         }).addClass("wk-responer");
                 if (index % 2 == 0) {
                     $(this.item).css({
-                        marginRight:"35px"
-                        , marginLeft:"5px"
+                        marginRight:"41px"
+                        , marginLeft:"6px"
                     })
                 }
                 $(this.item).append(this.item_bg).append(this.item_content);
@@ -127,8 +127,8 @@
                     }
                 })
                 .run(function(data) {
-                    $("#main-wrapper").width(845).css({
-                        marginLeft:parseInt(($("#wk-body").width() - 845) / 2) + "px"
+                    $("#main-wrapper").width(851).css({
+                        marginLeft:parseInt(($("#wk-body").width() - 851) / 2) + "px"
 
                     });
 
@@ -146,9 +146,15 @@
                             } else if (item.tagName === "content") {
 
                                 $(item).children().each(function(contentItemIndex, contentItem) {
-                                    if (contentItem.tagName === "description") {
+                                    if (contentItem.tagName === "summary") {
+                                        _data.data_main_content_summary = $(contentItem).text();
+                                        $("#main_content_dec").text(_data.data_main_content_summary);
+                                    } else if (contentItem.tagName === "description") {
                                         _data.data_main_content_dec = $(contentItem).text();
-                                        $("#main_content_dec").text(_data.data_main_content_dec);
+                                        if (!_data.data_main_content_summary) {
+                                            _data.data_main_content_summary = _data.data_main_content_dec;
+                                        }
+                                        $("#main_content_dec").text(_data.data_main_content_summary);
                                     } else if (contentItem.tagName === "list") {
                                         $(contentItem).children().each(function(listItemIndex, listItem) {
                                             if (listItem.tagName === "item") {
@@ -239,7 +245,7 @@
                 <img id="main_img" src="res/drawables/product_detail_main_image.png"/>
                 <img id="main_content_bg" src="res/drawables/product_detail_main_content_bg.png"/>
                 <div id="main_content">
-                    <h1 id="main_content_title"></h1><br/>
+                    <h1 id="main_content_title"></h1>
                     <p id="main_content_dec"></p>
                 </div>
             </div>
