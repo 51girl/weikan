@@ -9,31 +9,245 @@
     <script type="text/javascript" src="res/js/jquery.js"></script>
     <script type="text/javascript" src="res/js/weikan.js"></script>
     <script type="text/javascript">
-        var app = new Weikan();
         $(window).load(function(e) {
-            app.css("weikan", "productdetail").height(Weikan.WRAP_CONTENT).run();
+
+            $(window).resize(function(e) {
+                var _wrapperWidth = $("#main-wrapper").width();
+                var _bodyWidth = $("#wk-body").width();
+                $("#main-wrapper").css({
+                    marginLeft:parseInt((_bodyWidth - _wrapperWidth) / 2) + "px"
+                })
+            })
+
+            var Item = function(index){
+                this.index = index;
+                this.item_content_title = $("<h2/>");
+                this.item_content_divide = $("<img />")
+                        .attr("src", "res/drawables/product_detail_item_divider.jpg")
+                        .css({
+                            "margin-top": 7+"px",
+                            "margin-bottom": 7+"px",
+                            "margin-left": 2+"px"
+                        });
+                this.item_content_dec = $("<p/>")
+                        .css({
+                            "width" : 130+"px",
+                            "height" : 90+"px"
+                            , textOverflow : "ellipsis"
+                            , overflow : "hidden"
+                        });
+                this.item_content_more = $("<img/>")
+                        .attr("src", "res/drawables/product_detail_item_more.png")
+                        .css({
+                            "float" : "right"
+                        });
+                this.item_content_right = $("<div/>")
+                        .css({
+                            "float" : "left",
+                            "width" : 150+"px",
+                            "height" : 143+"px",
+                            "margin-left" : 20+"px",
+                            "padding-top" : 10+"px"
+                        });
+                $(this.item_content_right)
+                        .append(this.item_content_title)
+                        .append(this.item_content_divide)
+                        .append(this.item_content_dec)
+                        .append(this.item_content_more);
+                this.item_content_img = $("<img/>")
+                        .css({
+                            "float" : "left"
+                        });
+                this.item_content = $("<div/>")
+                        .css({
+                            "position" : "absolute",
+                            "top" : 0+"px",
+                            "left" : 0+"px",
+                            "width" : 402+"px",
+                            "padding" : 10+"px"
+                        });
+                $(this.item_content)
+                        .append(this.item_content_img)
+                        .append(this.item_content_right);
+                this.item_bg = $("<img/>")
+                        .attr("src", "res/drawables/product_detail_item_bg.png")
+                        .css({
+                            "position" : "absolute",
+                            "top" : 0+"px",
+                            "left" : 0+"px"
+                        });
+                this.item = $("<div/>")
+                        .css({
+                            "position" : "relative",
+                            "top" : 0+"px",
+                            "left" : 0+"px",
+                            "width" : 402+"px",
+                            "height" : 171+"px",
+                            "float" : "left"
+                        })
+                        .attr({
+                            "wk-widget" : "window"
+                            , "wk-window-token" : index
+                        }).addClass("wk-responer");
+                if (index % 2 == 0) {
+                    $(this.item).css({
+                        marginRight:"35px"
+                        , marginLeft:"5px"
+                    })
+                }
+                $(this.item).append(this.item_bg).append(this.item_content);
+            }
+
+            var _data = {
+                data_items : []
+            }
+            weikan.css("weikan", "productdetail")
+                .height(Weikan.WRAP_CONTENT)
+                .onPrepareShowWindow(function(token, windowObject, template) {
+                    var _index = parseInt(token);
+                    var _itemData = _data.data_items[_index];
+
+                    windowObject.setImage(_itemData.data_item_content_img_big);
+                    windowObject.setTitle(_itemData.data_item_content_title);
+                    if (_itemData.types) {
+                        if (_itemData.types.length === 1) {
+                            var _itemType = _itemData.types[0];
+                            if (_itemType.parts && _itemType.parts.length) {
+                                var _parts = _itemType.parts;
+                                var _pn = _itemType.parts.length;
+                                for (var i = 0; i < _pn; i++) {
+                                    if (_parts[i].type === "paragraph") {
+                                        windowObject.addParagraph(_parts[i].paragraph);
+                                    } else if (_parts[i].type === "list") {
+                                        windowObject.addList(_parts[i].list);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                })
+                .run(function(data) {
+                    $("#main-wrapper").width(845).css({
+                        marginLeft:parseInt(($("#wk-body").width() - 845) / 2) + "px"
+
+                    });
+
+                    var root = $(data).find("data");
+                    if (root) {
+                        $(root).children().each(function(index, item) {
+                            var _dataPath = Weikan.config.root + "/" + Weikan.config.dataRootName + "/";
+                            if (item.tagName === "title") {
+                                _data.data_main_content_title = $(item).text();
+                                var main_content_title = $("#main_content_title").text(_data.data_main_content_title);
+                                $("#titlebar").titlebar().title(_data.data_main_content_title);
+                            } else if (item.tagName === "cover") {
+                                _data.data_main_img = _dataPath + $(item).text();
+                                $("#main_img").attr({src : _data.data_main_img});
+                            } else if (item.tagName === "content") {
+
+                                $(item).children().each(function(contentItemIndex, contentItem) {
+                                    if (contentItem.tagName === "description") {
+                                        _data.data_main_content_dec = $(contentItem).text();
+                                        $("#main_content_dec").text(_data.data_main_content_dec);
+                                    } else if (contentItem.tagName === "list") {
+                                        $(contentItem).children().each(function(listItemIndex, listItem) {
+                                            if (listItem.tagName === "item") {
+                                                var _dataItem = {};
+
+                                                var _itemTitleNode = $(listItem).find("title");
+                                                var _itemCoverNode = $(listItem).find("cover");
+                                                var _itemImageNode = $(listItem).find("image");
+                                                var _itemDescNode = $(listItem).find("description");
+                                                _dataItem.data_item_content_title = $(_itemTitleNode).text();
+                                                _dataItem.data_item_content_img = _dataPath + $(_itemCoverNode).text();
+                                                _dataItem.data_item_content_img_big = _dataPath + $(_itemImageNode).text();
+                                                _dataItem.data_item_content_dec = $(_itemDescNode).text();
+
+                                                var _itemContentNode = $(listItem).find("content");
+
+                                                $(_itemContentNode).children().each(function(typeItemIndex, typeItem) {
+                                                    if (typeItem.tagName === 'type') {
+                                                        if (!_dataItem.types) {
+                                                            _dataItem.types = [];
+                                                        }
+
+                                                        var _type = {};
+                                                        _type.id = $(typeItem).attr("id");
+                                                        _type.name = $(typeItem).attr("name");
+                                                        _type.parts = [];
+
+                                                        $(typeItem).children().each(function(partItemIndex, partItem) {
+
+                                                            var _part = {};
+                                                            _part.type = $(partItem).attr("type");
+                                                            if (_part.type === "paragraph") {
+                                                                _part.paragraph = $(partItem).text();
+                                                            } else if (_part.type === "list") {
+                                                                _part.list = [];
+
+                                                                $(partItem).children().each(function(partListItemIndex, partListItem) {
+                                                                    _part.list.push($(partListItem).text());
+                                                                })
+                                                            }
+
+                                                            _type.parts.push(_part);
+                                                        });
+
+                                                        _dataItem.types.push(_type);
+                                                    }
+                                                })
+
+                                                _data.data_items.push(_dataItem);
+                                            }
+                                        });
+
+                                        var produce_detail = $("#produce_detail");
+                                        var row;
+                                        for(var i = 0; i < _data.data_items.length; i++) {
+                                            var data_item = _data.data_items[i];
+                                            if(i % 2 == 0) {
+                                                row = $("<div/>")
+                                                        .css({
+                                                            "height" : 171+"px",
+                                                            "margin-bottom" : 10+"px"
+                                                        });
+                                                $(produce_detail).append(row);
+                                            }
+                                            var item = new Item(i);
+                                            item.item_content_title.text(data_item.data_item_content_title);
+                                            item.item_content_img.attr({src : data_item.data_item_content_img});
+                                            item.item_content_dec.text(data_item.data_item_content_dec);
+                                            $(row).append(item.item);
+                                        }
+                                    }
+                                });
+
+                            }
+                        })
+                    }
+
+                });
         });
     </script>
 </head>
 <body>
 <div id="wk-main">
     <div id="wk-body">
-        <div id="main">
-            <img id="main_bg" src="res/drawables/product_detail_main_bg.png"/>
-            <img id="main_img" src="res/drawables/product_detail_main_image.png"/>
-            <img id="main_content_bg" src="res/drawables/product_detail_main_content_bg.png"/>
-            <div id="main_content">
-                <h1 id="main_content_title">高品质标签</h1><br/>
-                <p id="main_content_dec">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                    内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+        <div id="main-wrapper">
+            <div id="main">
+                <img id="main_bg" src="res/drawables/product_detail_main_bg.png"/>
+                <img id="main_img" src="res/drawables/product_detail_main_image.png"/>
+                <img id="main_content_bg" src="res/drawables/product_detail_main_content_bg.png"/>
+                <div id="main_content">
+                    <h1 id="main_content_title"></h1><br/>
+                    <p id="main_content_dec"></p>
+                </div>
             </div>
-        </div>
-        <div id="titlebar" wk-widget="titlebar" title="高品质标签" wk-width="match_parent"></div>
-        <div id="produce_detail">
+            <div id="titlebar" wk-widget="titlebar" title="高品质标签" wk-width="match_parent"></div>
+            <div id="produce_detail">
+            </div>
         </div>
     </div>
 </div>
 </body>
-<script type="text/javascript" src="res/js/productdetail.js"></script>
 </html>

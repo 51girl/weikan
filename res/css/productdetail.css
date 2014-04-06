@@ -31,7 +31,7 @@
 }
 
 #titlebar {
-    margin-top: 25px;
+    margin-top: 15px;
     margin-bottom: 10px;
 }
 
@@ -71,6 +71,8 @@
 .item_content_dec {
     width: 130px;
     height: 90px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .item_content_more {
     float: right;

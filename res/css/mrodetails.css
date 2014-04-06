@@ -24,7 +24,7 @@
     width: 838px;
     height: 78px;
     position: absolute;
-    top: 154px;
+    top: 155px;
     left: 0px;
     background: url("../drawables/wk_title_bg.png") repeat;
 }
@@ -47,7 +47,7 @@
 #produce-more {
     position: absolute;
     bottom: 0px;
-    right: 0px;
+    right: 10px;
     color: #0197d2;
 }
 
@@ -71,4 +71,22 @@
     position: relative;
     top: 0px;
     left: 0px;
+}
+
+#produce-vista {
+    height: 158px;
+    float: left;
+    margin-top: 60px;
+}
+
+.controller-button {
+    margin-top: 172px;
+}
+
+#prev-button {
+    float: right;
+}
+
+#next-button {
+    float: left;
 }

@@ -125,7 +125,7 @@
                 <col>12mm</col>
                 <col>14mm</col>
             </row>
-            <row backgroundcolor="white" textcolor="black">
+            <row backgroundcolor="white" textcolor="#565656">
                 <col type="first">聚乙烯450</col>
                 <col>透明</col>
                 <col>黑</col>
@@ -135,7 +135,7 @@
                 <col>12XTK</col>
                 <col>14XTK</col>
             </row>
-            <row backgroundcolor="white" textcolor="red">
+            <row backgroundcolor="white" textcolor="#fa3805">
                 <col type="first"></col>
                 <col>透明</col>
                 <col>红</col>
@@ -145,7 +145,7 @@
                 <col>12XTR</col>
                 <col>14XTR</col>
             </row>
-            <row backgroundcolor="white" textcolor="blue">
+            <row backgroundcolor="white" textcolor="#0a9ce9">
                 <col type="first"></col>
                 <col>透明</col>
                 <col>蓝</col>
@@ -155,7 +155,7 @@
                 <col>12XTB</col>
                 <col>14XTB</col>
             </row>
-            <row backgroundcolor="white" textcolor="black">
+            <row backgroundcolor="white" textcolor="#565656">
                 <col type="first"></col>
                 <col>透明</col>
                 <col>白</col>
@@ -165,7 +165,7 @@
                 <col>12XTW</col>
                 <col>14XTW</col>
             </row>
-            <row backgroundcolor="white" textcolor="black">
+            <row backgroundcolor="white" textcolor="#565656">
                 <col type="first"></col>
                 <col>白色</col>
                 <col>黑</col>
@@ -175,7 +175,7 @@
                 <col>12XWK</col>
                 <col>14XWK</col>
             </row>
-            <row backgroundcolor="white" textcolor="red">
+            <row backgroundcolor="white" textcolor="#fa3805">
                 <col type="first"></col>
                 <col>白色</col>
                 <col>红</col>
@@ -185,7 +185,7 @@
                 <col>12XWR</col>
                 <col>14XWR</col>
             </row>
-            <row backgroundcolor="white" textcolor="blue">
+            <row backgroundcolor="white" textcolor="#0a9ce9">
                 <col type="first"></col>
                 <col>白色</col>
                 <col>蓝</col>
@@ -195,7 +195,7 @@
                 <col>12XWB</col>
                 <col>14XWB</col>
             </row>
-            <row backgroundcolor="black" textcolor="white">
+            <row backgroundcolor="#565656" textcolor="white">
                 <col type="first"></col>
                 <col>黑色</col>
                 <col>白</col>
@@ -205,7 +205,7 @@
                 <col>12XKW</col>
                 <col>14XKW</col>
             </row>
-            <row backgroundcolor="yellow" textcolor="black">
+            <row backgroundcolor="#e2b814" textcolor="#565656">
                 <col type="first"></col>
                 <col>黄色</col>
                 <col>黑</col>
@@ -215,7 +215,7 @@
                 <col>12XYK</col>
                 <col>14XYK</col>
             </row>
-            <row backgroundcolor="red" textcolor="black">
+            <row backgroundcolor="#fa3805" textcolor="#565656">
                 <col type="first"></col>
                 <col>红色</col>
                 <col>黑</col>
@@ -225,7 +225,7 @@
                 <col>12XRK</col>
                 <col>14XRK</col>
             </row>
-            <row backgroundcolor="red" textcolor="white">
+            <row backgroundcolor="#fa3805" textcolor="white">
                 <col type="first"></col>
                 <col>红色</col>
                 <col>白</col>
@@ -235,7 +235,7 @@
                 <col>12XRW</col>
                 <col>14XRW</col>
             </row>
-            <row backgroundcolor="blue" textcolor="black">
+            <row backgroundcolor="#0a9ce9" textcolor="#565656">
                 <col type="first"></col>
                 <col>蓝色</col>
                 <col>黑</col>
@@ -245,7 +245,7 @@
                 <col>12XBK</col>
                 <col>14XBK</col>
             </row>
-            <row backgroundcolor="blue" textcolor="white">
+            <row backgroundcolor="#0a9ce9" textcolor="white">
                 <col type="first"></col>
                 <col>蓝色</col>
                 <col>白</col>
@@ -255,7 +255,7 @@
                 <col>12XBW</col>
                 <col>14XBW</col>
             </row>
-            <row backgroundcolor="green" textcolor="black">
+            <row backgroundcolor="#8bc964" textcolor="#565656">
                 <col type="first"></col>
                 <col>绿色</col>
                 <col>黑</col>
@@ -265,7 +265,7 @@
                 <col>12XGK</col>
                 <col>14XGK</col>
             </row>
-            <row backgroundcolor="green" textcolor="white">
+            <row backgroundcolor="#8bc964" textcolor="white">
                 <col type="first"></col>
                 <col>绿色</col>
                 <col>白</col>
@@ -275,7 +275,7 @@
                 <col>12XGW</col>
                 <col>14XGW</col>
             </row>
-            <row backgroundcolor="orange" textcolor="black">
+            <row backgroundcolor="orange" textcolor="#565656">
                 <col type="first"></col>
                 <col>橙色</col>
                 <col>黑</col>
@@ -295,7 +295,7 @@
                 <col>12XOW</col>
                 <col>14XOW</col>
             </row>
-            <row backgroundcolor="yellow" textcolor="black">
+            <row backgroundcolor="#e2b814" textcolor="#565656">
                 <col type="first">覆膜聚酯</col>
                 <col>黄色</col>
                 <col>黑</col>
@@ -305,7 +305,7 @@
                 <col>12MYK</col>
                 <col>14MYK</col>
             </row>
-            <row backgroundcolor="red" textcolor="black">
+            <row backgroundcolor="#fa3805" textcolor="#565656">
                 <col type="first"></col>
                 <col>红色</col>
                 <col>黑</col>
@@ -315,7 +315,7 @@
                 <col>12MRK</col>
                 <col>14MRK</col>
             </row>
-            <row backgroundcolor="red" textcolor="white">
+            <row backgroundcolor="#fa3805" textcolor="white">
                 <col type="first"></col>
                 <col>红色</col>
                 <col>白</col>
@@ -325,7 +325,7 @@
                 <col>12MRW</col>
                 <col>14MRW</col>
             </row>
-            <row backgroundcolor="blue" textcolor="black">
+            <row backgroundcolor="#0a9ce9" textcolor="#565656">
                 <col type="first"></col>
                 <col>蓝色</col>
                 <col>黑</col>
@@ -335,7 +335,7 @@
                 <col>12MBK</col>
                 <col>14MBK</col>
             </row>
-            <row backgroundcolor="blue" textcolor="white">
+            <row backgroundcolor="#0a9ce9" textcolor="white">
                 <col type="first"></col>
                 <col>蓝色</col>
                 <col>白</col>
@@ -345,7 +345,7 @@
                 <col>12MBW</col>
                 <col>14MBW</col>
             </row>
-            <row backgroundcolor="green" textcolor="black">
+            <row backgroundcolor="#8bc964" textcolor="#565656">
                 <col type="first"></col>
                 <col>绿色</col>
                 <col>黑</col>
@@ -355,7 +355,7 @@
                 <col>12MGK</col>
                 <col>14MGK</col>
             </row>
-            <row backgroundcolor="green" textcolor="white">
+            <row backgroundcolor="#8bc964" textcolor="white">
                 <col type="first"></col>
                 <col>绿色</col>
                 <col>白</col>
@@ -365,7 +365,7 @@
                 <col>12MGW</col>
                 <col>14MGW</col>
             </row>
-            <row backgroundcolor="orange" textcolor="black">
+            <row backgroundcolor="orange" textcolor="#565656">
                 <col type="first"></col>
                 <col>橙色</col>
                 <col>黑</col>
@@ -385,7 +385,7 @@
                 <col>12MOW</col>
                 <col>14MOW</col>
             </row>
-            <row backgroundcolor="white" textcolor="black">
+            <row backgroundcolor="white" textcolor="#565656">
                 <col type="first">聚酯MZ0063</col>
                 <col>透明</col>
                 <col>黑</col>
@@ -395,7 +395,7 @@
                 <col>12ZTK</col>
                 <col>14ZTK</col>
             </row>
-            <row backgroundcolor="white" textcolor="black">
+            <row backgroundcolor="white" textcolor="#565656">
                 <col type="first">聚酯72825</col>
                 <col>白色</col>
                 <col>黑</col>
@@ -405,7 +405,7 @@
                 <col>12ZWK</col>
                 <col>14ZWK</col>
             </row>
-            <row backgroundcolor="white" textcolor="black">
+            <row backgroundcolor="white" textcolor="#565656">
                 <col type="first"></col>
                 <col>银色</col>
                 <col>黑</col>
@@ -415,7 +415,7 @@
                 <col>12ZSK</col>
                 <col>14ZSK</col>
             </row>
-            <row backgroundcolor="white" textcolor="black">
+            <row backgroundcolor="white" textcolor="#565656">
                 <col type="first">纸质AZ422</col>
                 <col>银色</col>
                 <col>黑</col>
@@ -425,7 +425,7 @@
                 <col>12PWK</col>
                 <col>14PWK</col>
             </row>
-            <row backgroundcolor="white" textcolor="black">
+            <row backgroundcolor="white" textcolor="#565656">
                 <col type="first">尼龙布NT156</col>
                 <col>白色</col>
                 <col>黑</col>
@@ -445,7 +445,7 @@
                 <col></col>
                 <col></col>
             </row>
-            <row backgroundcolor="white" textcolor="black">
+            <row backgroundcolor="white" textcolor="#565656">
                 <col type="first"></col>
                 <col>底色</col>
                 <col>文字色</col>
@@ -455,7 +455,7 @@
                 <col></col>
                 <col></col>
             </row>
-            <row backgroundcolor="white" textcolor="black">
+            <row backgroundcolor="white" textcolor="#565656">
                 <col type="first">热缩套管</col>
                 <col>白色</col>
                 <col>黑</col>
@@ -465,7 +465,7 @@
                 <col></col>
                 <col></col>
             </row>
-            <row backgroundcolor="yellow" textcolor="black">
+            <row backgroundcolor="#e2b814" textcolor="#565656">
                 <col type="first"></col>
                 <col>黄色</col>
                 <col>黑</col>

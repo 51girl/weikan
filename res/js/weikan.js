@@ -62,14 +62,17 @@
      * @param data 在窗口中显示的数据对象
      */
     $.detialwindow = function(data) {
+        var _self = this;
         var _data = data;
+        var _token;
         var _templateName;
+        var _onLoadCallback;
         var _placeholder = $('<div />').addClass("wk-window-placeholder");
-        var _wkBody = $("#wk-main").find("#wk-body");
+        var _wkBody = $("#wk-main").find(".wk-header");
         $(_placeholder).insertBefore(_wkBody);
 
-        var WINDOW_WIDTH = 640;
-        var WINDOW_HEIGHT = 580;
+        var WINDOW_WIDTH = 860;
+        var WINDOW_HEIGHT = 700;
 
         var _ww = $(window).width();
         var _wh = $(window).height();
@@ -95,7 +98,7 @@
             }
 
             return {
-                top     : _top
+                top     : _top + $(window).scrollTop()
                 , left  : _left
             };
         };
@@ -113,6 +116,7 @@
             , left      : _topAndLeft.left + "px"
             , background: "white"
             , display   : "none"
+            , zIndex    : "9999"
         });
 
         var _windowContent = $('<div />').addClass("wk-window-content");
@@ -153,19 +157,22 @@
             width       : _ww + "px"
             , height    : _wh + "px"
             , position  : "absolute"
-            , top       : "0px"
+            , top       : $(window).scrollTop() + "px"
             , left      : "0px"
             , display   : "none"
+            , zIndex    : "9998"
         });
         $(_placeholder).append(_mask);
         $(_placeholder).append(_window);
 
         var _windowObject = {
+
+            _template : null
             /**
              * 更新窗口的位置
              * 一般用在调整浏览看大小的时候
              */
-            update : function() {
+            , update : function() {
 
                 var _newWw = $(window).width();
                 var _newWh = $(window).height();
@@ -180,14 +187,16 @@
                     , top       : _newTopAndLeft.top + "px"
                     , left      : _newTopAndLeft.left + "px"
                     , background: "white"
+                    , zIndex    : "9999"
                 });
 
                 $(_placeholder).find(".wk-window-mask").css({
                     width       : _newWw + "px"
                     , height    : _newWh + "px"
                     , position  : "absolute"
-                    , top       : "0px"
+                    , top       : $(window).scrollTop() + "px"
                     , left      : "0px"
+                    , zIndex    : "9998"
                 });
             }
 
@@ -213,6 +222,67 @@
                 });
             }
 
+            , onLoad : function(callback) {
+                if (typeof callback === "function") {
+                    _onLoadCallback = callback;
+                }
+
+                return this;
+            }
+
+            , token : function() {
+                if (arguments && arguments.length) {
+                    _token = arguments[0];
+                    return this;
+                } else {
+                    return _token;
+                }
+            }
+
+            , setImage : function(imagePath) {
+                if (_template) {
+                    $(_template).find("#wk-window-header-image").attr({
+                        "src" : imagePath
+                    })
+                }
+                return this;
+            }
+
+            , setTitle : function(title) {
+                if (_template) {
+                    $(_template).find("#wk-window-title-text").text(title);
+                }
+                return this;
+            }
+
+            , addParagraph : function(p) {
+                if (_template) {
+                    $(_template).find("#wk-window-content")
+                        .append(
+                            $('<p />').addClass("wk-window-content-paragraph")
+                                .text(p));
+                }
+                return this;
+            }
+
+            , addList : function(list) {
+                if (_template) {
+                    if ($.isArray(list) && list.length) {
+                        var _n = list.length;
+                        var _ul = $('<ul />').addClass("wk-window-content-list");
+                        for (var i = 0; i < _n; i++) {
+                            var _li = $('<li />');
+                            $(_li).append($('<span />').addClass("wk-list-order").text((i + 1) + "、"));
+                            $(_li).append($('<span />').text(list[i]));
+                            $(_ul).append(_li);
+                        }
+
+                        $(_template).find("#wk-window-content").append(_ul);
+                    }
+                }
+                return;
+            }
+
             /**
              * 显示窗口
              */
@@ -235,24 +305,28 @@
                         $.ajax({
                             url: _templateName
                             , success:function(d) {
-                                var template = $(d);
+                                _template = $(d);
 
-                                for (var k in _data) {
-                                    var content = _data[k];
-                                    var attr = {
-                                        content: content
-                                        , name: "wk-" + k
-                                    };
-                                    if (typeof(content) === "object") {
-                                        content = JSON.stringify(_data[k]);
-                                        attr.content = content;
-                                        attr.isJson = true;
-                                    }
-                                    var metaTitle = $("<meta />").attr(attr);
-                                    $(template).append(metaTitle);
+//                                for (var k in _data) {
+//                                    var content = _data[k];
+//                                    var attr = {
+//                                        content: content
+//                                        , name: "wk-" + k
+//                                    };
+//                                    if (typeof(content) === "object") {
+//                                        content = JSON.stringify(_data[k]);
+//                                        attr.content = content;
+//                                        attr.isJson = true;
+//                                    }
+//                                    var metaTitle = $("<meta />").attr(attr);
+//                                    $(template).append(metaTitle);
+//                                }
+
+                                if (_onLoadCallback) {
+                                    _onLoadCallback.apply(_self, [_token, _windowObject, _template]);
                                 }
 
-                                $(_windowContent).find(".wk-window-wrapper").html(template);
+                                $(_windowContent).find(".wk-window-wrapper").html(_template);
 
                             }
                         })
@@ -270,6 +344,10 @@
         })
 
         $(window).resize(function(e) {
+            _windowObject.update();
+        });
+
+        $(window).scroll(function(e) {
             _windowObject.update();
         });
 
@@ -1244,7 +1322,8 @@ Route.prototype.route = function(path) {
 }
 
 route = new Route();
-route.match("eleproduce", function(path, ds) {
+route.match("electron", function(path, ds) {
+    window.location.href = "productdetail.html?index=2&ds=" + ds + "&pagetitle=" + ds;
 });
 
 route.match("mro", function(path, ds) {
@@ -1252,6 +1331,8 @@ route.match("mro", function(path, ds) {
 });
 
 Weikan = function() {
+
+    this.onPrepareShowWindowHandler = null;
 }
 
 Weikan.MATCH_PARENT = -1;
@@ -1322,9 +1403,9 @@ Weikan.config = {
                 , href: "index"
                 , width: 88
                 , subitems: [
-                    {title:"高品质标签", href: "#"}
+                    {title:"高品质标签", href: "electron/electron_0"}
                     , {title:"丝网印刷标签", href: "#"}
-                    , {title:"精密膜切加工", href: "#"}
+                    , {title:"精密膜切加工", href: "electron/electron_2"}
                     , {title:"打印系统及软件", href: "#"}
                     , {title:"包装设计", href: "#"}
                     , {title:"VMI包装解决方案", href: "#"}
@@ -1431,6 +1512,15 @@ Weikan.prototype.height = function() {
 
 }
 
+Weikan.prototype.onPrepareShowWindow = function() {
+    var args = arguments;
+    if (args && args.length && typeof args[0] === "function") {
+        this.onPrepareShowWindowHandler = args[0];
+    }
+
+    return this;
+}
+
 Weikan.prototype.run = function() {
     var _self = this;
     var title = Weikan.config.title;
@@ -1460,20 +1550,6 @@ Weikan.prototype.run = function() {
         }
     }
 
-    if (querystr["ds"] && dataCallback) {
-        var _dataRoot = Weikan.config.dataRootName;
-        $.ajax({
-            url:_dataRoot + "/" + querystr["ds"] + ".xml"
-            , type:"GET"
-            , dataType:"xml"
-            , success:function(data) {
-                dataCallback.apply(_self, [data]);
-            }
-            , error:function() {
-                dataCallback.apply(_self, [{error:-1}])
-            }
-        })
-    }
     document.title = title;
 
     var wkMain = $("#wk-main");
@@ -1591,9 +1667,77 @@ Weikan.prototype.run = function() {
         }
 
         $("#wk-main").width(navbarWidth + bodyWidth);
+
+        $("div[wk-widget='window']").on("click", function(e) {
+            if ($(this).attr("wk-uri")) {
+                var pos = -1;
+                var p = $(this).attr("wk-uri");
+                var d = null;
+                if ((pos = path.indexOf("/")) > 0) {
+                    p = path.substring(0, pos);
+                    d = path.substring(pos + 1);
+                }
+                var arg = {};
+                if (p) {
+                    arg.path = p;
+                }
+                if (d) {
+                    arg.datasource = d;
+                }
+
+                $.detialwindow(arg)
+                    .token($(this).attr("wk-window-token"))
+                    .templateName("wk.window.template.html")
+                    .show();
+
+            }
+
+            $.detialwindow(null)
+                .token($(this).attr("wk-window-token"))
+                .templateName("wk.window.template.html")
+                .onLoad(_self.onPrepareShowWindowHandler)
+                .show();
+        });
+
+        $(".wk-responer").on("mouseenter mouseleave click", function(e) {
+            if (e.type === "mouseenter") {
+                $(this).css({
+                    cursor : "pointer"
+                });
+            } else if (e.type === "mouseleave") {
+                $(this).css({
+                    cursor : "auto"
+                });
+            } else if (e.type === "click") {
+                if ($(this).attr("wk-uri")) {
+                    route.route($(this).attr("wk-uri"));
+                }
+            }
+        });
     }
 
-    initRects();
+    if (querystr["ds"] && dataCallback) {
+        var _dataRoot = Weikan.config.dataRootName;
+        $.ajax({
+            url:_dataRoot + "/" + querystr["ds"] + ".xml"
+            , type:"GET"
+            , dataType:"xml"
+            , success:function(data) {
+                dataCallback.apply(_self, [data]);
+                var body = $("#wk-body");
+                $(body).height(body[0].scrollHeight);
+                _bodyRawHeight = $(body).height();
+                initRects();
+            }
+            , error:function() {
+                dataCallback.apply(_self, [{error:-1}]);
+                var body = $("#wk-body");
+                $(body).height(body[0].scrollHeight);
+                _bodyRawHeight = $(body).height();
+                initRects();
+            }
+        })
+    }
 
     var _navbarItems = $('<div />').attr("id", "wk-navbar-items");
     var _currentIndex = -1;
@@ -1612,6 +1756,8 @@ Weikan.prototype.run = function() {
 
     $("#wk-navbar").append(_navbarItems);
 
+    initRects();
+
     var _footerItems = $('<div />').attr("id", "wk-footer-items");
     var _copyright = $('<div />').attr("id", "wk-footer-copyright");
     $(_copyright).text("版权所有:" + Weikan.config.organization);
@@ -1623,45 +1769,6 @@ Weikan.prototype.run = function() {
 
     $("div[wk-widget='searchbar']").searchbar(function(key) {
 
-    });
-
-    $("div[wk-widget='window']").click(function(e) {
-        if ($(this).attr("wk-uri")) {
-            var pos = -1;
-            var p = $(this).attr("wk-uri");
-            var d = null;
-            if ((pos = path.indexOf("/")) > 0) {
-                p = path.substring(0, pos);
-                d = path.substring(pos + 1);
-            }
-            var arg = {};
-            if (p) {
-                arg.path = p;
-            }
-            if (d) {
-                arg.datasource = d;
-            }
-
-            $.detialwindow(arg).show();
-
-        }
-    });
-
-    $(".wk-responer").on("mouseenter mouseleave click", function(e) {
-        if (e.type === "mouseenter") {
-            $(this).css({
-                cursor : "pointer"
-            });
-        } else if (e.type === "mouseleave") {
-            $(this).css({
-                cursor : "auto"
-            });
-        } else if (e.type === "click") {
-            if ($(this).attr("wk-uri")) {
-                route.route($(this).attr("wk-uri"));
-            }
-            e.cancelBubble();
-        }
     });
 
     $(window).resize(function(e) {

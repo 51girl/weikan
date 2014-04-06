@@ -13,6 +13,19 @@
             weikan.css("weikan", "mrodetails")
                     .height(Weikan.MATCH_PARENT)
                     .run(function(data) {
+
+                        $("#content-wrapper").width(845).css({
+                            marginLeft:parseInt(($("#wk-body").width() - 845) / 2) + "px"
+
+                        });
+
+                        $(window).resize(function(e) {
+                            $("#content-wrapper").width(845).css({
+                                marginLeft:parseInt(($("#wk-body").width() - 845) / 2) + "px"
+
+                            });
+                        });
+
                         if (typeof data === "object" && data.error && data.error === -1) {
 
                         } else {
@@ -341,6 +354,10 @@
                                         $(_titleBarMid).append(_titleTab);
 
 
+                                    } else if (item.tagName === "title") {
+                                        $("#produce-title").titlebar().title($(item).text());
+
+                                        document.title = Weikan.config.title + "-" + $(item).text();
                                     }
                                 })
                             }
@@ -361,18 +378,13 @@
                     <h3 class="produce-desc-title">标签打印机</h3>
                     <p class="produce-desc-content">威侃拥有完整的威码（VanMark）品牌手持式标签打印机和台式专业标识打印机系统产线。将帮助您更高效、快捷、专业地设计和制作应用于安全设施、数据通信、实验室、PCB印刷电路板、元器件、通用标识、电力、电信、物流、军队、医疗和教育等行业...</p>
                 </div>
-                <span id="produce-more">more &gt;</span>
+                <span class="wk-responer" id="produce-more">more &gt;</span>
             </div>
-            <div id="produce-title" wk-widget="titlebar" wk-width="match_parent" title="GT1000"></div>
+            <div id="produce-title" wk-widget="titlebar" wk-width="match_parent"></div>
             <div id="produce-details">
             </div>
         </div>
     </div>
 </div>
 </body>
-<script type="text/javascript">
-    $(window).ready(function(e) {
-        $("#content-wrapper").width(845);
-    });
-</script>
 </html>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+    <title>精密模切加工</title>
+    <cover>product_detail_main_image.png</cover>
+    <content>
+        <description>
+            威侃是目前少数能提供整体模切解决方案的模切加工商之一。自2002年以来威侃至今已拥有7多年的精密模切经验。威侃对市场的开发和技术的创新使威侃更能满足客户日益增长的需求。目前，威侃的产品应用领域已经渗透到电信、硬盘、电子和医疗行业等。威侃为电子通信行业的知名企业提供各种各样的精密模切部件。我们为客户定制的模切加工产品包括粘胶部件、保护膜、垫圈、减震片、屏蔽绝缘片、防尘垫及导热材料等。威侃精密模切专业性包括多层部件、划线、打孔和选择黏贴的位置。我们的专业性还在于为您设计有效的制造流程，用最节省成本的方式制造您所需的部件。
+        </description>
+        <list>
+            <item>
+                <title>泡棉</title>
+                <cover>product_detail_item_image.png</cover>
+                <image>produce_details_demo_image.png</image>
+                <description>
+                    用于减震密封及填充，使用全系列的PE,PVC及PU等发泡材料，能够在不同的厚度，硬度下实现减震功能。有针对性的选择开孔及避孔的材料，更能实现密封功能。此类材料广泛的应用于LCD背垫，金属部件间连接，壳体密封等领域。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            用于减震密封及填充，使用全系列的PE,PVC及PU等发泡材料，能够在不同的厚度，硬度下实现减震功能。有针对性的选择开孔及避孔的材料，更能实现密封功能。此类材料广泛的应用于LCD背垫，金属部件间连接，壳体密封等领域。
+                        </part>
+                    </type>
+                </content>
+            </item>
+            <item>
+                <title>薄膜</title>
+                <cover>product_detail_item_image.png</cover>
+                <image>produce_details_demo_image.png</image>
+                <description>
+                    威侃可提供各种薄膜材料的模切加工,威侃拥有专业的材料知识和应用经验。广泛的国内外材料来源，稳定可靠的材料供应伙伴，可为电子装配行业提供可靠的服务。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            威侃可提供各种薄膜材料的模切加工,威侃拥有专业的材料知识和应用经验。广泛的国内外材料来源，稳定可靠的材料供应伙伴，可为电子装配行业提供可靠的服务。
+                        </part>
+                    </type>
+                </content>
+            </item>
+            <item>
+                <title>双面胶</title>
+                <cover>product_detail_item_image.png</cover>
+                <image>produce_details_demo_image.png</image>
+                <description>
+                    用于部件粘接，在生产装备过程中，因部件尺寸和材质的限制，可以使用双面胶粘接便捷的取代螺栓，焊接等连接方式。威侃提供不同性能的各种双面胶，提供不同的粘结性能，以适应各种界面材质和工作条件。装配方便，价格低廉。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            用于部件粘接，在生产装备过程中，因部件尺寸和材质的限制，可以使用双面胶粘接便捷的取代螺栓，焊接等连接方式。威侃提供不同性能的各种双面胶，提供不同的粘结性能，以适应各种界面材质和工作条件。装配方便，价格低廉。
+                        </part>
+                    </type>
+                </content>
+            </item>
+            <item>
+                <title>防尘罩</title>
+                <cover>product_detail_item_image.png</cover>
+                <image>produce_details_demo_image.png</image>
+                <description>
+                    使用专业的防尘材料，在实现透气功能的同时，能最大程度的防止灰尘及水的进入。广泛应用于耳机，话筒等部件上。各种低粘度及静电类型的保护膜，能够防止部件表面被划伤及粘染尘污使用于各种电子设备的窗口保护。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            使用专业的防尘材料，在实现透气功能的同时，能最大程度的防止灰尘及水的进入。广泛应用于耳机，话筒等部件上。各种低粘度及静电类型的保护膜，能够防止部件表面被划伤及粘染尘污使用于各种电子设备的窗口保护。
+                        </part>
+                    </type>
+                </content>
+            </item>
+            <item>
+                <title>丝网印刷标识</title>
+                <cover>product_detail_item_image.png</cover>
+                <image>produce_details_demo_image.png</image>
+                <description>
+                    丝网印刷标识具有防水、防尘、防油污、防腐蚀及有害气体、电性能稳定、耐候性能优异，具有色彩鲜艳、成本低寿命长、易安装等优点。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            丝网印刷标识具有防水、防尘、防油污、防腐蚀及有害气体、电性能稳定、耐候性能优异，具有色彩鲜艳、成本低寿命长、易安装等优点。
+                        </part>
+                    </type>
+                </content>
+            </item>
+        </list>
+    </content>
+</data>
