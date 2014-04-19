@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title></title>
+    <script type="text/javascript" src="res/js/jquery.js"></script>
+    <script type="text/javascript" src="res/js/weikan.js"></script>
+    <script type="text/javascript">
+        var app = new Weikan();
+        $(window).load(function(e) {
+            app.css("weikan", "index").height(Weikan.WRAP_CONTENT).run();
+        });
+    </script>
+</head>
+<body>
+<div id="wk-main">
+    <div id="wk-body">
+        <div id="demotabbar" wk-widget="tabbar" wk-width="400px"></div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    var _items = [
+        {title : "功能"}
+        , {title : "设计"}
+        , {title : "应用领域"}
+        , {title : "耗材"}
+    ];
+    $("#demotabbar").tabbar(_items);
+
+    var _items2 = [
+        {title : "硬件"}
+        , {title : "特性"}
+    ];
+
+    var _wkBody = $("#wk-body");
+    for (var i = 0; i < 50; i++) {
+        var _demo = $('<div />').attr({"wk-widget":"subtitlebar"});
+        $(_demo).subtitlebar(_items2, 0);
+        $(_wkBody).append(_demo);
+    }
+
+</script>
+</html>

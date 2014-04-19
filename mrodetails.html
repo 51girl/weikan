@@ -72,7 +72,55 @@
                                                 switch (_typeId) {
                                                     case 'function':
                                                     {
+                                                        var _functionItems = [];
+                                                        $(contentItem).children().each(function(fitemIndex, fitem) {
+                                                            _functionItems.push({coverImage:$(fitem).text().trim()});
+                                                        });
 
+                                                        var _wrapper = $('<div />').css({
+                                                            width : "808px"
+                                                        });
+                                                        var _leftArrow = $('<img />')
+                                                            .attr({
+                                                                src:"res/drawables/wk_arrow_left.png"
+                                                            })
+                                                            .addClass("wk-responer")
+                                                            .css({
+                                                                float:"left"
+                                                                , marginTop:"50px"
+                                                            });
+                                                        var _rightArrow = $('<img />')
+                                                                .attr({
+                                                                    src:"res/drawables/wk_arrow_right.png"
+                                                                })
+                                                                .addClass("wk-responer")
+                                                                .css({
+                                                                    float           : "right"
+                                                                    , marginTop     : "50px"
+                                                                });
+                                                        var _vista = $('<div />')
+                                                                .css({
+                                                                    width           : (808 - 29 * 2) + "px"
+                                                                    , height        : 163 + "px"
+                                                                    , float         : "left"
+                                                                    , marginTop     : "27px"
+                                                                });
+                                                        var _cf = $(_vista).coverflow(_functionItems, {
+                                                            itemwidth   : 213
+                                                            , itemheight: 163
+                                                            , shadow    : false
+                                                        });
+
+                                                        $(_leftArrow).on("click", function(e) {
+                                                            _cf.next();
+                                                        });
+                                                        $(_rightArrow).on("click", function(e) {
+                                                            _cf.prev();
+                                                        });
+                                                        $(_wrapper).append(_leftArrow).append(_rightArrow)
+                                                                .append(_vista)
+                                                                .append($('<div />').addClass("wk-clear"));
+                                                        $(_detailsItem).append(_wrapper);
                                                     }
                                                         break;
                                                     case 'design':
@@ -81,9 +129,16 @@
                                                             var _paragraph = $('<p />');
 
                                                             $(section).children().each(function(partIndex, part) {
-                                                                var _partText = $(part).text();
-                                                                $(_paragraph).append(_partText.replace(/\n/g, "<br />"))
-                                                                        .append($('<br />'));
+                                                                var _partText = $(part).text().trim();
+                                                                if ($(part).attr("type") && $(part).attr("type") === "img") {
+                                                                    var _imagePath = Weikan.config.dataRootName + "/" + _partText;
+                                                                    var _img = $("<img />").attr("src", _imagePath);
+                                                                    $(_paragraph).append($('<br />')).append(_img).append($('<br />')).append($('<br />'));
+                                                                } else {
+                                                                    $(_paragraph).append(_partText.replace(/\n/g, "<br />"))
+                                                                            .append($('<br />'));
+                                                                }
+
                                                             })
                                                             $(_detailsItem).append(_paragraph);
                                                         });

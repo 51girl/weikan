@@ -437,6 +437,10 @@
 
                 if (_items[i].subitems && _items[i].subitems.length) {
                     var _subul = $('<ul />').addClass("wk-navbar-subitems");
+                    var _offset = 0;
+                    if (_items[i].positionoffset) {
+                        _offset = _items[i].positionoffset;
+                    }
                     $(_subul).css({
                         "position"  : "absolute"
                         , "top"     : "8px"
@@ -448,7 +452,9 @@
 
                     for (var j = 0; j < _subLength; j++) {
                         var _subli = $('<li />');
-                        var _suba = $('<a />');
+                        var _suba = $('<a />').css({
+                            paddingLeft : _offset + "px"
+                        });
                         var _subhref = _subitems[j].href;
                         $(_suba).text(_subitems[j].title)
                             .addClass("wk-responer")
@@ -1023,26 +1029,44 @@
             return;
         }
 
+        var _self = this;
+        var _width = $(_self).width();
+        var _height = $(_self).height();
+
         var _items;
+        var _itemWidth = 278;
+        var _itemHeight = _height;
+        var _showShadow = true;
         if (_args.length > 0 && $.isArray(_args[0])) {
             _items = _args[0];
         }
 
         var _showCount = 3
 
+        var _animating = false;
+
         if (_items) {
             if (_args.length > 1 && (typeof(_args[1]) === "number")) {
                 _showCount = _args[1];
+            }
+            if (_args.length > 1 && (typeof(_args[1]) === "object")) {
+                var _configArg = _args[1];
+                if (_configArg.showcount) {
+                    _showCount = parseInt(_configArg.showcount);
+                }
+                if (_configArg.itemwidth) {
+                    _itemWidth = parseInt(_configArg.itemwidth);
+                }
+                if (_configArg.itemheight) {
+                    _itemHeight = parseInt(_configArg.itemheight);
+                }
+                _showShadow = _configArg.shadow;
             }
         }
 
         if (!_items.length || _showCount <= 0) {
             return;
         }
-
-        var _self = this;
-        var _width = $(_self).width();
-        var _height = $(_self).height();
 
         var _window = $("<div />")
             .css({
@@ -1057,8 +1081,7 @@
         $(_self).append(_window);
 
         var _count = _items.length;
-        var _itemWidth = 278;
-        var _itemHeight = _height;
+
         var _marginHorizonal = parseInt((_width - _itemWidth * 3) / 6);
 
         var createCoverWithItem = function(item, size, position) {
@@ -1069,8 +1092,8 @@
                 , "wk_item_title_icon_blue.png"
             ];
 
-            var SHADOW_WIDTH = 278;
-            var SHADOW_HEIGHT = 27;
+            var SHADOW_WIDTH = _itemWidth;
+            var SHADOW_HEIGHT = _showShadow ? 27 : 0;
             var SHADOW_MARGIN_TOP = 15;
 
             var COVER_PADDING = 5;
@@ -1208,7 +1231,10 @@
 
             $(_cover).append(_coverBody);
             $(_coverItem).append(_cover);
-            $(_coverItem).append(_shadow);
+            if (_showShadow) {
+                $(_coverItem).append(_shadow);
+            }
+
 
             return _coverItem;
         }
@@ -1235,6 +1261,12 @@
             }
 
             , prev : function() {
+                if (_animating) {
+                    return;
+                }
+
+                _animating = true;
+
                 _currentItem--;
                 if (_currentItem < 0) {
                     _currentItem = _count - 1;
@@ -1262,6 +1294,8 @@
                         , top       : "0px"
                         , left      : _marginHorizonal + "px"
                     });
+
+                    _animating = false;
                 });
 
                 $(_window).children().each(function(i, item) {
@@ -1292,11 +1326,17 @@
             }
 
             , next : function() {
+                if (_animating) {
+                    return;
+                }
+
+                _animating = true;
+
                 _currentItem++;
                 if (_currentItem >= _count) {
                     _currentItem = 0;
                 }
-                var _nextPos = (_currentItem + 2) % _showCount;
+                var _nextPos = (_currentItem + 2) % _count;
                 var _nextCoverItem = createCoverWithItem(_items[_nextPos], _itemSize, _nextPos - 1);
                 $(_nextCoverItem).css({
                     width       : _itemSize.width + "px"
@@ -1320,6 +1360,8 @@
                         , top       : "0px"
                         , left      : ((_itemSize.width + _marginHorizonal * 2) * (_showCount - 1) + _marginHorizonal) + "px"
                     });
+
+                    _animating = false;
                 });
 
                 $(_window).children().each(function(i, item) {
@@ -1450,15 +1492,23 @@ Weikan.config = {
                 , width: 54
             }
             , {
-                title: "防水雾气产品"
+                title: "MRO"
                 , href: "index"
-                , width: 108
-
+                , width: 60
+                , positionoffset : 80
+                , subitems: [
+                    {title:"GT 1000", href: "mro/gt1000"}
+                    , {title:"GT 2000", href: "mro/gt2000"}
+                    , {title:"GT 2010", href: "mro/gt2010"}
+                    , {title:"XT2000", href: "mro/xt2000"}
+                    , {title:"DT4200", href: "mro/dt4200"}
+                ]
             }
             , {
                 title: "电子制造"
                 , href: "index"
                 , width: 88
+                , positionoffset : 40
                 , subitems: [
                     {title:"高品质标签", href: "electron/electron_0"}
                     , {title:"丝网印刷标签", href: "#"}
@@ -1472,16 +1522,9 @@ Weikan.config = {
                 ]
             }
             , {
-                title: "MRO"
+                title: "防水透气产品"
                 , href: "index"
-                , width: 60
-                , subitems: [
-                    {title:"GT 1000", href: "mro/gt1000"}
-                    , {title:"GT 2000", href: "mro/gt2000"}
-                    , {title:"GT 2010", href: "mro/gt2010"}
-                    , {title:"XT2000", href: "mro/xt2000"}
-                    , {title:"DT4200", href: "mro/dt4200"}
-                ]
+                , width: 108
             }
         ]
     }

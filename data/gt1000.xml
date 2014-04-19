@@ -4,6 +4,27 @@
 	<cover>mro_header.png</cover>
 	<content>
 		<type id="function" name="功能">
+            <item>
+                gt1000/function_pic_0.png
+            </item>
+            <item>
+                gt1000/function_pic_1.png
+            </item>
+            <item>
+                gt1000/function_pic_2.png
+            </item>
+            <item>
+                gt1000/function_pic_3.png
+            </item>
+            <item>
+                gt1000/function_pic_4.png
+            </item>
+            <item>
+                gt1000/function_pic_5.png
+            </item>
+            <item>
+                gt1000/function_pic_6.png
+            </item>
 		</type>
 		<type id="design" name="设计">
             <section>
@@ -14,22 +35,40 @@
                 <part>
                     PC键盘布局，输入更加方便、人性化。
                 </part>
+                <part type="img">
+                    gt1000/design_pic_0.png
+                </part>
                 <part>
                     机身小巧，不占空间，桌面式的设计更是适合办公室的首选机型。
+                </part>
+                <part type="img">
+                    gt1000/design_pic_1.png
                 </part>
                 <part>
                     独特设计的提手，方便移动，携行，使应用更加灵活
                 </part>
-                <part>
-                    大尺寸的液晶屏，使文字输入及编辑更方便
-                    2行*6字符显示的大尺寸液晶屏使文字输入编辑简单方便，也能避免拼写错误。液晶屏不仅可以显示文档也能显示符号，可以制作带有符号的个性化标签。
+                <part type="img">
+                    gt1000/design_pic_2.png
                 </part>
                 <part>
                     大尺寸的液晶屏，使文字输入及编辑更方便
                     2行*6字符显示的大尺寸液晶屏使文字输入编辑简单方便，也能避免拼写错误。液晶屏不仅可以显示文档也能显示符号，可以制作带有符号的个性化标签。
+                </part>
+                <part type="img">
+                    gt1000/design_pic_3.png
+                </part>
+                <part>
+                    大尺寸的液晶屏，使文字输入及编辑更方便
+                    2行*6字符显示的大尺寸液晶屏使文字输入编辑简单方便，也能避免拼写错误。液晶屏不仅可以显示文档也能显示符号，可以制作带有符号的个性化标签。
+                </part>
+                <part type="img">
+                    gt1000/design_pic_4.png
                 </part>
                 <part>
                     内置17类适用于不同领域的符号
+                </part>
+                <part type="img">
+                    gt1000/design_pic_5.png
                 </part>
             </section>
 		</type>
