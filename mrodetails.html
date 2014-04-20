@@ -10,8 +10,27 @@
     <script type="text/javascript" src="res/js/weikan.js"></script>
     <script type="text/javascript">
         $(window).load(function(e) {
+            var _functionItems = [];
+
             weikan.css("weikan", "mrodetails")
                     .height(Weikan.MATCH_PARENT)
+                    .onPrepareShowWindow(function(token, windowObject, template) {
+                        var _index = parseInt(token);
+                        var _itemData = _functionItems[_index];
+                        if (_itemData.bigImage) {
+                            windowObject.setImage("");
+                            windowObject.setTitle("");
+
+                            windowObject.addImage(Weikan.config.root + "/" + Weikan.config.dataRootName + "/" + _itemData.bigImage);
+                        }
+
+                        if (!_itemData.bigImage) {
+                            return false;
+                        }
+
+                        return true;
+
+                    })
                     .run(function(data) {
 
                         $("#content-wrapper").width(845).css({
@@ -72,9 +91,14 @@
                                                 switch (_typeId) {
                                                     case 'function':
                                                     {
-                                                        var _functionItems = [];
+                                                        _functionItems = [];
                                                         $(contentItem).children().each(function(fitemIndex, fitem) {
-                                                            _functionItems.push({coverImage:$(fitem).text().trim()});
+                                                            var _functionItem = {};
+                                                            _functionItem.coverImage = $(fitem).find("cover").text().trim();
+                                                            if ($(fitem).find("image")) {
+                                                                _functionItem.bigImage = $(fitem).find("image").text().trim();
+                                                            }
+                                                            _functionItems.push(_functionItem);
                                                         });
 
                                                         var _wrapper = $('<div />').css({
@@ -106,16 +130,20 @@
                                                                     , marginTop     : "27px"
                                                                 });
                                                         var _cf = $(_vista).coverflow(_functionItems, {
-                                                            itemwidth   : 213
-                                                            , itemheight: 163
-                                                            , shadow    : false
+                                                            itemwidth               : 235
+                                                            , itemheight            : 170
+                                                            , shadow                : false
+                                                            , itemborderradiussize  : 2
+                                                            , itemimageradiussize   : 1
+                                                            , itembordercolor       : "#fff"
+                                                            , target                : "_window"
                                                         });
 
                                                         $(_leftArrow).on("click", function(e) {
-                                                            _cf.next();
+                                                            _cf.prev();
                                                         });
                                                         $(_rightArrow).on("click", function(e) {
-                                                            _cf.prev();
+                                                            _cf.next();
                                                         });
                                                         $(_wrapper).append(_leftArrow).append(_rightArrow)
                                                                 .append(_vista)
@@ -377,6 +405,7 @@
                                                     , position:"relative"
                                                     , top:"-4px"
                                                 });
+
                                         $(_titleTab).tabbar(_items, 0,
                                                 function(index, tagItem, dataItem) {
                                                     if ($(_currentItem).attr("typeid") !== dataItem.typeId) {

@@ -245,16 +245,36 @@
 
             , setImage : function(imagePath) {
                 if (_template) {
-                    $(_template).find("#wk-window-header-image").attr({
-                        "src" : imagePath
-                    })
+                    if (imagePath && imagePath.trim() !== "") {
+                        $(_template).find("#wk-window-header").css({
+                            display:""
+                        });
+                        $(_template).find("#wk-window-header-image").attr({
+                            "src" : imagePath
+                        })
+                    } else {
+                        $(_template).find("#wk-window-header").css({
+                            display:"none"
+                        });
+                    }
+
                 }
                 return this;
             }
 
             , setTitle : function(title) {
                 if (_template) {
-                    $(_template).find("#wk-window-title-text").text(title);
+                    if (title && title.trim() !== "") {
+                        $(_template).find("#wk-window-title").css({
+                            display:""
+                        });
+                        $(_template).find("#wk-window-title-text").text(title);
+                    } else {
+                        $(_template).find("#wk-window-title").css({
+                            display:"none"
+                        });
+                    }
+
                 }
                 return this;
             }
@@ -287,55 +307,55 @@
                 return;
             }
 
+            , addImage : function(imageSrc) {
+                if (_template) {
+                    if (imageSrc && imageSrc.trim() !== "") {
+                        var _wrapper = $('<div />').attr({
+                            align : "center"
+                        });
+                        var _image = $('<img />');
+                        $(_image).attr("src", imageSrc);
+                        $(_wrapper).append(_image);
+                        $(_template).find("#wk-window-content").append(_wrapper);
+                    }
+                }
+            }
+
             /**
              * 显示窗口
              */
             , show : function() {
-                $(_mask).fadeIn(500);
-                $(_window).animate({
-                    opacity: "show"
-                    , top: _topAndLeft.top + "px"
-                }, 500, function() {
-                    $(_window).css({
-                        width       : WINDOW_WIDTH + "px"
-                        , height    : WINDOW_HEIGHT + "px"
-                        , position  : "absolute"
-                        , top       : _topAndLeft.top + "px"
-                        , left      : _topAndLeft.left + "px"
-                        , background: "white"
-                    });
-
-                    if (_templateName) {
-                        $.ajax({
-                            url: _templateName
-                            , success:function(d) {
-                                _template = $(d);
-
-//                                for (var k in _data) {
-//                                    var content = _data[k];
-//                                    var attr = {
-//                                        content: content
-//                                        , name: "wk-" + k
-//                                    };
-//                                    if (typeof(content) === "object") {
-//                                        content = JSON.stringify(_data[k]);
-//                                        attr.content = content;
-//                                        attr.isJson = true;
-//                                    }
-//                                    var metaTitle = $("<meta />").attr(attr);
-//                                    $(template).append(metaTitle);
-//                                }
-
-                                if (_onLoadCallback) {
-                                    _onLoadCallback.apply(_self, [_token, _windowObject, _template]);
-                                }
-
+                if (_templateName) {
+                    $.ajax({
+                        url: _templateName
+                        , success:function(d) {
+                            _template = $(d);
+                            var _loadDataSuc = false;
+                            if (_onLoadCallback) {
+                                _loadDataSuc = _onLoadCallback.apply(_self, [_token, _windowObject, _template]);
+                            }
+                            if (_loadDataSuc) {
                                 $(_windowContent).find(".wk-window-wrapper").html(_template);
 
+                                $(_mask).fadeIn(500);
+                                $(_window).animate({
+                                    opacity: "show"
+                                    , top: _topAndLeft.top + "px"
+                                }, 500, function() {
+                                    $(_window).css({
+                                        width       : WINDOW_WIDTH + "px"
+                                        , height    : WINDOW_HEIGHT + "px"
+                                        , position  : "absolute"
+                                        , top       : _topAndLeft.top + "px"
+                                        , left      : _topAndLeft.left + "px"
+                                        , background: "white"
+                                    });
+                                });
                             }
-                        })
-                    }
-                });
+                        }
+                    })
+                }
+
             }
         }
 
@@ -1037,6 +1057,10 @@
         var _itemWidth = 278;
         var _itemHeight = _height;
         var _showShadow = true;
+        var _itemBackgroundColor = "#e3e4e6";
+        var _itemBorderRadiusSize = 5;
+        var _itemImageRadiusSize = 3;
+        var _target = "_page";
         if (_args.length > 0 && $.isArray(_args[0])) {
             _items = _args[0];
         }
@@ -1060,7 +1084,27 @@
                 if (_configArg.itemheight) {
                     _itemHeight = parseInt(_configArg.itemheight);
                 }
-                _showShadow = _configArg.shadow;
+
+                if (_configArg.shadow !== undefined) {
+                    _showShadow = _configArg.shadow;
+                }
+
+                if (_configArg.itemborderradiussize && !isNaN(parseInt(_configArg.itemborderradiussize))) {
+                    _itemBorderRadiusSize = parseInt(_configArg.itemborderradiussize);
+                }
+
+                if (_configArg.itemimageradiussize && !isNaN(parseInt(_configArg.itemimageradiussize))) {
+                    _itemImageRadiusSize = parseInt(_configArg.itemimageradiussize);
+                }
+
+                if (_configArg.itembordercolor) {
+                    _itemBackgroundColor = _configArg.itembordercolor;
+                }
+
+                if (_configArg.target) {
+                    _target = _configArg.target;
+                }
+
             }
         }
 
@@ -1113,12 +1157,19 @@
                     , left      : ((_s.width + _marginHorizonal * 2) * position + _marginHorizonal) + "px"
                 });
 
-            if (item.href) {
+            if (item.href && _target === "_page") {
                 $(_coverItem)
                     .addClass("wk-responer")
                     .attr({
                         "wk-uri" : item.href
                     })
+            }
+
+            if (_target === "_window") {
+                $(_coverItem).attr({
+                    "wk-widget" : "window"
+                    , "wk-window-token" : position
+                })
             }
 
             $(_coverItem).on("mouseenter mouseleave click", function(e) {
@@ -1137,16 +1188,24 @@
                 }
             });
 
+            var _coverCss = {
+                height                  : _coverHeight + "px"
+                , width                 : _coverWidth + "px"
+                , padding               : _itemBorderRadiusSize + "px"
+                , mozBorderRadius       : _itemBorderRadiusSize + "px"
+                , webkitBorderRadius    : _itemBorderRadiusSize + "px"
+                , borderRadius          : _itemBorderRadiusSize + "px"
+                , background            : _itemBackgroundColor
+            };
+
+            if (!_showShadow) {
+                _coverCss.webkitBoxShadow = "2px 2px 5px rgba(0, 0, 0, 0.2)";
+                _coverCss.mozBoxShadow = "2px 2px 5px rgba(0, 0, 0, 0.2)";
+                _coverCss.boxShadow = "2px 2px 5px rgba(0, 0, 0, 0.2)";
+            }
+
             var _cover = $("<div />")
-                .css({
-                    height                  : _coverHeight + "px"
-                    , width                 : _coverWidth + "px"
-                    , padding               : "5px"
-                    , mozBorderRadius       : "5px"
-                    , webkitBorderRadius    : "5px"
-                    , borderRadius          : "5px"
-                    , background            : "#e3e4e6"
-                });
+                .css(_coverCss);
 
             var _coverBody = $("<div />")
                 .css({
@@ -1166,9 +1225,9 @@
                     position: "absolute"
                     , top   : "0px"
                     , left  : "0px"
-                    , mozBorderRadius       : "3px"
-                    , webkitBorderRadius    : "3px"
-                    , borderRadius          : "3px"
+                    , mozBorderRadius       : _itemImageRadiusSize + "px"
+                    , webkitBorderRadius    : _itemImageRadiusSize + "px"
+                    , borderRadius          : _itemImageRadiusSize + "px"
                 });
 
             var TITLE_HEIGHT = 34;
@@ -1422,11 +1481,11 @@ Route.prototype.route = function(path) {
 
 route = new Route();
 route.match("electron", function(path, ds) {
-    window.location.href = "productdetail.html?index=2&ds=" + ds + "&pagetitle=" + ds;
+    window.location.href = "productdetail.html?index=1&ds=" + ds + "&pagetitle=" + ds;
 });
 
 route.match("mro", function(path, ds) {
-    window.location.href = "mrodetails.html?index=3&ds=" + ds + "&pagetitle=" + ds;
+    window.location.href = "mrodetails.html?index=2&ds=" + ds + "&pagetitle=" + ds;
 });
 
 Weikan = function() {
@@ -1492,19 +1551,6 @@ Weikan.config = {
                 , width: 54
             }
             , {
-                title: "MRO"
-                , href: "index"
-                , width: 60
-                , positionoffset : 80
-                , subitems: [
-                    {title:"GT 1000", href: "mro/gt1000"}
-                    , {title:"GT 2000", href: "mro/gt2000"}
-                    , {title:"GT 2010", href: "mro/gt2010"}
-                    , {title:"XT2000", href: "mro/xt2000"}
-                    , {title:"DT4200", href: "mro/dt4200"}
-                ]
-            }
-            , {
                 title: "电子制造"
                 , href: "index"
                 , width: 88
@@ -1519,6 +1565,19 @@ Weikan.config = {
                     , {title:"包装产品", href: "#"}
                     , {title:"内包装辅料", href: "#"}
                     , {title:"包装附件", href: "#"}
+                ]
+            }
+            , {
+                title: "MRO"
+                , href: "index"
+                , width: 60
+                , positionoffset : 80
+                , subitems: [
+                    {title:"GT 1000", href: "mro/gt1000"}
+                    , {title:"GT 2000", href: "mro/gt2000"}
+                    , {title:"GT 2010", href: "mro/gt2010"}
+                    , {title:"XT2000", href: "mro/xt2000"}
+                    , {title:"DT4200", href: "mro/dt4200"}
                 ]
             }
             , {

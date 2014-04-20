@@ -246,11 +246,11 @@ a:hover, a:active {
 }
 
 #wk-window-main {
+    height: 684px;
     padding: 8px;
 }
 
 #wk-window-header {
-    height: 400px;
 }
 
 #wk-window-header-image {

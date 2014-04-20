@@ -5,25 +5,27 @@
 	<content>
 		<type id="function" name="功能">
             <item>
-                gt1000/function_pic_0.png
+                <cover>gt1000/function_pic_0.png</cover>
+                <image>gt1000/function_pic_0_big.jpg</image>
             </item>
             <item>
-                gt1000/function_pic_1.png
+                <cover>gt1000/function_pic_1.png</cover>
+                <image>gt1000/function_pic_1_big.gif</image>
             </item>
             <item>
-                gt1000/function_pic_2.png
+                <cover>gt1000/function_pic_2.png</cover>
             </item>
             <item>
-                gt1000/function_pic_3.png
+                <cover>gt1000/function_pic_3.png</cover>
             </item>
             <item>
-                gt1000/function_pic_4.png
+                <cover>gt1000/function_pic_4.png</cover>
             </item>
             <item>
-                gt1000/function_pic_5.png
+                <cover>gt1000/function_pic_5.png</cover>
             </item>
             <item>
-                gt1000/function_pic_6.png
+                <cover>gt1000/function_pic_6.png</cover>
             </item>
 		</type>
 		<type id="design" name="设计">

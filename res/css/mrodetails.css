@@ -9,6 +9,9 @@
     position: relative;
     top: 0px;
     left: 0px;
+    -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 #produce-cover {
@@ -72,6 +75,10 @@
     position: relative;
     top: 0px;
     left: 0px;
+
+    -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 #produce-vista {
