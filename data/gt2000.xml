@@ -4,6 +4,45 @@
     <cover>mro_header.png</cover>
     <content>
         <type id="function" name="功能">
+            <item>
+                <cover>gt2000/function_pic_0.png</cover>
+                <image>gt2000/function_pic_0_big.png</image>
+            </item>
+            <item>
+                <cover>gt2000/function_pic_1.png</cover>
+                <image>gt2000/function_pic_1_big.png</image>
+            </item>
+            <item>
+                <cover>gt2000/function_pic_2.png</cover>
+                <image>gt2000/function_pic_2_big.png</image>
+            </item>
+            <item>
+                <cover>gt2000/function_pic_3.png</cover>
+            </item>
+            <item>
+                <cover>gt2000/function_pic_4.png</cover>
+            </item>
+            <item>
+                <cover>gt2000/function_pic_5.png</cover>
+            </item>
+            <item>
+                <cover>gt2000/function_pic_6.png</cover>
+            </item>
+            <item>
+                <cover>gt2000/function_pic_7.png</cover>
+            </item>
+            <item>
+                <cover>gt2000/function_pic_8.png</cover>
+            </item>
+            <item>
+                <cover>gt2000/function_pic_9.png</cover>
+            </item>
+            <item>
+                <cover>gt2000/function_pic_10.png</cover>
+            </item>
+            <item>
+                <cover>gt2000/function_pic_11.png</cover>
+            </item>
         </type>
         <type id="design" name="设计">
             <section>
@@ -14,8 +53,14 @@
                 <part>
                     实用手持式，可单手操作，不受使用场所的限制。更有准门配备的实用腰包（需另购），既便捷又给机器防震保护。
                 </part>
+                <part type="img">
+                    gt2000/design_pic_0.png
+                </part>
                 <part>
                     内置常用电力、电信符号更加适合专业领域应用。
+                </part>
+                <part type="img">
+                    gt2000/design_pic_1.png
                 </part>
                 <part>
                     大尺寸的液晶屏，使文字输入及编辑更方便
@@ -24,12 +69,21 @@
                 <part>
                     大尺寸的液晶屏，使效果御览更加直观。
                 </part>
+                <part type="img">
+                    gt2000/design_pic_2.png
+                </part>
                 <part>
                     人性化的切刀设计，使标签剪切更加方便。
+                </part>
+                <part type="img">
+                    gt2000/design_pic_3.png
                 </part>
                 <part>
                     条形码编辑更加便捷
                     内设8种条形码，只需选择您需要的条形码格式，输入字符，就可制作出符合要求的条形码，您可以如此灵活的运用条形码编辑功能，无论何时何地，都可根据需求制作出适合大多数读码器的条形码。
+                </part>
+                <part type="img">
+                    gt2000/design_pic_4.png
                 </part>
             </section>
         </type>
