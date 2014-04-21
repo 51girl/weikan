@@ -61,7 +61,7 @@
      * 详情窗口
      * @param data 在窗口中显示的数据对象
      */
-    $.detialwindow = function(data) {
+    $.detialwindow = function(data, width, height) {
         var _self = this;
         var _data = data;
         var _token;
@@ -71,8 +71,8 @@
         var _wkBody = $("#wk-main").find(".wk-header");
         $(_placeholder).insertBefore(_wkBody);
 
-        var WINDOW_WIDTH = 860;
-        var WINDOW_HEIGHT = 700;
+        var WINDOW_WIDTH = width || 860;
+        var WINDOW_HEIGHT = height || 700;
 
         var _ww = $(window).width();
         var _wh = $(window).height();
@@ -310,13 +310,33 @@
             , addImage : function(imageSrc) {
                 if (_template) {
                     if (imageSrc && imageSrc.trim() !== "") {
-                        var _wrapper = $('<div />').attr({
-                            align : "center"
-                        });
-                        var _image = $('<img />');
-                        $(_image).attr("src", imageSrc);
-                        $(_wrapper).append(_image);
-                        $(_template).find("#wk-window-content").append(_wrapper);
+                        var _img = new Image();
+                        _img.onload = function() {
+                            var _imgWidth = _img.width;
+                            var _imgHeight = _img.height;
+                            var r = _imgWidth / _imgHeight;
+                            if (_imgWidth > WINDOW_WIDTH - 8 * 2 - 20) {
+                                _imgWidth = WINDOW_WIDTH - 8 * 2 - 20;
+                                _imgHeight = _imgWidth / r;
+                            }
+                            if (_imgHeight > WINDOW_HEIGHT - 8 * 2) {
+                                _imgHeight = WINDOW_HEIGHT - 8 * 2;
+                                _imgWidth = r * _imgHeight;
+                            }
+                            var _wrapper = $('<div />').attr({
+                                align : "center"
+                            });
+                            var _image = $('<img />');
+                            $(_image).attr({
+                                src : imageSrc
+                                , width : _imgWidth
+                                , height: _imgHeight
+                            });
+                            $(_wrapper).append(_image);
+                            $(_template).find("#wk-window-content").append(_wrapper);
+                        };
+                        _img.src = imageSrc;
+
                     }
                 }
             }
@@ -1061,6 +1081,9 @@
         var _itemBorderRadiusSize = 5;
         var _itemImageRadiusSize = 3;
         var _target = "_page";
+
+        var _clickCallback = null;
+
         if (_args.length > 0 && $.isArray(_args[0])) {
             _items = _args[0];
         }
@@ -1105,6 +1128,10 @@
                     _target = _configArg.target;
                 }
 
+            }
+
+            if (_args.length > 1 && typeof _args[_args.length - 1] === "function") {
+                _clickCallback = _args[_args.length - 1];
             }
         }
 
@@ -1182,9 +1209,17 @@
                         cursor : "auto"
                     });
                 } else if (e.type === "click") {
-                    if ($(this).attr("wk-uri")) {
-                        route.route($(this).attr("wk-uri"));
+                    var handle = false;
+                    if (_clickCallback) {
+                        handle = _clickCallback.apply(_self, [this, position]);
                     }
+
+                    if (!handle) {
+                        if ($(this).attr("wk-uri")) {
+                            route.route($(this).attr("wk-uri"));
+                        }
+                    }
+
                 }
             });
 
@@ -1396,7 +1431,7 @@
                     _currentItem = 0;
                 }
                 var _nextPos = (_currentItem + 2) % _count;
-                var _nextCoverItem = createCoverWithItem(_items[_nextPos], _itemSize, _nextPos - 1);
+                var _nextCoverItem = createCoverWithItem(_items[_nextPos], _itemSize, _nextPos);
                 $(_nextCoverItem).css({
                     width       : _itemSize.width + "px"
                     , height    : _itemSize.height + "px"

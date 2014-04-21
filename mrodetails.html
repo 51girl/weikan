@@ -14,23 +14,6 @@
 
             weikan.css("weikan", "mrodetails")
                     .height(Weikan.MATCH_PARENT)
-                    .onPrepareShowWindow(function(token, windowObject, template) {
-                        var _index = parseInt(token);
-                        var _itemData = _functionItems[_index];
-                        if (_itemData.bigImage) {
-                            windowObject.setImage("");
-                            windowObject.setTitle("");
-
-                            windowObject.addImage(Weikan.config.root + "/" + Weikan.config.dataRootName + "/" + _itemData.bigImage);
-                        }
-
-                        if (!_itemData.bigImage) {
-                            return false;
-                        }
-
-                        return true;
-
-                    })
                     .run(function(data) {
 
                         $("#content-wrapper").width(845).css({
@@ -136,7 +119,37 @@
                                                             , itemborderradiussize  : 2
                                                             , itemimageradiussize   : 1
                                                             , itembordercolor       : "#fff"
-                                                            , target                : "_window"
+                                                        }, function(clickItem, position) {
+
+                                                            var _index = position;
+                                                            var _itemData = _functionItems[_index];
+                                                            if (_itemData.bigImage) {
+                                                                var bigImagePath = Weikan.config.root + "/"
+                                                                        + Weikan.config.dataRootName + "/" + _itemData.bigImage;
+                                                                var image = new Image();
+                                                                image.onload = function() {
+                                                                    $.detialwindow()
+                                                                            .token($(this).attr("wk-window-token"))
+                                                                            .templateName("wk.window.template.html")
+                                                                            .onLoad(function(token, windowObject, template) {
+                                                                                windowObject.setImage("");
+                                                                                windowObject.setTitle("");
+
+                                                                                windowObject.addImage(bigImagePath);
+
+                                                                                if (!_itemData.bigImage) {
+                                                                                    return false;
+                                                                                }
+
+                                                                                return true;
+                                                                            })
+                                                                            .show();
+                                                                }
+
+                                                                image.src = bigImagePath;
+
+                                                            }
+                                                            return true;
                                                         });
 
                                                         $(_leftArrow).on("click", function(e) {
