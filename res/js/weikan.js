@@ -1613,6 +1613,7 @@ Weikan.config = {
                     , {title:"GT 2010", href: "mro/gt2010"}
                     , {title:"XT2000", href: "mro/xt2000"}
                     , {title:"DT4200", href: "mro/dt4200"}
+                    , {title:"线缆标签", href: "mro/linetag"}
                 ]
             }
             , {

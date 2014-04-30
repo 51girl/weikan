@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+	<title>线缆标签</title>
+	<cover>mro_header.png</cover>
+	<content>
+		<type id="function" name="功能">
+            <item>
+                <cover>linetag/function_pic_0.jpg</cover>
+                <image>linetag/function_pic_0_big.jpg</image>
+            </item>
+            <item>
+                <cover>linetag/function_pic_1.jpg</cover>
+                <image>linetag/function_pic_1_big.jpg</image>
+            </item>
+            <item>
+                <cover>linetag/function_pic_2.jpg</cover>
+                <image>linetag/function_pic_2_big.jpg</image>
+            </item>
+            <item>
+                <cover>linetag/function_pic_3.jpg</cover>
+                <image>linetag/function_pic_3_big.jpg</image>
+            </item>
+            <item>
+                <cover>linetag/function_pic_4.jpg</cover>
+                <image>linetag/function_pic_4_big.jpg</image>
+            </item>
+            <item>
+                <cover>linetag/function_pic_5.jpg</cover>
+                <image>linetag/function_pic_5_big.jpg</image>
+            </item>
+            <item>
+                <cover>linetag/function_pic_6.jpg</cover>
+                <image>linetag/function_pic_6_big.jpg</image>
+            </item>
+            <item>
+                <cover>linetag/function_pic_7.jpg</cover>
+                <image>linetag/function_pic_7_big.jpg</image>
+            </item>
+            <item>
+                <cover>linetag/function_pic_8.jpg</cover>
+                <image>linetag/function_pic_8_big.jpg</image>
+            </item>
+            <item>
+                <cover>linetag/function_pic_9.jpg</cover>
+                <image>linetag/function_pic_9_big.jpg</image>
+            </item>
+            <item>
+                <cover>linetag/function_pic_10.jpg</cover>
+                <image>linetag/function_pic_10_big.jpg</image>
+            </item>
+            <item>
+                <cover>linetag/function_pic_11.jpg</cover>
+                <image>linetag/function_pic_11_big.jpg</image>
+            </item>
+		</type>
+	</content>
+</data>
