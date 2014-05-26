@@ -54,6 +54,8 @@ a:hover, a:active {
 
 #wk-navbar {
     float: left;
+    position: fixed;
+    display: block;
 }
 
 #wk-navbar-items {
@@ -77,7 +79,7 @@ a:hover, a:active {
     font-size: 1.4em;
     color: white;
     display: block;
-    padding-top: 7px;
+    padding-top: 3px;
     padding-left: 15px;
     height: 21px;
     position: absolute;
@@ -86,13 +88,10 @@ a:hover, a:active {
 }
 
 #wk-navbar-items li.current {
-    height: 38px;
     background: #0095d7;
 }
 
 #wk-navbar-items li.current a {
-    padding-top: 12px;
-    height: 26px;
 }
 
 #wk-navbar-items li .wk-navbar-subitems {
@@ -125,6 +124,12 @@ a:hover, a:active {
 #wk-footer {
     background: #8bc964;
     font-size: 1.2em;
+    display: block;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    z-index: 999;
 }
 
 #wk-footer-items {

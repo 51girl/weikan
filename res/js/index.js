@@ -65,7 +65,7 @@ $(window).load(function(e) {
         , marginTop :"10px"
         , marginLeft:"100px"
     });
-
+    var demo_ul = $("<ul/>").attr({id:"scroller"});
     var _demoItems = [
         {
             title : "电子标识制造专家"
@@ -86,6 +86,7 @@ $(window).load(function(e) {
     ];
 
     for (var i = 0; i < 4; i++) {
+        var _demo_li = $("<li/>");
         var _item = $('<div />').css({
             border          : "1px #fff solid"
             , padding       : "1px"
@@ -132,9 +133,15 @@ $(window).load(function(e) {
             });
 
         $(_item).append(_itemImage).append(_itemTitle).append(_itemIcon);
-        $(_right).append(_item);
+        $(_demo_li).append(_item);
+        $(demo_ul).append(_demo_li);
+        $(_right).append(demo_ul);
     };
 
     $(_wkBottomExpand).append(_left).append(_right);
-
+    $(function() { //on DOM ready
+        $("#scroller").simplyScroll({
+            autoMode: 'loop'
+        });
+    });
 });

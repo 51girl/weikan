@@ -1583,7 +1583,28 @@ Weikan.config = {
             {
                 title: "首页"
                 , href: "index"
-                , width: 54
+                , width: 108
+            }
+            , {
+                title: "关于威侃"
+                , href: "about"
+                , width: 108
+            }
+            , {
+                title: "行业应用"
+                , href: "index"
+                , width: 108
+                , positionoffset : 40
+                , subitems: [
+                    {title:"办公", href: "#"}
+                    , {title:"电力行业", href: "#"}
+                    , {title:"电信行业", href: "#"}
+                    , {title:"实验室/医疗", href: "#"}
+                    , {title:"宾馆/饭店", href: "#"}
+                    , {title:"仓储物流", href: "#"}
+                    , {title:"工厂", href: "#"}
+                    , {title:"教育", href: "#"}
+                ]
             }
             , {
                 title: "电子制造"
@@ -1615,11 +1636,6 @@ Weikan.config = {
                     , {title:"DT4200", href: "mro/dt4200"}
                     , {title:"线缆标签", href: "mro/linetag"}
                 ]
-            }
-            , {
-                title: "防水透气产品"
-                , href: "index"
-                , width: 108
             }
         ]
     }
@@ -1760,7 +1776,8 @@ Weikan.prototype.run = function() {
         .attr({
             src : Weikan.config.root + "/res/drawables/" + Weikan.config.logo.image
         }).css({
-            position: "relative"
+            position: "fixed"
+            , display : "block"
             , top   : "40px"
             , left  : "40px"
         })
@@ -1810,7 +1827,7 @@ Weikan.prototype.run = function() {
     var wkBottomExpand = $('<div />')
         .attr({id:"wk-bottom-expand"})
         .height(Weikan.config.bottomExpand.height);
-    $(wkBottomExpand).insertBefore(wkFooter);
+    $(wkBottomExpand).insertAfter(wkFooter);
 
     var _bodyRawHeight = $("#wk-body").height();
 
