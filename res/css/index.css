@@ -14,10 +14,12 @@
 
 #prev-button {
     float: right;
+    display: none;
 }
 
 #next-button {
     float: left;
+    display: none;
 }
 
 #wk-bottom-expand {

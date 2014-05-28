@@ -1074,7 +1074,7 @@
         var _height = $(_self).height();
 
         var _items;
-        var _itemWidth = 278;
+        var _itemWidth = 220;
         var _itemHeight = _height;
         var _showShadow = true;
         var _itemBackgroundColor = "#e3e4e6";
@@ -1153,13 +1153,14 @@
 
         var _count = _items.length;
 
-        var _marginHorizonal = parseInt((_width - _itemWidth * 3) / 6);
+        var _marginHorizonal = parseInt((_width - _itemWidth * _showCount) / (_showCount * 2));
 
         var createCoverWithItem = function(item, size, position) {
 
             var ICON_NAME = [
                 "wk_item_title_icon_red.png"
                 , "wk_item_title_icon_green.png"
+                , "wk_item_title_icon_blue.png"
                 , "wk_item_title_icon_blue.png"
             ];
 
@@ -1285,7 +1286,7 @@
 
             var _coverTitleIcon = $("<img />")
                 .attr({
-                    src     : "./res/drawables/" + ICON_NAME[position % 3]
+                    src     : "./res/drawables/" + ICON_NAME[position % _showCount]
                     , width : "3px"
                     , height: "17px"
                 }).css({

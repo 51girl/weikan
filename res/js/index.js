@@ -16,8 +16,11 @@ $(window).load(function(e) {
         }, {
             title           :"吊牌产品图片"
             , coverImage    : "produce_3.png"
+        }, {
+            title           :"吊牌产品图片"
+            , coverImage    : "produce_3.png"
         }
-    ]);
+    ], 4);
 
     $("#prev-button").click(function(e) {
         _cf.prev();
