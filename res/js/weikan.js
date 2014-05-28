@@ -1614,7 +1614,7 @@ Weikan.config = {
                 , positionoffset : 40
                 , subitems: [
                     {title:"高品质标签", href: "electron/electron_0"}
-                    , {title:"丝网印刷标签", href: "#"}
+                    , {title:"手持打印机", href: "electron/electron_1"}
                     , {title:"精密膜切加工", href: "electron/electron_2"}
                     , {title:"打印系统及软件", href: "#"}
                     , {title:"包装设计", href: "#"}
