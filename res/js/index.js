@@ -7,17 +7,19 @@ $(window).load(function(e) {
     $(_wrapper).width(1074).height(388);
     var _cf = $("#produce-vista").width($(_wrapper).width() - 29 * 2).height($(_wrapper).height()).coverflow([
         {
-            title           : "高品质标签"
+            title           : "手持打印机"
             , coverImage    : "produce_1.png"
             , href          : "electron/electron_0"
         }, {
-            title           :"防水透气膜"
+            title           :"MRO"
             , coverImage    : "produce_2.png"
+            , href          : "electron/electron_1"
         }, {
-            title           :"吊牌产品图片"
+            title           :"防水透气膜"
             , coverImage    : "produce_3.png"
+            , href          : "electron/electron_2"
         }, {
-            title           :"吊牌产品图片"
+            title           :"电子制造"
             , coverImage    : "produce_3.png"
         }
     ], 4);
@@ -73,22 +75,26 @@ $(window).load(function(e) {
         {
             title : "电子标识制造专家"
             , image : "demo_bottom_cover_0.png"
+            , href : "electron/electron_0"
         }
         , {
             title : "电子制造包装集成专家"
             , image : "demo_bottom_cover_1.png"
+            , href : "electron/electron_0"
         }
         , {
             title : "提供最佳的透水透气方案"
             , image : "demo_bottom_cover_2.png"
+            , href : "electron/electron_0"
         }
         , {
             title : "专业标签打印系统"
             , image : "demo_bottom_cover_3.png"
+            , href : "electron/electron_0"
         }
     ];
 
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < _demoItems.length; i++) {
         var _demo_li = $("<li/>");
         var _item = $('<div />').css({
             border          : "1px #fff solid"
@@ -100,7 +106,10 @@ $(window).load(function(e) {
             , width         : "172px"
             , height        : "98px"
             , float         : "left"
-        });
+        }).addClass("wk-responer");
+        if (_demoItems[i].href) {
+            $(_item).attr("wk-uri", _demoItems[i].href);
+        }
 
         var _itemImage = $('<img />')
             .attr({
