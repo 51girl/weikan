@@ -467,13 +467,13 @@
                 }
                 _li[0].navitem = _items[i];
                 var href = _items[i].href;
-                if (href.lastIndexOf(".") < 0) {
-                    href += "." + Weikan.config.defpostfix;
-                }
+//                if (href.lastIndexOf(".") < 0) {
+//                    href += "." + Weikan.config.defpostfix;
+//                }
                 var _a = $('<a />').attr({
                     "target" : "_self"
-                    , "href" : href
-                }).text(_items[i].title);
+                    , "wk-uri" : href
+                }).text(_items[i].title).addClass("wk-responer");
 
                 if (_items[i].subitems && _items[i].subitems.length) {
                     var _subul = $('<ul />').addClass("wk-navbar-subitems");
@@ -1524,6 +1524,14 @@ route.match("mro", function(path, ds) {
     window.location.href = "mrodetails.html?index=2&ds=" + ds + "&pagetitle=" + ds;
 });
 
+route.match("index", function(path, ds) {
+    window.location.href = "index.html?index=0";
+});
+
+route.match("about", function(path, ds) {
+    window.location.href = "about.html?index=1";
+});
+
 Weikan = function() {
 
     this.onPrepareShowWindowHandler = null;
@@ -1776,6 +1784,7 @@ Weikan.prototype.run = function() {
     var imgLogo = $("<img />")
         .attr({
             src : Weikan.config.root + "/res/drawables/" + Weikan.config.logo.image
+            , "wk-uri" : Weikan.config.logo.href
         }).css({
             position: "fixed"
             , display : "block"
@@ -1784,9 +1793,9 @@ Weikan.prototype.run = function() {
         })
         .addClass("wk-responer");
 
-    $(imgLogo).on("click", function(e) {
-        window.location.href = Weikan.config.root + "/" + Weikan.config.logo.href + "." + Weikan.config.defpostfix
-    });
+//    $(imgLogo).on("click", function(e) {
+//        window.location.href = Weikan.config.root + "/" + Weikan.config.logo.href + "." + Weikan.config.defpostfix
+//    });
 
     var right = $('<div />')
         .css({
