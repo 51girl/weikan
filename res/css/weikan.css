@@ -309,3 +309,8 @@ a:hover, a:active {
 .wk-window-content-list li span.wk-list-order {
     color: #0096d6;
 }
+
+#wk-window-footer .wk-window-more {
+    float: right;
+    margin-right: 20px;
+}

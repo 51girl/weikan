@@ -408,14 +408,29 @@
             var n = items.length;
             for (var i = 0; i < n; i++) {
                 var _li = $('<li />');
-                var href = items[i].href;
-                if (href.lastIndexOf(".") < 0) {
-                    href += "." + Weikan.config.defpostfix;
+                var href = null;
+                if (items[i].href) {
+                    href = items[i].href;
+                    if (href.indexOf("http://") == 0) {
+
+                    } else if (href.lastIndexOf(".") < 0) {
+                        href += "." + Weikan.config.defpostfix;
+                    }
                 }
-                var _a = $('<a />').attr({
+
+
+                var attr = {
                     target  : "_self"
-                    , href  : href
-                }).text(items[i].title);
+                };
+
+                if (href) {
+                    attr.href = href;
+                } else {
+                    attr.href = "#"
+                }
+
+                var _a = $('<a />').attr(attr)
+                    .text(items[i].title);
 
                 $(_li).append(_a);
                 $(_ul).append(_li);
@@ -1074,7 +1089,7 @@
         var _height = $(_self).height();
 
         var _items;
-        var _itemWidth = 220;
+        var _itemWidth = 230;
         var _itemHeight = _height;
         var _showShadow = true;
         var _itemBackgroundColor = "#e3e4e6";
@@ -1586,8 +1601,8 @@ Weikan.config = {
         height : 100
     }
     , navbar : {
-        weight : 0.3
-        , minWidth: 300
+        weight : 0.26
+        , minWidth: 260
         , items:[
             {
                 title: "首页"
@@ -1655,11 +1670,12 @@ Weikan.config = {
         height : 27
         , items:[
                 {title: "网站地图", href: "map"}
-                , {title: "客户服务", href: "service"}
-                , {title: "关于威侃", href: "about"}
+                , {title: "客户服务/驱动下载/产品介绍下载"}
+                , {title: "公司新闻", href: "news"}
                 , {title: "工作机会", href: "jd"}
                 , {title: "联系我们", href: "contacts"}
-                , {title: "免责声明", href: "exceptions"}
+                , {title: "免责声明", href: "statement"}
+                , {title: "Varimark.cn", href: "http://www.varimark.cn"}
             ]
         }
 
@@ -2025,6 +2041,13 @@ Weikan.prototype.run = function() {
             $(item).titlebar();
         });
     });
+
+    return {
+        notifyChange : function(callback) {
+            callback.apply(_self, []);
+            initRects();
+        }
+    }
 
 }
 
