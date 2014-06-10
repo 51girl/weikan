@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <title>实验室/医疗</title>
+    <cover>product_detail_main_image.png</cover>
+    <content>
+        <description>
+            威侃标识解决方案能够提供应付恶劣环境和复杂需求的高性能特种标签，例如耐高温标签，预印标签，防伪标签、易碎标签、防静电标签、空白标签等，威侃高性能标签被广泛的应用在PC板，电子零件和大型机械的标识上。
+        </description>
+        <list>
+            <item>
+                <title>实验室试剂标识</title>
+                <cover>product_detail_item_image.png</cover>
+                <image>produce_details_demo_image.png</image>
+                <description>
+                    我们提供的耐高温标签大部分应用于特殊的工业环境，如：电路板，ESD,阻燃材料等其他高温环境工作下的标签需求。我们提供不同厚度如：1mil，2mil等材料，在保证印刷质量和热转印打印清晰度的情况下，依旧具备了超稳定的耐温性能。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            我们提供的耐高温标签大部分应用于特殊的工业环境，如：电路板，ESD,阻燃材料等其他高温环境工作下的标签需求。我们提供不同厚度如：1mil，2mil等材料，在保证印刷质量和热转印打印清晰度的情况下，依旧具备了超稳定的耐温性能。
+                        </part>
+                        <part type="list">
+                            <item>可耐300°高温，可用于波峰焊和回流焊</item>
+                            <item>有阻燃，易揭，防静电材料可供选择</item>
+                            <item>具有很强的化学惰性，不溶于任何已知的有机溶剂</item>
+                            <item>厚度有1mil和2mil可供选择</item>
+                        </part>
+                    </type>
+                </content>
+            </item>
+            <item>
+                <title>实验室药品分类</title>
+                <cover>product_detail_item_image.png</cover>
+                <image>produce_details_demo_image.png</image>
+                <description>
+                    我们可根据客户要求提供一些预印内容的标签。按材质可分为：铜板纸、合成纸、PET、PVC、PI、乙烯等，我们生产的不干胶标签符合ROHS标准，可根据客户要求提供SGS报告书及UL认证资料。威侃能够在最短的时间内为您提供有效的标识方案。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            我们可根据客户要求提供一些预印内容的标签。按材质可分为：铜板纸、合成纸、PET、PVC、PI、乙烯等，我们生产的不干胶标签符合ROHS标准，可根据客户要求提供SGS报告书及UL认证资料。威侃能够在最短的时间内为您提供有效的标识方案。
+                        </part>
+                    </type>
+                </content>
+            </item>
+            <item>
+                <title>医疗、实验仪器标识</title>
+                <cover>product_detail_item_image.png</cover>
+                <image>produce_details_demo_image.png</image>
+                <description>
+                    揭开型VOID防伪标签，当被揭开时，警告标签上会产生明显的结构性的破坏，并在被贴表面上留下明显的残渍（如VOID字样或方格）且无法复原，起到阻吓及警示作用。是运用国际先进防伪技术防伪标签，有多种不同的残渍类型可供选择。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            揭开型VOID防伪标签，当被揭开时，警告标签上会产生明显的结构性的破坏，并在被贴表面上留下明显的残渍（如VOID字样或方格）且无法复原，起到阻吓及警示作用。是运用国际先进防伪技术防伪标签，有多种不同的残渍类型可供选择。
+                        </part>
+                    </type>
+                </content>
+            </item>
+        </list>
+    </content>
+</data>
