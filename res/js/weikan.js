@@ -1634,37 +1634,6 @@ Weikan.config = {
                     , {title:"教育", href: "business/business_7"}
                 ]
             }
-//            , {
-//                title: "电子制造"
-//                , href: "index"
-//                , width: 88
-//                , positionoffset : 40
-//                , subitems: [
-//                    {title:"高品质标签", href: "electron/electron_0"}
-//                    , {title:"手持打印机", href: "electron/electron_1"}
-//                    , {title:"精密膜切加工", href: "electron/electron_2"}
-//                    , {title:"打印系统及软件", href: "#"}
-//                    , {title:"包装设计", href: "#"}
-//                    , {title:"VMI包装解决方案", href: "#"}
-//                    , {title:"包装产品", href: "#"}
-//                    , {title:"内包装辅料", href: "#"}
-//                    , {title:"包装附件", href: "#"}
-//                ]
-//            }
-//            , {
-//                title: "MRO"
-//                , href: "index"
-//                , width: 60
-//                , positionoffset : 80
-//                , subitems: [
-//                    {title:"GT 1000", href: "mro/gt1000"}
-//                    , {title:"GT 2000", href: "mro/gt2000"}
-//                    , {title:"GT 2010", href: "mro/gt2010"}
-//                    , {title:"XT2000", href: "mro/xt2000"}
-//                    , {title:"DT4200", href: "mro/dt4200"}
-//                    , {title:"线缆标签", href: "mro/linetag"}
-//                ]
-//            }
         ]
     }
     , bottomExpand : {
