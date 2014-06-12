@@ -35,6 +35,7 @@
                             "height" : 90+"px"
                             , textOverflow : "ellipsis"
                             , overflow : "hidden"
+                            , fontSize : "0.6em"
                         });
                 this.item_content_more = $("<img/>")
                         .attr("src", "res/drawables/product_detail_item_more.png")
@@ -169,7 +170,7 @@
                                                 _dataItem.data_item_content_title = $(_itemTitleNode).text();
                                                 _dataItem.data_item_content_img = _dataPath + $(_itemCoverNode).text();
                                                 _dataItem.data_item_content_img_big = _dataPath + $(_itemImageNode).text();
-                                                _dataItem.data_item_content_dec = $(_itemDescNode).text();
+                                                _dataItem.data_item_content_dec = $(_itemDescNode).text().replace(/\n/g, "<br />");
 
                                                 var _itemContentNode = $(listItem).find("content");
 
@@ -224,7 +225,7 @@
                                             var item = new Item(i);
                                             item.item_content_title.text(data_item.data_item_content_title);
                                             item.item_content_img.attr({src : data_item.data_item_content_img});
-                                            item.item_content_dec.text(data_item.data_item_content_dec);
+                                            item.item_content_dec.html(data_item.data_item_content_dec);
                                             $(row).append(item.item);
                                         }
                                     }

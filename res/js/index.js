@@ -11,16 +11,17 @@ $(window).load(function(e) {
             , coverImage    : "produce_1.png"
             , href          : "electron/electron_1"
         }, {
-            title           :"MRO"
+            title           :"整体包装解决方案"
             , coverImage    : "produce_2.png"
             , href          : "electron/electron_2"
         }, {
-            title           :"防水透气膜"
+            title           :"标识及精密切模"
             , coverImage    : "produce_3.png"
             , href          : "electron/electron_2"
         }, {
-            title           :"电子制造"
+            title           :"防水透气膜"
             , coverImage    : "produce_4.png"
+            , href          : "electron/electron_2"
         }
     ], 4);
 
