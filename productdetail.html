@@ -19,7 +19,7 @@
                 })
             })
 
-            var Item = function(index){
+            var Item = function(index, hasContent){
                 this.index = index;
                 this.item_content_title = $("<h2/>");
                 this.item_content_divide = $("<img />")
@@ -53,8 +53,11 @@
                 $(this.item_content_right)
                         .append(this.item_content_title)
                         .append(this.item_content_divide)
-                        .append(this.item_content_dec)
-                        .append(this.item_content_more);
+                        .append(this.item_content_dec);
+                if (hasContent) {
+                    $(this.item_content_right).append(this.item_content_more);
+
+                }
                 this.item_content_img = $("<img/>")
                         .css({
                             "float" : "left"
@@ -85,11 +88,14 @@
                             "width" : 402+"px",
                             "height" : 171+"px",
                             "float" : "left"
-                        })
-                        .attr({
-                            "wk-widget" : "window"
-                            , "wk-window-token" : index
-                        }).addClass("wk-responer");
+                        });
+                if (hasContent) {
+                    $(this.item).attr({
+                        "wk-widget" : "window"
+                        , "wk-window-token" : index
+                    }).addClass("wk-responer");
+                }
+
                 if (index % 2 == 0) {
                     $(this.item).css({
                         marginRight:"41px"
@@ -174,6 +180,12 @@
 
                                                 var _itemContentNode = $(listItem).find("content");
 
+                                                if (_itemContentNode && _itemContentNode.length > 0) {
+                                                    _dataItem.hasContent = true;
+                                                } else {
+                                                    _dataItem.hasContent = false;
+                                                }
+
                                                 $(_itemContentNode).children().each(function(typeItemIndex, typeItem) {
                                                     if (typeItem.tagName === 'type') {
                                                         if (!_dataItem.types) {
@@ -222,7 +234,7 @@
                                                         });
                                                 $(produce_detail).append(row);
                                             }
-                                            var item = new Item(i);
+                                            var item = new Item(i, data_item.hasContent);
                                             item.item_content_title.text(data_item.data_item_content_title);
                                             item.item_content_img.attr({src : data_item.data_item_content_img});
                                             item.item_content_dec.html(data_item.data_item_content_dec);

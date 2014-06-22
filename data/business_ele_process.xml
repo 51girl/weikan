@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <title>电子加工</title>
+    <cover>product_detail_main_image.png</cover>
+    <content>
+        <description>
+            威侃标识解决方案能够提供应付恶劣环境和复杂需求的高性能特种标签，例如耐高温标签，预印标签，防伪标签、易碎标签、防静电标签、空白标签等，威侃高性能标签被广泛的应用在PC板，电子零件和大型机械的标识上。
+        </description>
+        <list>
+            <item>
+                <title>零部件运输</title>
+                <cover>product_detail_item_image.png</cover>
+            </item>
+            <item>
+                <title>汽车电子</title>
+                <cover>product_detail_item_image.png</cover>
+            </item>
+        </list>
+    </content>
+</data>

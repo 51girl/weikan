@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <title>荣誉</title>
+    <cover>product_detail_main_image.png</cover>
+    <content>
+        <description>
+            荣誉。
+        </description>
+        <list>
+            <item>
+                <title>质量管理体系认证</title>
+                <cover>honour/h0.png</cover>
+            </item>
+            <item>
+                <title>环境管理体系认证</title>
+                <cover>honour/h1.png</cover>
+            </item>
+            <item>
+                <title>发明专利证书</title>
+                <cover>honour/h2.png</cover>
+            </item>
+            <item>
+                <title>发展潜力奖</title>
+                <cover>honour/h3.png</cover>
+            </item>
+            <item>
+                <title>高新技术企业证书</title>
+                <cover>honour/h4.png</cover>
+            </item>
+            <item>
+                <title>技术创新奖</title>
+                <cover>honour/h5.png</cover>
+            </item>
+        </list>
+    </content>
+</data>

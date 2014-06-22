@@ -1535,8 +1535,12 @@ route.match("electron", function(path, ds) {
     window.location.href = "productdetail.html?ds=" + ds + "&pagetitle=" + ds;
 });
 
+route.match("device", function(path, ds) {
+    window.location.href = "device.html?ds=" + ds + "&pagetitle=" + ds;
+});
+
 route.match("business", function(path, ds) {
-    window.location.href = "productdetail.html?index=1&ds=" + ds + "&pagetitle=" + ds;
+    window.location.href = "device.html?index=2&ds=" + ds + "&pagetitle=" + ds;
 });
 
 route.match("mro", function(path, ds) {
@@ -1624,13 +1628,14 @@ Weikan.config = {
                 , width: 108
                 , positionoffset : 40
                 , subitems: [
-                    {title:"办公", href: "business/business_0"}
+                    {title:"电子加工", href: "business/business_ele_process"}
+                    , {title:"汽车", href: "business/business_car"}
+                    , {title:"办公", href: "business/business_0"}
                     , {title:"电力行业", href: "business/business_1"}
                     , {title:"电信行业", href: "business/business_2"}
                     , {title:"实验室/医疗", href: "business/business_3"}
-                    , {title:"宾馆/饭店", href: "business/business_4"}
+                    , {title:"宾馆/酒店", href: "business/business_4"}
                     , {title:"仓储物流", href: "business/business_5"}
-                    , {title:"工厂", href: "business/business_6"}
                     , {title:"教育", href: "business/business_7"}
                 ]
             }

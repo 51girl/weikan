@@ -13,11 +13,11 @@ $(window).load(function(e) {
         }, {
             title           :"整体包装解决方案"
             , coverImage    : "produce_2.png"
-            , href          : "electron/electron_2"
+            , href          : "device/tps"
         }, {
             title           :"标识及精密切模"
             , coverImage    : "produce_3.png"
-            , href          : "electron/electron_2"
+            , href          : "device/tag"
         }, {
             title           :"防水透气膜"
             , coverImage    : "produce_4.png"
