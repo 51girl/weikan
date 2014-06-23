@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
     <title>手持打印机</title>
-    <cover>printer_header.png</cover>
+    <cover>header_printer.jpg</cover>
     <content>
         <description>
             威码标签打印机及耗材是国内首创自主研发的产品，拥有多项专利技术，为客户提供耐高温、耐低温、耐腐蚀，在恶劣条件下延长标签使用等特殊需求的解决方案。
@@ -32,8 +32,8 @@
             </item>
             <item>
                 <title>GT2000</title>
-                <cover>gt2000/cover.png</cover>
-                <image>gt2000/main.png</image>
+                <cover>gt2000/cover.jpg</cover>
+                <image>gt2000/main.jpg</image>
                 <description>1、内置8种条码功能
                     2、中英文输入，连续、连数印刷功能
                     3、干电池、AC电源，两种供电方式
@@ -53,8 +53,8 @@
             </item>
             <item>
                 <title>GT2010</title>
-                <cover>gt2010/cover.png</cover>
-                <image>gt2010/main.png</image>
+                <cover>gt2010/cover.jpg</cover>
+                <image>gt2010/main.jpg</image>
                 <description>1、USB电脑连接功能
                     2、内置8种条码功能
                     3、中英文输入，连续、连数印刷功能
@@ -76,8 +76,8 @@
             </item>
             <item>
                 <title>GT2020</title>
-                <cover>dt4200/cover.png</cover>
-                <image>dt4200/main.png</image>
+                <cover>dt4200/cover.jpg</cover>
+                <image>dt4200/main.jpg</image>
                 <description>1、USB电脑连接功能
                     2、自动裁切功能
                     3、内置8种条码功能
@@ -101,8 +101,8 @@
             </item>
             <item>
                 <title>XT2000</title>
-                <cover>xt2000/cover.png</cover>
-                <image>xt2000/main.png</image>
+                <cover>xt2000/cover.jpg</cover>
+                <image>xt2000/main.jpg</image>
                 <description>1、最大打印宽度50mm，多种宽度可供选择
                     2、18种字体大小尺寸调节（4~72磅）
                     3、4行*16字符大尺寸LCD
@@ -130,8 +130,8 @@
             </item>
             <item>
                 <title>耗材</title>
-                <cover>haocai/cover.png</cover>
-                <image>haocai/main.png</image>
+                <cover>haocai/cover.jpg</cover>
+                <image>haocai/main.jpg</image>
                 <description>1、标准标签带耗材
                     2、特殊标签带耗材
                     3、热缩套管标签耗材
@@ -140,7 +140,7 @@
                 <content>
                     <type id="descripion" name="介绍">
                         <part type="paragraph">
-                            耗材
+                            产品介绍
                         </part>
                         <part type="list">
                             <item>标准标签带耗材</item>

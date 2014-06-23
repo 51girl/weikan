@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+    <title>整体包装解决方案（TPS）</title>
+    <cover>header_TPS.jpg</cover>
+    <content>
+        <description>
+
+        </description>
+        <summary>
+
+        </summary>
+        <list>
+            <item>
+                <title>纸箱</title>
+                <cover>TPS/zhixiang_cover.jpg</cover>
+                <image>TPS/zhixiang_main.jpg</image>
+                <description>
+                    纸箱楞别满足客户的不同需求： A,B,C,E,F,AB,BC等。为客户提供科学实用的解决方案。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            纸箱楞别满足客户的不同需求： A,B,C,E,F,AB,BC等。为客户提供科学实用的解决方案。
+                        </part>
+                    </type>
+                </content>
+            </item>
+            <item>
+                <title>彩印</title>
+                <cover>TPS/caiyin_cover.jpg</cover>
+                <image>TPS/caiyin_main.jpg</image>
+                <description>
+                    可提供给客户从设计到包装、印刷的整体解决方案，提供各类客户化、定制化的服务。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            可提供给客户从设计到包装、印刷的整体解决方案，提供各类客户化、定制化的服务。
+                        </part>
+                    </type>
+                </content>
+            </item>
+            <item>
+                <title>防潮防静电袋</title>
+                <cover>TPS/fancao_cover.jpg</cover>
+                <image>TPS/fancao_main.jpg</image>
+                <description>
+                    屏蔽袋可以最大程度地保护静电敏感元器件免受潜在静电危害。独特的四层结构可以保护袋内物品与静电场隔离。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            屏蔽袋可以最大程度地保护静电敏感元器件免受潜在静电危害。独特的四层结构可以保护袋内物品与静电场隔离。
+                        </part>
+                    </type>
+                </content>
+            </item>
+            <item>
+                <title>缓冲材料</title>
+                <cover>TPS/huanchong_cover.jpg</cover>
+                <image>TPS/huanchong_main.jpg</image>
+                <description>
+                    缓冲材料包括珍珠棉、气泡袋、吸塑盒、PE袋等。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            缓冲材料包括珍珠棉、气泡袋、吸塑盒、PE袋等。
+                        </part>
+                    </type>
+                </content>
+            </item>
+            <item>
+                <title>其他材料</title>
+                <cover>TPS/other_cover.jpg</cover>
+                <image>TPS/other_main.jpg</image>
+                <description>
+                    包括木箱、木托盘、塑料托盘、打包带、缠绕膜、扎带等各类材料。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            包括木箱、木托盘、塑料托盘、打包带、缠绕膜、扎带等各类材料。
+                        </part>
+                    </type>
+                </content>
+            </item>
+        </list>
+    </content>
+</data>
