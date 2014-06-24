@@ -1652,7 +1652,6 @@ Weikan.config = {
                 , {title: "公司新闻", href: "news"}
                 , {title: "工作机会", href: "jd"}
                 , {title: "联系我们", href: "contacts"}
-                , {title: "免责声明", href: "statement"}
                 , {title: "Varimark.cn", href: "http://www.varimark.cn"}
             ]
         }

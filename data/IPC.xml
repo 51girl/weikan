@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+    <title>标识及精密模切</title>
+    <cover>header_IPC.jpg</cover>
+    <content>
+        <description>
+        </description>
+        <summary>
+        </summary>
+        <list>
+            <item>
+                <title>高性能标签</title>
+                <cover>IPC/gaoxingneng_cover.jpg</cover>
+                <image>IPC/gaoxingneng_main.jpg</image>
+                <description>
+                    为电子制造行业提供的高性能标签。凭借材质的特有性能及独有的涂层技术，具备了超稳定的耐温性能。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            为电子制造行业提供的高性能标签。凭借材质的特有性能及独有的涂层技术，具备了超稳定的耐温性能。
+                        </part>
+                    </type>
+                </content>
+            </item>
+            <item>
+                <title>印刷标签</title>
+                <cover>IPC/putong_cover.jpg</cover>
+                <image>IPC/putong_main.jpg</image>
+                <description>
+                    1、产品识别
+                    2、货运标签
+                    3、条码追踪
+                    4、防伪开启
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            1、产品识别
+                        </part>
+                        <part type="paragraph">
+                            2、货运标签
+                        </part>
+                        <part type="paragraph">
+                            3、条码追踪
+                        </part>
+                        <part type="paragraph">
+                            4、防伪开启
+                        </part>
+                    </type>
+                </content>
+            </item>
+            <item>
+                <title>丝印铭牌</title>
+                <cover>IPC/siyin_cover.jpg</cover>
+                <image>IPC/siyin_main.jpg</image>
+                <description>
+                    具有防水、防尘、防油污、防腐蚀及有害气体，电性能稳定、耐候性能优异，具有色彩鲜艳，成本低，寿命长、易安装等优点。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            具有防水、防尘、防油污、防腐蚀及有害气体，电性能稳定、耐候性能优异，具有色彩鲜艳，成本低，寿命长、易安装等优点。
+                        </part>
+                    </type>
+                </content>
+            </item>
+            <item>
+                <title>空白打印标签</title>
+                <cover>IPC/kongbai_cover.jpg</cover>
+                <image>IPC/kongbai_main.jpg</image>
+                <description>
+                    标签材料具有优异的粘胶性能及特殊的表面涂层。在各种溶剂中能保持良好的图像品质，有多种表面颜色及效果可供选择。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            标签材料具有优异的粘胶性能及特殊的表面涂层。在各种溶剂中能保持良好的图像品质，有多种表面颜色及效果可供选择。
+                        </part>
+                    </type>
+                </content>
+            </item>
+            <item>
+                <title>精密模切材料</title>
+                <cover>IPC/jingmi_cover.jpg</cover>
+                <image>IPC/jingmi_main.jpg</image>
+                <description>
+                    以专业的模切设计、制造为起点，依托高速精密的冲压设备及高精度的检测仪器，严格按照质量体系进行生产和服务流程控制。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            以专业的模切设计、制造为起点，依托高速精密的冲压设备及高精度的检测仪器，严格按照质量体系进行生产和服务流程控制。
+                        </part>
+                    </type>
+                </content>
+            </item>
+            <item>
+                <title>胶带</title>
+                <cover>IPC/jiaodai_cover.jpg</cover>
+                <image>IPC/jiaodai_main.jpg</image>
+                <description>
+                    1、普通胶带(BOPP)
+                    2、耐高温胶带(Kapton)
+                    3、密封胶带
+                    4、警示胶带
+                    5、PVC胶带
+                    6、海绵/泡绵胶带
+                    7、安全防伪胶带
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            1、普通胶带(BOPP)
+                        </part>
+                        <part type="paragraph">
+                            2、耐高温胶带(Kapton)
+                        </part>
+                        <part type="paragraph">
+                            3、密封胶带
+                        </part>
+                        <part type="paragraph">
+                            4、警示胶带
+                        </part>
+                        <part type="paragraph">
+                            5、PVC胶带
+                        </part>
+                        <part type="paragraph">
+                            6、海绵/泡绵胶带
+                        </part>
+                        <part type="paragraph">
+                            7、安全防伪胶带
+                        </part>
+                    </type>
+                </content>
+            </item>
+            <item>
+                <title>线缆标签</title>
+                <cover>IPC/xianlan_cover.jpg</cover>
+                <image>IPC/xianlan_main.jpg</image>
+                <description>
+                    广泛应用于各种线缆线束的标识，具有极高的耐腐蚀、耐候性，确保设备的制造、维修、运行、管理系统的安全性和可靠性。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            广泛应用于各种线缆线束的标识，具有极高的耐腐蚀、耐候性，确保设备的制造、维修、运行、管理系统的安全性和可靠性。
+                        </part>
+                    </type>
+                </content>
+            </item>
+            <item>
+                <title>管道标签</title>
+                <cover>IPC/guandao_cover.jpg</cover>
+                <image>IPC/guandao_main.jpg</image>
+                <description>
+                    在管道上作基本识别色、识别符号的安全标识。管道标签具有高光亮度、即贴易用的特性，具有良好的耐高温、耐严寒、耐腐蚀性能，柔韧性好，不易褪色。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            在管道上作基本识别色、识别符号的安全标识。管道标签具有高光亮度、即贴易用的特性，具有良好的耐高温、耐严寒、耐腐蚀性能，柔韧性好，不易褪色。
+                        </part>
+                    </type>
+                </content>
+            </item>
+            <item>
+                <title>安全标识</title>
+                <cover>IPC/anquan_cover.jpg</cover>
+                <image>IPC/anquan_main.jpg</image>
+                <description>
+                    为客户提供全系列的安全标识方案。警告标识、禁止标识、指令标识、消防标识、电力标识。全面满足安全标识的需要，并且符合国家及国际安全规范。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            为客户提供全系列的安全标识方案。警告标识、禁止标识、指令标识、消防标识、电力标识。全面满足安全标识的需要，并且符合国家及国际安全规范。
+                        </part>
+                    </type>
+                </content>
+            </item>
+            <item>
+                <title>打印系统</title>
+                <cover>IPC/dayin_cover.jpg</cover>
+                <image>IPC/dayin_main.jpg</image>
+                <description>
+                    提供包含从打印硬件、标签设计软件、数据采集设备到全系列打印耗材的全套产品及方案。专业的服务经验能保证客户不再为兼容匹配性所困扰。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            提供包含从打印硬件、标签设计软件、数据采集设备到全系列打印耗材的全套产品及方案。专业的服务经验能保证客户不再为兼容匹配性所困扰。
+                        </part>
+                    </type>
+                </content>
+            </item>
+        </list>
+    </content>
+</data>

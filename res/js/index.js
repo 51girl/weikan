@@ -8,20 +8,29 @@ $(window).load(function(e) {
     var _cf = $("#produce-vista").width($(_wrapper).width() - 29 * 2).height($(_wrapper).height()).coverflow([
         {
             title           : "手持打印机"
-            , coverImage    : "produce_1.png"
+            , coverImage    : "produce_1.jpg"
             , href          : "electron/electron_1"
         }, {
             title           :"整体包装解决方案"
+<<<<<<< HEAD
             , coverImage    : "produce_2.png"
             , href          : "device/tps"
         }, {
             title           :"标识及精密切模"
             , coverImage    : "produce_3.png"
             , href          : "device/tag"
+=======
+            , coverImage    : "produce_2.jpg"
+            , href          : "electron/TPS"
+        }, {
+            title           :"标识及精密切模"
+            , coverImage    : "produce_3.png"
+            , href          : "electron/IPC"
+>>>>>>> FETCH_HEAD
         }, {
             title           :"防水透气膜"
             , coverImage    : "produce_4.png"
-            , href          : "electron/electron_2"
+            , href          : "electron/WBM"
         }
     ], 4);
 

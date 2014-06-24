@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+    <title>防水透气膜</title>
+    <cover>header_WBM.jpg</cover>
+    <content>
+        <description>
+
+        </description>
+        <summary>
+
+        </summary>
+        <list>
+            <item>
+                <title>防水透气膜</title>
+                <cover>WBM/touqi_cover.jpg</cover>
+                <image>WBM/touqi_main.jpg</image>
+                <description>
+                    威侃薄膜产品能够提供高达IP67 和IP68的防护等级。e-PTFE既提供很好的防水、防尘性能，又能防止表面活性剂、 有机溶剂等液体的渗透。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            威侃薄膜产品能够提供高达IP67 和IP68的防护等级。e-PTFE既提供很好的防水、防尘性能，又能防止表面活性剂、 有机溶剂等液体的渗透。具有高透气量、低压差、无挥发、 低残留、极佳的化学相容性和极佳的温度适应性等特征。安装形式多样，既可以安装在产品内部，也可以安装在产品外部。
+                        </part>
+                    </type>
+                </content>
+            </item>
+            <item>
+                <title>背胶贴片</title>
+                <cover>WBM/beijiao_cover.jpg</cover>
+                <image>WBM/beijiao_main.jpg</image>
+                <description>
+                    产品防护等级达到或超过IP67。可以使用背胶或超声波焊接的方式，能够在苛刻的环境中使用。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            产品防护等级达到或超过IP67。可以使用背胶或超声波焊接的方式，能够在苛刻的环境中使用。 接触液体后迅速透气，便于空间有限的设备进行结构设计。既有标准尺寸，也能定制产品。
+                        </part>
+                    </type>
+                </content>
+            </item>
+            <item>
+                <title>呼吸器</title>
+                <cover>WBM/huxi_cover.jpg</cover>
+                <image>WBM/huxi_main.jpg</image>
+                <description>
+                    1、螺纹呼吸器VP12
+                    2、 螺纹呼吸器VP18
+                    3、卡扣式呼吸器 VP55
+                    4、铝合金呼吸器
+                    5、不锈钢呼吸器
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            1、螺纹呼吸器VP12
+                        </part>
+                        <part type="paragraph">
+                            2、 螺纹呼吸器VP18
+                        </part>
+                        <part type="paragraph">
+                            3、卡扣式呼吸器 VP55
+                        </part>
+                        <part type="paragraph">
+                            4、铝合金呼吸器
+                        </part>
+                        <part type="paragraph">
+                            5、不锈钢呼吸器
+                        </part>
+                    </type>
+                </content>
+            </item>
+            <item>
+                <title>其他吸附产品</title>
+                <cover>WBM/other_cover.jpg</cover>
+                <image>WBM/other_main.jpg</image>
+                <description>
+                    威侃带吸附剂产品具有疏水, 疏油, 防尘, 透气散热等功能，确保客户的元件与设备安全运行，我们可以按照您的需求定制所需要的产品。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            威侃带吸附剂产品具有疏水, 疏油, 防尘, 透气散热等功能，确保客户的元件与设备安全运行，我们可以按照您的需求定制所需要的产品。
+                        </part>
+                    </type>
+                </content>
+            </item>
+        </list>
+    </content>
+</data>
