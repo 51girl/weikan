@@ -67,7 +67,7 @@ a:hover, a:active {
 }
 
 #wk-navbar-items li {
-    height: 28px;
+    height: 34px;
     background: #3c3c3c;
     margin-bottom: 1px;
     position: relative;
@@ -76,10 +76,10 @@ a:hover, a:active {
 }
 
 #wk-navbar-items li a {
-    font-size: 1.4em;
+    font-size: 1.8em;
     color: white;
     display: block;
-    padding-top: 3px;
+    padding-top: 5px;
     padding-left: 15px;
     height: 21px;
     position: absolute;

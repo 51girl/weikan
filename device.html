@@ -203,6 +203,15 @@
                                     }
                                 });
 
+                                if (!_data.data_main_content_dec) {
+                                    $("#main_content").css({
+                                        "display" : "none"
+                                    });
+                                    $("#main_content_bg").css({
+                                        "display" : "none"
+                                    })
+                                }
+
                             }
                         })
                     }

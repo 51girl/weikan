@@ -1551,8 +1551,8 @@ route.match("index", function(path, ds) {
     window.location.href = "index.html?index=0";
 });
 
-route.match("about", function(path, ds) {
-    window.location.href = "about.html?index=1";
+route.match("produce", function(path, ds) {
+    window.location.href = "produce.html?index=1";
 });
 
 Weikan = function() {
@@ -1613,19 +1613,19 @@ Weikan.config = {
         , minWidth: 260
         , items:[
             {
-                title: "首页"
+                title: "关于威侃"
                 , href: "index"
-                , width: 108
+                , width: 120
             }
             , {
-                title: "关于威侃"
-                , href: "about"
-                , width: 108
+                title: "公司产品"
+                , href: "produce"
+                , width: 120
             }
             , {
                 title: "行业应用"
                 , href: "index"
-                , width: 108
+                , width: 120
                 , positionoffset : 40
                 , subitems: [
                     {title:"电子加工", href: "business/business_ele_process"}

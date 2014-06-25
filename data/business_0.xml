@@ -10,22 +10,92 @@
             <item>
                 <title>固定资产管理</title>
                 <cover>business_0/0.JPG</cover>
+                <image>produce_details_demo_image.png</image>
+                <description>
+                    我们提供的耐高温标签大部分应用于特殊的工业环境，如：电路板，ESD,阻燃材料等其他高温环境工作下的标签需求。我们提供不同厚度如：1mil，2mil等材料，在保证印刷质量和热转印打印清晰度的情况下，依旧具备了超稳定的耐温性能。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            我们提供的耐高温标签大部分应用于特殊的工业环境，如：电路板，ESD,阻燃材料等其他高温环境工作下的标签需求。我们提供不同厚度如：1mil，2mil等材料，在保证印刷质量和热转印打印清晰度的情况下，依旧具备了超稳定的耐温性能。
+                        </part>
+                        <part type="list">
+                            <item>可耐300°高温，可用于波峰焊和回流焊</item>
+                            <item>有阻燃，易揭，防静电材料可供选择</item>
+                            <item>具有很强的化学惰性，不溶于任何已知的有机溶剂</item>
+                            <item>厚度有1mil和2mil可供选择</item>
+                        </part>
+                    </type>
+                </content>
             </item>
             <item>
                 <title>文件夹管理</title>
                 <cover>business_0/1.JPG</cover>
+                <image>produce_details_demo_image.png</image>
+                <description>
+                    我们可根据客户要求提供一些预印内容的标签。按材质可分为：铜板纸、合成纸、PET、PVC、PI、乙烯等，我们生产的不干胶标签符合ROHS标准，可根据客户要求提供SGS报告书及UL认证资料。威侃能够在最短的时间内为您提供有效的标识方案。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            我们可根据客户要求提供一些预印内容的标签。按材质可分为：铜板纸、合成纸、PET、PVC、PI、乙烯等，我们生产的不干胶标签符合ROHS标准，可根据客户要求提供SGS报告书及UL认证资料。威侃能够在最短的时间内为您提供有效的标识方案。
+                        </part>
+                    </type>
+                </content>
             </item>
             <item>
                 <title>个人物品标识</title>
                 <cover>business_0/2.JPG</cover>
+                <image>produce_details_demo_image.png</image>
+                <description>
+                    揭开型VOID防伪标签，当被揭开时，警告标签上会产生明显的结构性的破坏，并在被贴表面上留下明显的残渍（如VOID字样或方格）且无法复原，起到阻吓及警示作用。是运用国际先进防伪技术防伪标签，有多种不同的残渍类型可供选择。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            揭开型VOID防伪标签，当被揭开时，警告标签上会产生明显的结构性的破坏，并在被贴表面上留下明显的残渍（如VOID字样或方格）且无法复原，起到阻吓及警示作用。是运用国际先进防伪技术防伪标签，有多种不同的残渍类型可供选择。
+                        </part>
+                    </type>
+                </content>
             </item>
             <item>
                 <title>开关面板管理</title>
                 <cover>business_0/3.jpg</cover>
+                <image>produce_details_demo_image.png</image>
+                <description>
+                    易碎标签表面使用了非常脆的薄膜基材，故一旦被揭开后标签表面薄膜层即遭破坏，因此易碎标签不可能被完整的揭下来，防止了标签的再次使用和重贴。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            易碎标签表面使用了非常脆的薄膜基材，故一旦被揭开后标签表面薄膜层即遭破坏，因此易碎标签不可能被完整的揭下来，防止了标签的再次使用和重贴。
+                        </part>
+                    </type>
+                </content>
             </item>
             <item>
                 <title>线缆管理</title>
                 <cover>business_0/4.jpg</cover>
+                <image>produce_details_demo_image.png</image>
+                <description>
+                    全新电子工业专用标签材料，防止电子静电损伤，能经受印刷电路板生产面临的各种挑战。
+                </description>
+                <content>
+                    <type id="descripion" name="介绍">
+                        <part type="paragraph">
+                            全新电子工业专用标签材料，防止电子静电损伤，能经受印刷电路板生产面临的各种挑战。
+                        </part>
+                        <part type="paragraph">
+                            威侃防静电标签技术有助于快速释放放静电。采用了对静电有抵抗性的防静电粘胶（材料能 自我转移释放出静电），标签在极短时间内只剩余微量的静电。该防静电标签打打减低标签从底纸撕下来所产生的静电至安全水平而不会损害对静电敏感度高的元件。
+                        </part>
+                        <part type="list">
+                            <item>通过UL认证。</item>
+                            <item>适用热转移打印技术。</item>
+                            <item>带防静电胶。</item>
+                            <item>聚酰亚胺材质的防静电标识同时还有耐高温特质，可以适用于SMT过程的顶部或底部或穿孔技术的顶部或底部。</item>
+                        </part>
+                    </type>
+                </content>
             </item>
         </list>
     </content>

@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
-    <title>荣誉</title>
-    <cover>product_detail_main_image.png</cover>
+    <title>生产设备</title>
+    <cover>device/header.jpg</cover>
     <content>
-        <description>
-            荣誉。
-        </description>
         <list>
             <item>
                 <title>PS版商标印刷机</title>
